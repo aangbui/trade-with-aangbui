@@ -500,8 +500,17 @@ nav.scrolled {
 @media (max-width: 768px) {
   .method-tabs { display: none; }
 }
-.method-panel { display: none; }
-.method-panel.active { display: block; }
+.method-panels-wrap { display: grid; }
+.method-panel {
+  grid-area: 1/1;
+  opacity: 0; visibility: hidden;
+  transition: opacity .4s ease, visibility .4s ease;
+  pointer-events: none;
+}
+.method-panel.active {
+  opacity: 1; visibility: visible;
+  pointer-events: auto;
+}
 .method-panel-inner {
   display: grid; grid-template-columns: auto 1fr;
   gap: 3rem; align-items: start;
@@ -858,7 +867,7 @@ footer {
       <button class="method-tab" data-panel="3" role="tab">RSI Divergence</button>
     </div>
 
-    <div class="reveal d2">
+    <div class="reveal d2 method-panels-wrap">
 
       <div class="glass-card method-panel active" id="panel-0" role="tabpanel">
         <div class="method-panel-inner">
