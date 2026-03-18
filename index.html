@@ -265,9 +265,18 @@ nav.scrolled {
   display: flex; align-items: center;
   padding-top: 64px; overflow: hidden;
 }
+.hero::before {
+  content: '';
+  position: absolute; inset: 0; z-index: 1;
+  background-image: radial-gradient(circle, rgba(255,255,255,.18) 1px, transparent 1px);
+  background-size: 28px 28px;
+  -webkit-mask-image: radial-gradient(ellipse 75% 65% at 50% 45%, black 20%, transparent 78%);
+  mask-image: radial-gradient(ellipse 75% 65% at 50% 45%, black 20%, transparent 78%);
+  pointer-events: none;
+}
 #hero-canvas {
   position: absolute; inset: 0;
-  width: 100%; height: 100%; opacity: .32;
+  width: 100%; height: 100%; opacity: .09;
 }
 .hero-content {
   position: relative; z-index: 2;
@@ -1143,92 +1152,71 @@ const io = new IntersectionObserver(entries => {
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 document.querySelectorAll('.hero .reveal').forEach(el => setTimeout(() => el.classList.add('visible'), 80));
 
-/* ── Hero canvas — flow field ── */
+/* ── Hero canvas ── */
 (function () {
   const canvas = document.getElementById('hero-canvas');
   const ctx    = canvas.getContext('2d');
-  const TR = 43, TG = 255, TB = 214;
-  const N  = 200;
-  let W, H, t = 0, pts = [];
-  let mouseX = -9999, mouseY = -9999;
-  canvas.addEventListener('mousemove', e => {
-    const r = canvas.getBoundingClientRect();
-    mouseX = e.clientX - r.left;
-    mouseY = e.clientY - r.top;
-  });
-  canvas.addEventListener('mouseleave', () => { mouseX = -9999; mouseY = -9999; });
-
-  function spawn() {
-    const life = 80 + Math.random() * 140;
-    return { x: Math.random() * W, y: Math.random() * H,
-             life, maxLife: life, tail: [] };
-  }
+  let W, H, pts = [], frame = 0;
+  const TEAL  = 'rgba(43,255,214,';
+  const WHITE = 'rgba(255,255,255,';
+  const N = 80;
 
   function resize() {
     W = canvas.width  = canvas.offsetWidth;
     H = canvas.height = canvas.offsetHeight;
-    ctx.fillStyle = '#000';
-    ctx.fillRect(0, 0, W, H);
-    pts = Array.from({ length: N }, spawn);
+    buildPts();
   }
-
-  function fieldAngle(x, y) {
-    return (Math.sin(x * 0.0022 + t * 0.38) * 1.0 +
-            Math.cos(y * 0.0028 + t * 0.26) * 0.8 +
-            Math.sin((x - y) * 0.0018 + t * 0.18) * 0.5) * Math.PI;
+  function buildPts() {
+    pts = []; let y = H * .5;
+    for (let i = 0; i < N; i++) {
+      y += (Math.random() - .49) * H * .04;
+      y = Math.max(H * .2, Math.min(H * .8, y));
+      pts.push({ x: (i / (N-1)) * W, y });
+    }
   }
-
+  function drawCandle(x, o, c, h, l) {
+    const bull = c < o;
+    ctx.beginPath(); ctx.moveTo(x, h); ctx.lineTo(x, l);
+    ctx.strokeStyle = bull ? TEAL+'.35)' : WHITE+'.15)';
+    ctx.lineWidth = 1; ctx.stroke();
+    ctx.fillStyle  = bull ? TEAL+'.22)' : WHITE+'.08)';
+    ctx.fillRect(x-4, Math.min(o,c), 8, Math.max(Math.abs(c-o), 2));
+  }
   function draw() {
-    // Soft trail fade — black veil each frame
-    ctx.fillStyle = 'rgba(0,0,0,0.048)';
-    ctx.fillRect(0, 0, W, H);
-    t += 0.006;
-
-    pts.forEach(p => {
-      const a   = fieldAngle(p.x, p.y);
-      const spd = 1.0 + Math.sin(t * 1.3 + p.maxLife * 0.05) * 0.35;
-      let dx = Math.cos(a) * spd;
-      let dy = Math.sin(a) * spd;
-      // Cursor attraction
-      const cdx = mouseX - p.x, cdy = mouseY - p.y;
-      const dist = Math.sqrt(cdx * cdx + cdy * cdy);
-      if (dist < 220 && dist > 1) {
-        const pull = (1 - dist / 220) * 2.8;
-        dx += (cdx / dist) * pull;
-        dy += (cdy / dist) * pull;
-      }
-      p.x += dx; p.y += dy;
-      p.life--;
-      p.tail.push({ x: p.x, y: p.y });
-      if (p.tail.length > 28) p.tail.shift();
-
-      if (p.life <= 0 || p.x < -20 || p.x > W + 20 || p.y < -20 || p.y > H + 20) {
-        Object.assign(p, spawn()); return;
-      }
-
-      const lifeFade = Math.min(p.life / 25, 1) * Math.min((p.maxLife - p.life) / 18, 1);
-      ctx.lineCap = 'round';
-      for (let i = 1; i < p.tail.length; i++) {
-        const prog  = i / p.tail.length;
-        const alpha = prog * lifeFade * 0.5;
-        ctx.strokeStyle = `rgba(${TR},${TG},${TB},${alpha})`;
-        ctx.lineWidth   = prog * 1.6;
-        ctx.beginPath();
-        ctx.moveTo(p.tail[i - 1].x, p.tail[i - 1].y);
-        ctx.lineTo(p.tail[i].x,     p.tail[i].y);
-        ctx.stroke();
-      }
-      // Glowing head
-      const ha = lifeFade * 0.85;
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, 1.4, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(${TR},${TG},${TB},${ha})`;
-      ctx.fill();
-    });
-
+    ctx.clearRect(0, 0, W, H);
+    const step = W / 26;
+    for (let i = 0; i < 26; i++) {
+      const pI = Math.floor(i/26*(N-1));
+      const pN = Math.min(pI+1, N-1);
+      const y1 = pts[pI].y, y2 = pts[pN].y;
+      const cx = i*step + step/2;
+      const osc = Math.sin(frame*.016 + i*.4) * H*.022;
+      drawCandle(cx, y1+osc, y2+osc, Math.min(y1,y2)-H*.032+osc, Math.max(y1,y2)+H*.028+osc);
+    }
+    const grad = ctx.createLinearGradient(0, 0, W, 0);
+    grad.addColorStop(0,   TEAL+'.03)');
+    grad.addColorStop(.5,  TEAL+'.75)');
+    grad.addColorStop(1,   TEAL+'.28)');
+    ctx.beginPath();
+    const shift = Math.sin(frame*.007) * H*.018;
+    ctx.moveTo(pts[0].x, pts[0].y + shift);
+    for (let i = 1; i < N-1; i++) {
+      const mx = (pts[i].x + pts[i+1].x)/2;
+      const my = (pts[i].y + pts[i+1].y)/2 + shift;
+      ctx.quadraticCurveTo(pts[i].x, pts[i].y+shift, mx, my);
+    }
+    ctx.strokeStyle = grad; ctx.lineWidth = 1.6;
+    ctx.shadowColor = TEAL+'.4)'; ctx.shadowBlur = 12;
+    ctx.stroke(); ctx.shadowBlur = 0;
+    frame++;
+    if (frame % 280 === 0) {
+      pts.forEach(p => {
+        p.y += (Math.random()-.5)*H*.055;
+        p.y = Math.max(H*.2, Math.min(H*.8, p.y));
+      });
+    }
     requestAnimationFrame(draw);
   }
-
   window.addEventListener('resize', resize);
   resize(); draw();
 })();
