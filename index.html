@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AangBui Trading Services</title>
+  <style>
+    :root {
+      --bg:        #0a0c10;
+      --surface:   #111520;
+      --card:      #161b2e;
+      --accent:    #00d4aa;
+      --accent2:   #4f8cff;
+      --warn:      #ff6b35;
+      --text:      #e2e8f0;
+      --muted:     #64748b;
+      --border:    #1e293b;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 100;
+      background: rgba(10,12,16,.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: .9rem 2rem;
+    }
+
+    .logo {
+      font-size: 1.25rem; font-weight: 700; letter-spacing: .04em;
+      color: var(--accent);
+    }
+    .logo span { color: var(--text); }
+
+    nav ul {
+      list-style: none;
+      display: flex; gap: 2rem;
+    }
+    nav a {
+      color: var(--muted); text-decoration: none;
+      font-size: .9rem; font-weight: 500; letter-spacing: .03em;
+      transition: color .2s;
+    }
+    nav a:hover { color: var(--accent); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center;
+      padding: 6rem 2rem 4rem;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% -10%, rgba(0,212,170,.12) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 40% at 80% 80%, rgba(79,140,255,.08) 0%, transparent 60%),
+        var(--bg);
+      position: relative; overflow: hidden;
+    }
+
+    /* animated grid lines */
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(0,212,170,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,212,170,.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      animation: gridMove 20s linear infinite;
+    }
+    @keyframes gridMove {
+      0%   { transform: translateY(0); }
+      100% { transform: translateY(60px); }
+    }
+
+    .hero-content { position: relative; max-width: 780px; }
+
+    .badge {
+      display: inline-block;
+      background: rgba(0,212,170,.12);
+      border: 1px solid rgba(0,212,170,.3);
+      color: var(--accent);
+      font-size: .75rem; font-weight: 600; letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: .3rem .9rem; border-radius: 99px;
+      margin-bottom: 1.5rem;
+    }
+
+    h1 {
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      font-weight: 800; line-height: 1.1;
+      letter-spacing: -.02em;
+      margin-bottom: 1.25rem;
+    }
+
+    h1 em {
+      font-style: normal;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      font-size: 1.15rem; color: var(--muted); max-width: 560px; margin: 0 auto 2.5rem;
+    }
+
+    .cta-group { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: .5rem;
+      padding: .75rem 1.75rem; border-radius: 8px;
+      font-size: .95rem; font-weight: 600; text-decoration: none;
+      transition: all .2s; cursor: pointer;
+    }
+    .btn-primary {
+      background: var(--accent); color: #000;
+    }
+    .btn-primary:hover { background: #00f5c4; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,212,170,.35); }
+
+    .btn-secondary {
+      background: transparent; color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+    /* ── STATS ── */
+    .stats {
+      display: flex; justify-content: center; flex-wrap: wrap; gap: 2rem;
+      padding: 2rem 2rem 3rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .stat { text-align: center; }
+    .stat-num { font-size: 2rem; font-weight: 800; color: var(--accent); }
+    .stat-label { font-size: .8rem; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+
+    /* ── SECTIONS ── */
+    section { padding: 5rem 2rem; max-width: 1100px; margin: 0 auto; }
+
+    .section-label {
+      text-transform: uppercase; font-size: .75rem; letter-spacing: .1em;
+      color: var(--accent); font-weight: 600; margin-bottom: .75rem;
+    }
+    h2 {
+      font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 800;
+      letter-spacing: -.02em; margin-bottom: 1rem;
+    }
+    .section-sub { color: var(--muted); font-size: 1.05rem; max-width: 560px; margin-bottom: 3rem; }
+
+    /* ── SERVICES GRID ── */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+      transition: border-color .25s, transform .25s;
+      position: relative; overflow: hidden;
+    }
+    .card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      opacity: 0; transition: opacity .25s;
+    }
+    .card:hover { border-color: rgba(0,212,170,.4); transform: translateY(-4px); }
+    .card:hover::before { opacity: 1; }
+
+    .card-icon {
+      width: 48px; height: 48px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; margin-bottom: 1.25rem;
+    }
+    .icon-green  { background: rgba(0,212,170,.12); }
+    .icon-blue   { background: rgba(79,140,255,.12); }
+    .icon-orange { background: rgba(255,107,53,.12); }
+    .icon-purple { background: rgba(167,139,250,.12); }
+
+    .card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: .6rem; }
+    .card p  { color: var(--muted); font-size: .95rem; line-height: 1.65; }
+
+    .tag-list { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.25rem; }
+    .tag {
+      background: rgba(255,255,255,.05);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-size: .72rem; font-weight: 600;
+      letter-spacing: .05em; text-transform: uppercase;
+      padding: .25rem .65rem; border-radius: 99px;
+    }
+
+    /* ── METHODS SECTION ── */
+    .methods-wrap {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;
+    }
+    @media(max-width:680px) { .methods-wrap { grid-template-columns: 1fr; } }
+
+    .method-list { display: flex; flex-direction: column; gap: 1rem; }
+
+    .method-item {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 1.25rem 1.5rem;
+      display: flex; gap: 1rem; align-items: flex-start;
+      transition: border-color .2s;
+    }
+    .method-item:hover { border-color: rgba(79,140,255,.4); }
+
+    .method-num {
+      min-width: 32px; height: 32px; border-radius: 8px;
+      background: linear-gradient(135deg, var(--accent2), var(--accent));
+      color: #000; font-size: .8rem; font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .method-item h4 { font-size: 1rem; font-weight: 700; margin-bottom: .2rem; }
+    .method-item p  { color: var(--muted); font-size: .88rem; }
+
+    .chart-visual {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 16px; padding: 1.5rem;
+      display: flex; flex-direction: column; gap: .75rem;
+    }
+    .chart-title { font-size: .8rem; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+    .chart-bars { display: flex; align-items: flex-end; gap: 6px; height: 120px; }
+    .bar {
+      flex: 1; border-radius: 4px 4px 0 0;
+      background: linear-gradient(to top, var(--accent), var(--accent2));
+      opacity: .7; animation: barPulse 3s ease-in-out infinite;
+    }
+    .bar:nth-child(2) { animation-delay: .2s; }
+    .bar:nth-child(3) { animation-delay: .4s; }
+    .bar:nth-child(4) { animation-delay: .6s; }
+    .bar:nth-child(5) { animation-delay: .8s; }
+    .bar:nth-child(6) { animation-delay: 1s; }
+    .bar:nth-child(7) { animation-delay: 1.2s; }
+    @keyframes barPulse {
+      0%,100% { opacity: .5; } 50% { opacity: 1; }
+    }
+
+    .wave-line {
+      height: 60px; position: relative; overflow: hidden;
+    }
+    .wave-line svg { width: 100%; height: 100%; }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--surface); border-radius: 24px; padding: 4rem 3rem; margin: 0 2rem 5rem; max-width: 1100px; margin-left: auto; margin-right: auto; }
+
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;
+    }
+    @media(max-width:640px) { .contact-grid { grid-template-columns: 1fr; } }
+
+    .contact-method {
+      display: flex; align-items: center; gap: 1rem;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 1.25rem 1.5rem;
+      text-decoration: none; color: var(--text);
+      transition: border-color .2s, transform .2s;
+      margin-bottom: 1rem;
+    }
+    .contact-method:hover { border-color: var(--accent); transform: translateX(4px); }
+
+    .contact-icon {
+      width: 44px; height: 44px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem; flex-shrink: 0;
+    }
+    .tg-icon { background: rgba(41,182,246,.15); }
+    .em-icon { background: rgba(0,212,170,.12); }
+
+    .contact-method strong { display: block; font-size: .95rem; margin-bottom: .15rem; }
+    .contact-method span  { color: var(--muted); font-size: .85rem; }
+
+    .disclaimer {
+      background: rgba(255,107,53,.07);
+      border: 1px solid rgba(255,107,53,.2);
+      border-radius: 10px; padding: 1.25rem 1.5rem;
+      font-size: .82rem; color: var(--muted); line-height: 1.6;
+    }
+    .disclaimer strong { color: var(--warn); }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center; padding: 2rem;
+      color: var(--muted); font-size: .82rem;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── RESPONSIVE NAV ── */
+    @media(max-width:600px) {
+      nav ul { display: none; }
+      .logo { font-size: 1.1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAVIGATION ── -->
+<nav>
+  <div class="logo">Aang<span>Bui</span> Trading</div>
+  <ul>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#methods">Methods</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ── HERO ── -->
+<header class="hero">
+  <div class="hero-content">
+    <div class="badge">Professional Trading Services</div>
+    <h1>Trade Smarter with<br><em>Precision & Edge</em></h1>
+    <p>Custom indicator development, deep market analysis, and leverage strategies — built for traders who demand an edge.</p>
+    <div class="cta-group">
+      <a href="https://t.me/aangbui" class="btn btn-primary" target="_blank">
+        ✈ Connect on Telegram
+      </a>
+      <a href="#services" class="btn btn-secondary">
+        View Services ↓
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ── STATS ── -->
+<div class="stats">
+  <div class="stat"><div class="stat-num">3+</div><div class="stat-label">Analysis Frameworks</div></div>
+  <div class="stat"><div class="stat-num">RSI</div><div class="stat-label">Custom Indicators</div></div>
+  <div class="stat"><div class="stat-num">24/7</div><div class="stat-label">Market Monitoring</div></div>
+  <div class="stat"><div class="stat-num">1:1</div><div class="stat-label">Personal Service</div></div>
+</div>
+
+<!-- ── SERVICES ── -->
+<section id="services">
+  <div class="section-label">What I Offer</div>
+  <h2>Trading Services</h2>
+  <p class="section-sub">End-to-end support for retail and professional traders — from custom tool development to full market analysis.</p>
+
+  <div class="services-grid">
+
+    <div class="card">
+      <div class="card-icon icon-green">📊</div>
+      <h3>Custom Indicator Coding</h3>
+      <p>Bespoke Pine Script and indicator development tailored to your strategy. I build, test, and optimize indicators to your exact specifications.</p>
+      <div class="tag-list">
+        <span class="tag">RSI Variants</span>
+        <span class="tag">Volume Tick</span>
+        <span class="tag">Pine Script</span>
+        <span class="tag">Alerts</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon icon-blue">⚡</div>
+      <h3>RSI &amp; Volume Analysis</h3>
+      <p>Advanced RSI configurations including divergence detection, multi-timeframe RSI, and volume tick overlays to identify high-probability entries.</p>
+      <div class="tag-list">
+        <span class="tag">Divergence</span>
+        <span class="tag">Multi-TF</span>
+        <span class="tag">Tick Volume</span>
+        <span class="tag">Buy/Sell Pressure</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon icon-orange">🔱</div>
+      <h3>Leverage Strategy</h3>
+      <p>Structured leverage guidance with defined risk parameters — position sizing, stop placement, and margin management designed to protect capital.</p>
+      <div class="tag-list">
+        <span class="tag">Position Sizing</span>
+        <span class="tag">Risk/Reward</span>
+        <span class="tag">Margin Mgmt</span>
+        <span class="tag">Stop Placement</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon icon-purple">🌊</div>
+      <h3>Elliott Wave Analysis</h3>
+      <p>Comprehensive wave counting, impulse and corrective structure identification, and price target projection across all timeframes.</p>
+      <div class="tag-list">
+        <span class="tag">Impulse Waves</span>
+        <span class="tag">Corrections</span>
+        <span class="tag">Fibonacci</span>
+        <span class="tag">Wave Counts</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon icon-green">🏗</div>
+      <h3>Wyckoff Method</h3>
+      <p>Institutional footprint analysis — accumulation &amp; distribution schematics, spring/UTAD detection, and markup/markdown phase identification.</p>
+      <div class="tag-list">
+        <span class="tag">Accumulation</span>
+        <span class="tag">Distribution</span>
+        <span class="tag">Spring/UTAD</span>
+        <span class="tag">Cause &amp; Effect</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon icon-blue">🚀</div>
+      <h3>Momentum Analysis</h3>
+      <p>Trend strength, breakout confirmation, and momentum continuation setups — timed using multiple oscillators and volume-weighted signals.</p>
+      <div class="tag-list">
+        <span class="tag">Trend Strength</span>
+        <span class="tag">Breakouts</span>
+        <span class="tag">VWAP</span>
+        <span class="tag">Continuation</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── METHODS ── -->
+<section id="methods" style="padding-top:0;">
+  <div class="section-label">My Approach</div>
+  <h2>Analytical Framework</h2>
+  <p class="section-sub">A multi-confluence methodology combining classic structure theory with modern indicator precision.</p>
+
+  <div class="methods-wrap">
+    <div class="method-list">
+
+      <div class="method-item">
+        <div class="method-num">01</div>
+        <div>
+          <h4>Structural Context — Elliott Wave</h4>
+          <p>Establish the macro wave structure to understand where price is in the larger cycle before any trade is considered.</p>
+        </div>
+      </div>
+
+      <div class="method-item">
+        <div class="method-num">02</div>
+        <div>
+          <h4>Institutional Intent — Wyckoff</h4>
+          <p>Read the tape for smart money accumulation and distribution phases, identifying supply/demand imbalances with precision.</p>
+        </div>
+      </div>
+
+      <div class="method-item">
+        <div class="method-num">03</div>
+        <div>
+          <h4>Timing — Momentum &amp; RSI</h4>
+          <p>Filter entries using custom RSI configurations and volume tick data to time high-probability triggers within the larger structure.</p>
+        </div>
+      </div>
+
+      <div class="method-item">
+        <div class="method-num">04</div>
+        <div>
+          <h4>Execution — Leverage &amp; Risk</h4>
+          <p>Execute with disciplined position sizing and defined invalidation levels, scaling leverage only when confluence is highest.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div>
+      <div class="chart-visual">
+        <div class="chart-title">Market Structure Visualization</div>
+        <div class="chart-bars">
+          <div class="bar" style="height:40%"></div>
+          <div class="bar" style="height:55%"></div>
+          <div class="bar" style="height:45%"></div>
+          <div class="bar" style="height:70%"></div>
+          <div class="bar" style="height:60%"></div>
+          <div class="bar" style="height:85%"></div>
+          <div class="bar" style="height:75%"></div>
+          <div class="bar" style="height:95%"></div>
+          <div class="bar" style="height:80%"></div>
+          <div class="bar" style="height:100%"></div>
+        </div>
+        <div class="wave-line">
+          <svg viewBox="0 0 300 60" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <polyline
+              points="0,50 30,30 60,45 90,15 120,35 150,10 180,28 210,5 240,20 270,8 300,15"
+              stroke="url(#wg)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <defs>
+              <linearGradient id="wg" x1="0" y1="0" x2="300" y2="0">
+                <stop offset="0%" stop-color="#00d4aa"/>
+                <stop offset="100%" stop-color="#4f8cff"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <div style="display:flex;gap:.5rem;flex-wrap:wrap">
+          <span class="tag">Elliott Wave</span>
+          <span class="tag">Wyckoff</span>
+          <span class="tag">RSI</span>
+          <span class="tag">Volume Tick</span>
+          <span class="tag">Momentum</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section id="contact" style="all:unset;display:block;">
+<div id="contact" style="background:var(--surface);border-radius:24px;padding:4rem 3rem;margin:0 2rem 5rem;max-width:1100px;margin-left:auto;margin-right:auto;border:1px solid var(--border);">
+  <div class="section-label">Get In Touch</div>
+  <h2>Work With Me</h2>
+  <p class="section-sub">Ready to level up your trading? Reach out for service inquiries, custom indicator requests, or market analysis subscriptions.</p>
+
+  <div class="contact-grid">
+    <div>
+      <a class="contact-method" href="https://t.me/aangbui" target="_blank">
+        <div class="contact-icon tg-icon">✈</div>
+        <div>
+          <strong>Telegram</strong>
+          <span>@aangbui — fastest response</span>
+        </div>
+      </a>
+      <a class="contact-method" href="mailto:aangbui@gmail.com">
+        <div class="contact-icon em-icon">✉</div>
+        <div>
+          <strong>Email</strong>
+          <span>aangbui@gmail.com</span>
+        </div>
+      </a>
+      <p style="color:var(--muted);font-size:.85rem;margin-top:1rem;">
+        Best for: indicator requests, analysis reports, strategy consultation, and leverage plan review.
+      </p>
+    </div>
+
+    <div class="disclaimer">
+      <strong>⚠ Risk Disclaimer</strong><br><br>
+      Trading financial instruments involves substantial risk and is not suitable for all investors. Past performance is not indicative of future results. Leverage amplifies both gains and losses. All information provided is for educational purposes only and does not constitute financial advice. Always do your own research and consult a licensed financial advisor before making investment decisions.
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <p>© 2026 AangBui Trading Services &nbsp;·&nbsp; <a href="https://t.me/aangbui" style="color:var(--accent);text-decoration:none;">@aangbui</a> &nbsp;·&nbsp; <a href="mailto:aangbui@gmail.com" style="color:var(--accent);text-decoration:none;">aangbui@gmail.com</a></p>
+</footer>
+
+</body>
+</html>
