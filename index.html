@@ -1418,9 +1418,9 @@ document.querySelectorAll('.hero .reveal').forEach(el => setTimeout(() => el.cla
       card.style.setProperty('--my', ny * 100 + '%');
       card.style.setProperty('--card-hover', '1');
 
-      // 3D tilt: ±8° on X, ±8° on Y
-      const rx =  (ny - 0.5) * -16;
-      const ry =  (nx - 0.5) *  16;
+      // 3D tilt: ±3° on X, ±3° on Y
+      const rx =  (ny - 0.5) * -6;
+      const ry =  (nx - 0.5) *  6;
       card.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) scale(1.02)`;
     });
 
