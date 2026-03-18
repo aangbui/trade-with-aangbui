@@ -386,11 +386,12 @@ nav.scrolled {
 
 /* ─── GLASS CARD ─────────────────────────────────────────────── */
 .glass-card {
-  background: var(--glass);
-  border: 1px solid var(--border);
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.14);
   border-radius: var(--radius);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
+  box-shadow: 0 4px 32px rgba(0,0,0,.4), inset 0 1px 0 rgba(255,255,255,.08);
   position: relative; overflow: hidden;
   transition: border-color .35s, transform .35s cubic-bezier(.22,1,.36,1), box-shadow .35s;
 }
@@ -656,7 +657,7 @@ nav.scrolled {
   font-size: 1rem; color: var(--dim); max-width: 460px;
   margin: 0 auto 2.75rem; line-height: 1.85;
 }
-.contact-btns { display: flex; gap: .85rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2.5rem; }
+.contact-btns { display: flex; gap: .85rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2.5rem; width: 100%; box-sizing: border-box; }
 .contact-divider { width: 1px; height: 40px; background: var(--border); margin: 2.5rem auto; display: block; }
 .account-block {
   background: rgba(43,255,214,.06);
@@ -717,7 +718,10 @@ footer {
   .footer-inner { grid-template-columns: 1fr; }
   .footer-links { align-items: flex-start; }
   .footer-bottom { flex-direction: column; }
-  .contact-card { padding: 3rem 2rem; }
+  .contact-card { padding: 2.5rem 1.5rem; }
+  .contact-btns { flex-direction: column; }
+  .contact-btns .btn { width: 100%; justify-content: center; white-space: normal; text-align: center; }
+  .account-block .btn { width: 100%; justify-content: center; }
   .t-inner { padding: 2rem 1.75rem; }
 }
 @media (max-width: 480px) {
