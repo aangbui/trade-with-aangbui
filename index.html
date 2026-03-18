@@ -1362,13 +1362,18 @@ document.querySelectorAll('.hero .reveal').forEach(el => setTimeout(() => el.cla
     // Blobs float against scroll direction
     if (ambient) ambient.style.transform = `translate3d(0,${sy * -0.18}px,0)`;
 
-    // Hero canvas: zoom in 100%→200% and blur out as you scroll through hero
+    // Hero: all elements zoom 100%→200% + blur out as you scroll through
+    const heroProg = heroSec ? Math.min(sy / heroSec.offsetHeight, 1) : 0;
+    const heroScale = 1 + heroProg * 1.0;
+    const heroBlur  = heroProg * 18;
     if (canvas) {
-      const prog  = heroSec ? Math.min(sy / heroSec.offsetHeight, 1) : 0;
-      const scale = 1 + prog * 1.0;
-      const blur  = prog * 18;
-      canvas.style.transform = `translate3d(0,${sy * 0.28}px,0) scale(${scale})`;
-      canvas.style.filter    = `blur(${blur}px)`;
+      canvas.style.transform = `translate3d(0,${sy * 0.28}px,0) scale(${heroScale})`;
+      canvas.style.filter    = `blur(${heroBlur}px)`;
+    }
+    const heroContent = heroSec && heroSec.querySelector('.hero-content');
+    if (heroContent) {
+      heroContent.style.transform = `scale(${heroScale})`;
+      heroContent.style.filter    = `blur(${heroBlur}px)`;
     }
 
     // Contact glow parallax
