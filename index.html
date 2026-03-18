@@ -479,7 +479,7 @@ nav.scrolled {
 }
 .method-tab.active::after {
   transform: scaleX(0);
-  animation: tabProgress 4s linear forwards;
+  animation: tabProgress 1s linear forwards;
 }
 @keyframes tabProgress {
   from { transform: scaleX(0); }
@@ -1239,7 +1239,7 @@ document.querySelectorAll('.hero .reveal').forEach(el => setTimeout(() => el.cla
   const tabs     = document.querySelectorAll('.method-tab');
   const panels   = document.querySelectorAll('.method-panel');
   const section  = document.getElementById('methodology');
-  const DURATION = 4000;
+  const DURATION = 1000;
   let current = 0, timer;
 
   function activate(idx) {
