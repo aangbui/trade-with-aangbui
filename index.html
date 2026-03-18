@@ -369,7 +369,8 @@ nav.scrolled {
   position: absolute; inset: -40%; z-index: 0;
   background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(0,194,168,.07), transparent 70%);
   transform: translate(var(--px, 0px), var(--py, 0px));
-  pointer-events: none; will-change: transform;
+  opacity: var(--fade, 0);
+  pointer-events: none; will-change: transform, opacity;
 }
 .section-rule {
   border: none; border-top: 1px solid var(--border);
@@ -402,7 +403,8 @@ nav.scrolled {
   -webkit-backdrop-filter: blur(24px);
   box-shadow: 0 4px 32px rgba(0,0,0,.4), inset 0 1px 0 rgba(255,255,255,.08);
   position: relative; overflow: hidden;
-  transition: border-color .35s, transform .35s cubic-bezier(.22,1,.36,1), box-shadow .35s;
+  transform-style: preserve-3d;
+  transition: border-color .35s, box-shadow .35s;
 }
 /* Top edge glow line */
 .glass-card::before {
@@ -424,7 +426,6 @@ nav.scrolled {
 }
 .glass-card:hover {
   border-color: rgba(43,255,214,.22);
-  transform: translateY(-5px);
   box-shadow: 0 28px 72px rgba(0,0,0,.55), 0 0 0 1px rgba(43,255,214,.08);
 }
 .glass-card:hover::before { opacity: .7; }
@@ -1345,45 +1346,49 @@ document.querySelectorAll('.hero .reveal').forEach(el => setTimeout(() => el.cla
   animateGlow();
 })();
 
-/* ── Parallax ── */
+/* ── Parallax + Zoom + Fade ── */
 (function () {
-  const ambient  = document.querySelector('.ambient');
-  const canvas   = document.getElementById('hero-canvas');
-  const cGlow    = document.querySelector('.contact-glow');
-  const sections = Array.from(document.querySelectorAll('section.section'));
-  const vh       = () => window.innerHeight;
-  let ticking    = false;
+  const ambient    = document.querySelector('.ambient');
+  const canvas     = document.getElementById('hero-canvas');
+  const heroSec    = document.getElementById('home');
+  const cGlow      = document.querySelector('.contact-glow');
+  const sections   = Array.from(document.querySelectorAll('section.section'));
+  let ticking      = false;
 
   function tick() {
     const sy = window.scrollY;
-    const h  = vh();
+    const h  = window.innerHeight;
 
-    // Blob layer drifts upward as you scroll — floats against the page
+    // Blobs float against scroll direction
     if (ambient) ambient.style.transform = `translate3d(0,${sy * -0.18}px,0)`;
 
-    // Hero canvas scrolls slower than page — feels deep in background
-    if (canvas) canvas.style.transform = `translate3d(0,${sy * 0.28}px,0)`;
+    // Hero canvas: slower scroll (depth) + zoom out as you leave
+    if (canvas) {
+      const prog  = heroSec ? Math.min(sy / heroSec.offsetHeight, 1) : 0;
+      const scale = 1 - prog * 0.12;
+      canvas.style.transform = `translate3d(0,${sy * 0.28}px,0) scale(${scale})`;
+    }
 
-    // Contact glow — moves relative to its section centre
+    // Contact glow parallax
     if (cGlow) {
       const r = cGlow.closest('section').getBoundingClientRect();
       cGlow.style.transform = `translate3d(0,${(r.top + r.height / 2 - h / 2) * -0.3}px,0)`;
     }
 
-    // Each section bg sweeps fully as it passes through the viewport
-    // progress 0 = section entering bottom, 1 = section exiting top
+    // Each section bg: sweep + fade in/out
     sections.forEach((sec, i) => {
       const r        = sec.getBoundingClientRect();
-      const progress = (h - r.top) / (h + r.height); // 0 → 1
-      const offset   = (progress - 0.5) * 300;        // −150px → +150px sweep
-      // Alternate: even sections sweep vertically, odd sections sweep horizontally
-      if (i % 2 === 0) {
-        sec.style.setProperty('--py', `${offset}px`);
-        sec.style.setProperty('--px', '0px');
-      } else {
-        sec.style.setProperty('--px', `${offset}px`);
-        sec.style.setProperty('--py', '0px');
-      }
+      const progress = (h - r.top) / (h + r.height);   // 0→1 through viewport
+      const offset   = (progress - 0.5) * 300;
+
+      // Fade: ramp in from bottom 50%, ramp out at top 20%
+      const fadeIn  = Math.max(0, Math.min(1, (h - r.top)  / (h * 0.5)));
+      const fadeOut = Math.max(0, Math.min(1,  r.bottom     / (h * 0.2)));
+      sec.style.setProperty('--fade', Math.min(fadeIn, fadeOut));
+
+      // Alternate sweep direction
+      if (i % 2 === 0) { sec.style.setProperty('--py', `${offset}px`); sec.style.setProperty('--px', '0px'); }
+      else             { sec.style.setProperty('--px', `${offset}px`); sec.style.setProperty('--py', '0px'); }
     });
 
     ticking = false;
@@ -1396,19 +1401,33 @@ document.querySelectorAll('.hero .reveal').forEach(el => setTimeout(() => el.cla
   tick();
 })();
 
-/* ── Card inner spotlight (tracks cursor per card) ── */
+/* ── Card: 3D tilt + inner spotlight ── */
 (function () {
   document.querySelectorAll('.glass-card').forEach(card => {
-    card.addEventListener('mousemove', e => {
-      const r = card.getBoundingClientRect();
-      const x = ((e.clientX - r.left) / r.width)  * 100;
-      const y = ((e.clientY - r.top)  / r.height) * 100;
-      card.style.setProperty('--mx', x + '%');
-      card.style.setProperty('--my', y + '%');
-      card.style.setProperty('--card-hover', '1');
+    card.addEventListener('mouseenter', () => {
+      card.style.transition = 'transform .12s ease, border-color .35s, box-shadow .35s';
     });
+
+    card.addEventListener('mousemove', e => {
+      const r  = card.getBoundingClientRect();
+      const nx = (e.clientX - r.left) / r.width;
+      const ny = (e.clientY - r.top)  / r.height;
+
+      // Inner spotlight
+      card.style.setProperty('--mx', nx * 100 + '%');
+      card.style.setProperty('--my', ny * 100 + '%');
+      card.style.setProperty('--card-hover', '1');
+
+      // 3D tilt: ±8° on X, ±8° on Y
+      const rx =  (ny - 0.5) * -16;
+      const ry =  (nx - 0.5) *  16;
+      card.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) scale(1.02)`;
+    });
+
     card.addEventListener('mouseleave', () => {
       card.style.setProperty('--card-hover', '0');
+      card.style.transition = 'transform .65s cubic-bezier(.22,1,.36,1), border-color .35s, box-shadow .35s';
+      card.style.transform  = 'perspective(900px) rotateX(0) rotateY(0) scale(1)';
     });
   });
 })();
