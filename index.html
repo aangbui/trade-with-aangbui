@@ -239,10 +239,10 @@ nav {
 /* ─── CURSOR SPOTLIGHT ───────────────────────────────────────── */
 .cursor-glow {
   position: fixed;
-  width: 700px; height: 700px;
+  width: 1000px; height: 1000px;
   border-radius: 50%;
   pointer-events: none; z-index: 0;
-  background: radial-gradient(circle, rgba(0,194,168,.055) 0%, transparent 65%);
+  background: radial-gradient(circle, rgba(0,194,168,.11) 0%, rgba(0,194,168,.04) 35%, transparent 65%);
   transform: translate(-50%, -50%);
   will-change: left, top;
   transition: left .12s ease, top .12s ease;
@@ -258,8 +258,8 @@ nav {
 .hero::before {
   content: '';
   position: absolute; inset: 0; z-index: 1;
-  background-image: radial-gradient(circle, rgba(255,255,255,.09) 1px, transparent 1px);
-  background-size: 36px 36px;
+  background-image: radial-gradient(circle, rgba(255,255,255,.18) 1px, transparent 1px);
+  background-size: 28px 28px;
   -webkit-mask-image: radial-gradient(ellipse 75% 65% at 50% 45%, black 20%, transparent 78%);
   mask-image: radial-gradient(ellipse 75% 65% at 50% 45%, black 20%, transparent 78%);
   pointer-events: none;
@@ -740,9 +740,9 @@ footer {
     <a href="#" class="nav-logo">Trading with <span>AangBui</span></a>
     <ul class="nav-links" id="navLinks">
       <li><a href="#services">Markets</a></li>
-      <li><a href="#methodology">Method</a></li>
-      <li><a href="#tools">Tools</a></li>
-      <li><a href="#testimonials">Reviews</a></li>
+      <li><a href="#methodology">Methodology</a></li>
+      <li><a href="#tools">Indicators</a></li>
+      <li><a href="#testimonials">Testimonials</a></li>
       <li><a href="#contact" class="nav-cta">Contact →</a></li>
     </ul>
     <div class="nav-toggle" id="navToggle" aria-label="Menu">
@@ -836,7 +836,7 @@ footer {
         <div class="method-panel-inner">
           <div class="method-number">01</div>
           <div class="method-content">
-            <h3>Wyckoff Method</h3>
+            <h3>Wyckoff</h3>
             <p>Institutional accumulation and distribution leave a footprint in volume and price spread. Wyckoff decodes that footprint — mapping the structural phases that precede major moves long before they reach the breakout bar. It separates reading price from understanding what's actually driving it.</p>
             <span class="method-badge">Structure</span>
           </div>
@@ -869,7 +869,7 @@ footer {
         <div class="method-panel-inner">
           <div class="method-number">04</div>
           <div class="method-content">
-            <h3>Advanced RSI Divergence</h3>
+            <h3>Advanced RSI</h3>
             <p>Momentum shifts before price confirms. Advanced divergence signals plotted directly on the candle chart — not buried in a secondary pane — surface exhaustion and reversal cues that conventional setups consistently miss. No repainting. No chasing.</p>
             <span class="method-badge">Confirmation</span>
           </div>
@@ -987,7 +987,7 @@ footer {
                 <div class="t-avatar">DN</div>
                 <div>
                   <span class="t-name">Dat Nguyen</span>
-                  <span class="t-role">Futures Trader · Hanoi</span>
+                  <span class="t-role">Stock Trader · Ho Chi Minh City</span>
                 </div>
               </div>
             </div>
@@ -1013,7 +1013,7 @@ footer {
                 <div class="t-avatar">LN</div>
                 <div>
                   <span class="t-name">Linh Nguyen</span>
-                  <span class="t-role">Independent Trader · Singapore</span>
+                  <span class="t-role">Independent Trader · Ha Noi</span>
                 </div>
               </div>
             </div>
@@ -1055,7 +1055,7 @@ footer {
     <div class="reveal">
       <div class="glass-card contact-card">
         <div class="eyebrow" style="justify-content:center;display:flex;">Get In Touch</div>
-        <h2>The market doesn't wait.<br><em>Neither should you.</em></h2>
+        <h2>The market doesn't wait.<br><em>Join the Wave.</em></h2>
         <p class="sub">Analysis, custom indicators, or an IB partnership — every conversation is handled personally. Whether you're just getting started or looking to sharpen an existing edge, the door is open.</p>
         <div class="contact-btns">
           <a href="https://t.me/aangbui" class="btn btn-white" target="_blank">✈&ensp;Telegram: @aangbui</a>
@@ -1064,7 +1064,7 @@ footer {
         <span class="contact-divider"></span>
         <div class="account-block">
           <h3>Trade under the IB partnership</h3>
-          <p>Competitive spreads with Vantage, negotiated for this community. Open a live account through this link — better conditions, shared incentives, outcomes aligned with yours.</p>
+          <p>Competitive spreads with Vantage, negotiated for my community. Open a live account through this link.</p>
           <a href="https://vigco.co/la-com-inv/vi/aangbui" class="btn btn-teal" target="_blank" style="margin:0 auto;">Open Account &amp; Join AangBui →</a>
         </div>
       </div>
