@@ -50,6 +50,21 @@ body {
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb { background: var(--teal-dim); border-radius: 2px; }
 
+/* ─── SHARED BORDER GLOW (used on all hoverable cards) ─────── */
+.border-glow {
+  position: relative;
+  overflow: hidden;
+}
+.border-glow::after {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--teal), transparent);
+  opacity: 0;
+  transition: opacity .35s ease;
+  pointer-events: none;
+}
+.border-glow:hover::after { opacity: 1; }
+
 /* ─── UTILITY ───────────────────────────────────────────────── */
 .container { max-width: 1120px; margin: 0 auto; padding: 0 2rem; }
 
@@ -100,11 +115,8 @@ nav {
 
 .nav-logo {
   font-family: var(--ff-display);
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--cream);
-  text-decoration: none;
-  letter-spacing: .01em;
+  font-size: 1.1rem; font-weight: 600;
+  color: var(--cream); text-decoration: none; letter-spacing: .01em;
 }
 .nav-logo span { color: var(--teal); }
 
@@ -114,20 +126,16 @@ nav {
 }
 .nav-links a {
   font-family: var(--ff-body);
-  font-size: .82rem;
-  font-weight: 500;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-  color: var(--cream-dim);
-  text-decoration: none;
+  font-size: .82rem; font-weight: 500;
+  letter-spacing: .06em; text-transform: uppercase;
+  color: var(--cream-dim); text-decoration: none;
   transition: color .2s;
 }
 .nav-links a:hover { color: var(--teal); }
 
 .nav-cta {
   font-family: var(--ff-mono);
-  font-size: .75rem;
-  letter-spacing: .06em;
+  font-size: .75rem; letter-spacing: .06em;
   color: var(--teal) !important;
   border: 1px solid var(--border);
   padding: .45rem 1.1rem;
@@ -150,8 +158,7 @@ nav {
 .btn {
   display: inline-flex; align-items: center; gap: .5rem;
   font-family: var(--ff-body);
-  font-size: .9rem;
-  font-weight: 600;
+  font-size: .9rem; font-weight: 600;
   text-decoration: none;
   padding: .9rem 1.9rem;
   border-radius: var(--radius-md);
@@ -181,6 +188,18 @@ nav {
   transform: translateY(-2px);
 }
 
+.btn-ghost {
+  background: var(--teal-block);
+  color: var(--teal);
+  border: 1.5px solid var(--border);
+  font-size: .85rem;
+}
+.btn-ghost:hover {
+  background: var(--teal-glow);
+  border-color: rgba(0,191,165,.45);
+  transform: translateY(-2px);
+}
+
 .btn-dark {
   background: var(--bg);
   color: var(--teal);
@@ -195,7 +214,7 @@ nav {
 .btn-dark-outline {
   background: transparent;
   color: var(--bg);
-  border: 1.5px solid rgba(7,9,15,.35);
+  border: 1.5px solid rgba(7,9,15,.3);
 }
 .btn-dark-outline:hover {
   background: rgba(7,9,15,.12);
@@ -236,35 +255,22 @@ nav {
 
 .hero-label {
   font-family: var(--ff-mono);
-  font-size: .72rem;
-  letter-spacing: .22em;
-  text-transform: uppercase;
-  color: var(--teal);
-  margin-bottom: 2rem;
-  opacity: .9;
-  display: inline-block;
+  font-size: .72rem; letter-spacing: .22em; text-transform: uppercase;
+  color: var(--teal); margin-bottom: 2rem; opacity: .9; display: inline-block;
 }
 
 .hero h1 {
   font-family: var(--ff-display);
   font-size: clamp(2.8rem, 7.5vw, 5.5rem);
-  font-weight: 700;
-  line-height: 1.07;
-  letter-spacing: -.025em;
-  color: var(--cream);
-  margin-bottom: 1.75rem;
+  font-weight: 700; line-height: 1.07; letter-spacing: -.025em;
+  color: var(--cream); margin-bottom: 1.75rem;
 }
-.hero h1 em {
-  font-style: italic;
-  color: var(--teal);
-}
+.hero h1 em { font-style: italic; color: var(--teal); }
 
 .hero-sub {
   font-size: clamp(.95rem, 2vw, 1.1rem);
   color: var(--cream-dim);
-  max-width: 620px;
-  margin: 0 auto 3rem;
-  line-height: 1.8;
+  max-width: 640px; margin: 0 auto 3rem; line-height: 1.82;
 }
 
 .hero-ctas {
@@ -289,13 +295,11 @@ nav {
   background: var(--bg2);
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
-  padding: .85rem 0;
-  overflow: hidden;
+  padding: .85rem 0; overflow: hidden;
 }
 
 .ticker-track {
-  display: flex;
-  width: max-content;
+  display: flex; width: max-content;
   animation: tickerScroll 32s linear infinite;
 }
 .ticker-track:hover { animation-play-state: paused; }
@@ -308,11 +312,8 @@ nav {
 .ticker-item {
   display: flex; align-items: center; gap: .65rem;
   padding: 0 2.25rem;
-  font-family: var(--ff-mono);
-  font-size: .8rem;
-  letter-spacing: .04em;
-  color: var(--cream-dim);
-  white-space: nowrap;
+  font-family: var(--ff-mono); font-size: .8rem; letter-spacing: .04em;
+  color: var(--cream-dim); white-space: nowrap;
 }
 .ticker-item .sym { color: var(--teal); font-weight: 500; }
 .ticker-dot {
@@ -321,10 +322,7 @@ nav {
 }
 
 /* ─── SERVICES ──────────────────────────────────────────────── */
-#services {
-  padding: 7rem 0;
-  background: var(--bg);
-}
+#services { padding: 7rem 0; background: var(--bg); }
 
 .services-intro {
   display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: end;
@@ -333,31 +331,19 @@ nav {
 
 .services-intro h2 {
   font-family: var(--ff-display);
-  font-size: clamp(2rem, 4vw, 3.2rem);
-  font-weight: 700;
-  line-height: 1.12;
-  letter-spacing: -.025em;
+  font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 700;
+  line-height: 1.12; letter-spacing: -.025em;
 }
 
-.services-intro p {
-  color: var(--cream-dim);
-  font-size: 1rem;
-  line-height: 1.8;
-}
+.services-intro p { color: var(--cream-dim); font-size: 1rem; line-height: 1.82; }
 
-/* Category groups */
 .asset-categories { display: flex; flex-direction: column; gap: 2.75rem; }
 
 .asset-category-label {
   font-family: var(--ff-mono);
-  font-size: .68rem;
-  letter-spacing: .16em;
-  text-transform: uppercase;
-  color: var(--teal);
-  margin-bottom: 1rem;
-  padding-bottom: .65rem;
-  border-bottom: 1px solid var(--border);
-  opacity: .8;
+  font-size: .68rem; letter-spacing: .16em; text-transform: uppercase;
+  color: var(--teal); margin-bottom: 1rem;
+  padding-bottom: .65rem; border-bottom: 1px solid var(--border); opacity: .8;
 }
 
 .asset-grid {
@@ -384,27 +370,17 @@ nav {
 .asset-icon {
   width: 40px; height: 40px; border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
-  font-family: var(--ff-mono);
-  font-size: .62rem; font-weight: 500;
-  color: var(--teal);
-  flex-shrink: 0;
-  background: var(--teal-block);
-  border: 1px solid var(--border);
+  font-family: var(--ff-mono); font-size: .62rem; font-weight: 500;
+  color: var(--teal); flex-shrink: 0;
+  background: var(--teal-block); border: 1px solid var(--border);
 }
 
 .asset-name {
-  font-family: var(--ff-mono);
-  font-size: .82rem;
-  color: var(--cream);
-  font-weight: 500;
-  display: block;
-  margin-bottom: .1rem;
-  letter-spacing: .02em;
+  font-family: var(--ff-mono); font-size: .82rem;
+  color: var(--cream); font-weight: 500;
+  display: block; margin-bottom: .1rem; letter-spacing: .02em;
 }
-.asset-desc {
-  font-size: .73rem;
-  color: var(--cream-dim);
-}
+.asset-desc { font-size: .73rem; color: var(--cream-dim); }
 
 /* Signal banner */
 .signal-banner { margin-top: 2.75rem; }
@@ -414,7 +390,16 @@ nav {
   border: 1px solid var(--border);
   border-radius: var(--radius-xl);
   padding: 1.75rem 2.25rem;
+  position: relative; overflow: hidden;
+  transition: border-color .3s;
 }
+.signal-banner-inner::after {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--teal), transparent);
+  opacity: 0; transition: opacity .35s;
+}
+.signal-banner-inner:hover::after { opacity: 1; }
 
 .signal-pulse {
   width: 10px; height: 10px; border-radius: 50%;
@@ -431,21 +416,15 @@ nav {
   display: block; font-size: .95rem; font-weight: 600;
   color: var(--teal); margin-bottom: .25rem;
 }
-.signal-banner-sub {
-  display: block; font-size: .85rem; color: var(--cream-dim); line-height: 1.65;
-}
+.signal-banner-sub { display: block; font-size: .85rem; color: var(--cream-dim); line-height: 1.65; }
 
 .signal-channels { display: flex; gap: .65rem; flex-shrink: 0; flex-wrap: wrap; }
 .signal-chip {
   font-family: var(--ff-mono); font-size: .72rem; letter-spacing: .05em;
-  color: var(--teal);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  padding: .45rem 1rem;
-  text-decoration: none;
-  transition: background .2s, border-color .2s;
-  white-space: nowrap;
-  background: var(--teal-block);
+  color: var(--teal); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); padding: .45rem 1rem;
+  text-decoration: none; transition: background .2s, border-color .2s;
+  white-space: nowrap; background: var(--teal-block);
 }
 .signal-chip:hover { background: var(--teal-glow); border-color: rgba(0,191,165,.45); }
 
@@ -467,13 +446,11 @@ nav {
   font-weight: 700; letter-spacing: -.025em; line-height: 1.12;
 }
 .method-header h2 em { font-style: italic; color: var(--teal); }
-.method-header p { color: var(--cream-dim); font-size: 1rem; line-height: 1.8; }
+.method-header p { color: var(--cream-dim); font-size: 1rem; line-height: 1.82; }
 
-/* Bento grid */
 .method-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto auto;
   gap: 1rem;
 }
 
@@ -489,7 +466,7 @@ nav {
   content: '';
   position: absolute; top: 0; left: 0; right: 0; height: 2px;
   background: linear-gradient(90deg, transparent, var(--teal), transparent);
-  opacity: 0; transition: opacity .3s;
+  opacity: 0; transition: opacity .35s;
 }
 .method-card:hover {
   border-color: var(--border);
@@ -498,13 +475,10 @@ nav {
 }
 .method-card:hover::after { opacity: 1; }
 
-/* First card: hero card spanning full width with horizontal layout */
 .method-card--hero {
   grid-column: 1 / -1;
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 2.5rem;
-  align-items: center;
+  display: grid; grid-template-columns: auto 1fr;
+  gap: 2.5rem; align-items: center;
   background: var(--bg2);
 }
 
@@ -512,12 +486,9 @@ nav {
   font-family: var(--ff-display);
   font-size: 5rem; font-weight: 700;
   color: var(--teal); opacity: .12;
-  line-height: 1; letter-spacing: -.04em;
-  flex-shrink: 0;
+  line-height: 1; letter-spacing: -.04em; flex-shrink: 0;
 }
-.method-card--hero .method-num {
-  font-size: 8rem; opacity: .1;
-}
+.method-card--hero .method-num { font-size: 8rem; opacity: .1; }
 
 .method-card h3 {
   font-family: var(--ff-display);
@@ -526,9 +497,7 @@ nav {
 }
 .method-card--hero h3 { font-size: 1.7rem; }
 
-.method-card p {
-  font-size: .92rem; color: var(--cream-dim); line-height: 1.75;
-}
+.method-card p { font-size: .92rem; color: var(--cream-dim); line-height: 1.78; }
 
 .method-tag {
   display: inline-block; margin-top: 1.25rem;
@@ -540,25 +509,18 @@ nav {
 }
 
 /* ─── TOOLS ─────────────────────────────────────────────────── */
-#tools {
-  padding: 7rem 0;
-  background: var(--bg2);
-  border-bottom: 1px solid var(--border);
-}
+#tools { padding: 7rem 0; background: var(--bg2); border-bottom: 1px solid var(--border); }
 
 .tools-header { margin-bottom: 3.5rem; }
 .tools-header h2 {
   font-family: var(--ff-display);
   font-size: clamp(2rem, 4vw, 3.2rem);
-  font-weight: 700; letter-spacing: -.025em; line-height: 1.12;
-  margin-bottom: .75rem;
+  font-weight: 700; letter-spacing: -.025em; line-height: 1.12; margin-bottom: .75rem;
 }
-.tools-header p { color: var(--cream-dim); font-size: 1rem; max-width: 540px; line-height: 1.8; }
+.tools-header p { color: var(--cream-dim); font-size: 1rem; max-width: 540px; line-height: 1.82; }
 
 .tools-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 1.25rem;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.25rem;
 }
 
 .tool-card {
@@ -567,19 +529,27 @@ nav {
   border-radius: var(--radius-xl);
   padding: 2.5rem 2.25rem;
   display: flex; flex-direction: column; gap: 1.25rem;
+  position: relative; overflow: hidden;
   transition: border-color .3s, box-shadow .3s, transform .3s;
   text-decoration: none; color: inherit;
+}
+.tool-card::after {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--teal), transparent);
+  opacity: 0; transition: opacity .35s;
 }
 .tool-card:hover {
   border-color: var(--border);
   box-shadow: 0 24px 64px rgba(0,0,0,.4);
   transform: translateY(-6px);
 }
+.tool-card:hover::after { opacity: 1; }
 
 .tool-visual {
   height: 88px; border-radius: var(--radius-md);
   background: var(--bg2); border: 1px solid var(--border2);
-  overflow: hidden; position: relative;
+  overflow: hidden;
 }
 .tool-svg { width: 100%; height: 100%; }
 
@@ -593,9 +563,7 @@ nav {
   font-size: 1.4rem; font-weight: 600; color: var(--cream); line-height: 1.2;
 }
 
-.tool-card p {
-  font-size: .9rem; color: var(--cream-dim); line-height: 1.75; flex: 1;
-}
+.tool-card p { font-size: .9rem; color: var(--cream-dim); line-height: 1.78; flex: 1; }
 
 .tool-btn {
   display: inline-flex; align-items: center; gap: .5rem;
@@ -610,23 +578,16 @@ nav {
 .tool-card:hover .tool-btn { background: var(--teal-glow); border-color: rgba(0,191,165,.4); }
 
 /* ─── TESTIMONIALS ───────────────────────────────────────────── */
-#testimonials {
-  padding: 7rem 0;
-  background: var(--bg);
-  overflow: hidden;
-}
+#testimonials { padding: 7rem 0; background: var(--bg); overflow: hidden; }
 
 .testimonial-carousel { position: relative; margin-top: 3.5rem; }
 
 .testimonial-track-wrap {
-  overflow: hidden;
-  position: relative;
+  overflow: hidden; position: relative;
 }
-/* Fade-edge masks on sides */
 .testimonial-track-wrap::before,
 .testimonial-track-wrap::after {
-  content: '';
-  position: absolute; top: 0; bottom: 0; width: 120px; z-index: 2;
+  content: ''; position: absolute; top: 0; bottom: 0; width: 120px; z-index: 2;
   pointer-events: none;
 }
 .testimonial-track-wrap::before {
@@ -645,12 +606,9 @@ nav {
 }
 
 .testimonial-card {
-  min-width: 78%;
-  padding: 0 .75rem;
-  box-sizing: border-box;
+  min-width: 78%; padding: 0 .75rem; box-sizing: border-box;
   transition: opacity .5s ease, filter .5s ease;
-  opacity: .25;
-  filter: blur(1px);
+  opacity: .25; filter: blur(1px);
 }
 .testimonial-card.active { opacity: 1; filter: none; }
 
@@ -665,51 +623,48 @@ nav {
   border: 1px solid var(--border2);
   border-radius: var(--radius-xl);
   padding: 3rem 3.5rem;
-  max-width: 780px;
-  margin: 0 auto;
-  position: relative;
+  max-width: 780px; margin: 0 auto;
+  position: relative; overflow: hidden;
 }
 .testimonial-inner::before {
   content: '\201C';
   position: absolute; top: 1.5rem; left: 2.75rem;
   font-family: var(--ff-display);
   font-size: 6rem; line-height: 1;
-  color: var(--teal); opacity: .1;
-  pointer-events: none;
+  color: var(--teal); opacity: .1; pointer-events: none;
 }
+.testimonial-inner::after {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--teal), transparent);
+  opacity: 0; transition: opacity .35s;
+}
+.testimonial-card.active .testimonial-inner::after { opacity: .7; }
 
 .testimonial-text {
   font-family: var(--ff-display);
   font-size: clamp(1.05rem, 2.2vw, 1.22rem);
-  font-style: italic;
-  color: var(--cream);
-  line-height: 1.78;
-  margin-bottom: 2rem;
+  font-style: italic; color: var(--cream); line-height: 1.78; margin-bottom: 2rem;
 }
 
 .testimonial-author { display: flex; align-items: center; gap: 1rem; }
 
 .testimonial-avatar {
   width: 46px; height: 46px; border-radius: 50%;
-  background: var(--teal-block);
-  border: 1px solid var(--border);
+  background: var(--teal-block); border: 1px solid var(--border);
   display: flex; align-items: center; justify-content: center;
   font-family: var(--ff-mono); font-size: .72rem; font-weight: 500;
   color: var(--teal); flex-shrink: 0;
 }
 
-.testimonial-name {
-  font-size: .92rem; font-weight: 600; color: var(--cream);
-  display: block; margin-bottom: .15rem;
-}
+.testimonial-name { font-size: .92rem; font-weight: 600; color: var(--cream); display: block; margin-bottom: .15rem; }
 .testimonial-role {
   font-family: var(--ff-mono); font-size: .72rem;
   letter-spacing: .06em; color: var(--teal-dim); text-transform: uppercase;
 }
 
 .testimonial-controls {
-  display: flex; align-items: center; justify-content: center; gap: 1.5rem;
-  margin-top: 2.5rem;
+  display: flex; align-items: center; justify-content: center; gap: 1.5rem; margin-top: 2.5rem;
 }
 
 .testimonial-btn {
@@ -717,14 +672,19 @@ nav {
   background: var(--bg3); border: 1px solid var(--border2);
   color: var(--cream-dim); cursor: pointer;
   display: flex; align-items: center; justify-content: center;
-  transition: border-color .2s, color .2s, background .2s;
-  flex-shrink: 0;
+  transition: border-color .2s, color .2s, background .2s; flex-shrink: 0;
+  position: relative; overflow: hidden;
+}
+.testimonial-btn::after {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--teal), transparent);
+  opacity: 0; transition: opacity .3s;
 }
 .testimonial-btn:hover {
-  border-color: var(--border);
-  color: var(--teal);
-  background: var(--teal-block);
+  border-color: var(--border); color: var(--teal); background: var(--teal-block);
 }
+.testimonial-btn:hover::after { opacity: 1; }
 
 .testimonial-dots { display: flex; gap: .55rem; align-items: center; }
 .testimonial-dot {
@@ -737,13 +697,9 @@ nav {
 /* ─── CONTACT ───────────────────────────────────────────────── */
 #contact {
   background: var(--teal);
-  padding: 7rem 0;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
+  padding: 7rem 0; text-align: center;
+  position: relative; overflow: hidden;
 }
-
-/* subtle teal grid overlay */
 #contact::before {
   content: '';
   position: absolute; inset: 0;
@@ -760,17 +716,13 @@ nav {
   font-family: var(--ff-display);
   font-size: clamp(2.4rem, 5.5vw, 4rem);
   font-weight: 700; letter-spacing: -.025em; line-height: 1.1;
-  color: var(--bg);
-  margin-bottom: 1.25rem;
+  color: var(--bg); margin-bottom: 1.25rem;
 }
 #contact h2 em { font-style: italic; color: var(--bg); opacity: .7; }
 
 #contact .sub {
-  font-size: 1.08rem;
-  color: rgba(7,9,15,.65);
-  max-width: 540px;
-  margin: 0 auto 2.75rem;
-  line-height: 1.78;
+  font-size: 1.08rem; color: rgba(7,9,15,.65);
+  max-width: 540px; margin: 0 auto 2.75rem; line-height: 1.8;
 }
 
 .contact-btns {
@@ -778,41 +730,37 @@ nav {
   margin-bottom: 2.5rem;
 }
 
-.divider {
-  width: 60px; height: 1px;
-  background: rgba(7,9,15,.2);
-  margin: 2.5rem auto;
-}
+.divider { width: 60px; height: 1px; background: rgba(7,9,15,.2); margin: 2.5rem auto; }
 
 .contact-account {
   background: rgba(7,9,15,.1);
   border: 1.5px solid rgba(7,9,15,.18);
   border-radius: var(--radius-xl);
   padding: 2.5rem 2.25rem;
-  max-width: 560px;
-  margin: 0 auto;
+  max-width: 560px; margin: 0 auto;
+  position: relative; overflow: hidden;
+  transition: border-color .3s;
 }
+.contact-account::after {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(7,9,15,.5), transparent);
+  opacity: 0; transition: opacity .35s;
+}
+.contact-account:hover::after { opacity: 1; }
 .contact-account-title {
   font-family: var(--ff-display);
   font-size: 1.4rem; font-weight: 700;
   color: var(--bg); margin-bottom: .65rem; line-height: 1.2;
 }
 .contact-account-sub {
-  font-size: .95rem; color: rgba(7,9,15,.6);
-  line-height: 1.7; margin-bottom: 1.75rem;
+  font-size: .95rem; color: rgba(7,9,15,.6); line-height: 1.72; margin-bottom: 1.75rem;
 }
 
 /* ─── FOOTER ────────────────────────────────────────────────── */
-footer {
-  border-top: 1px solid var(--border);
-  background: var(--bg2);
-  padding: 3rem 0 2.5rem;
-}
+footer { border-top: 1px solid var(--border); background: var(--bg2); padding: 3rem 0 2.5rem; }
 
-.footer-inner {
-  display: grid; grid-template-columns: 1fr auto;
-  gap: 2rem; align-items: start;
-}
+.footer-inner { display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: start; }
 
 .footer-brand {
   font-family: var(--ff-display);
@@ -822,17 +770,13 @@ footer {
 
 .footer-tagline {
   font-family: var(--ff-mono); font-size: .72rem;
-  letter-spacing: .1em; text-transform: uppercase;
-  color: var(--cream-dim); opacity: .55;
+  letter-spacing: .1em; text-transform: uppercase; color: var(--cream-dim); opacity: .55;
 }
 
-.footer-links {
-  display: flex; flex-direction: column; gap: .6rem; align-items: flex-end;
-}
+.footer-links { display: flex; flex-direction: column; gap: .6rem; align-items: flex-end; }
 .footer-links a {
   font-family: var(--ff-mono); font-size: .78rem; letter-spacing: .04em;
-  color: var(--cream-dim); text-decoration: none;
-  transition: color .2s;
+  color: var(--cream-dim); text-decoration: none; transition: color .2s;
   display: flex; align-items: center; gap: .5rem;
 }
 .footer-links a:hover { color: var(--teal); }
@@ -905,10 +849,10 @@ footer {
   <div class="hero-content">
     <span class="hero-label reveal">Trading with AangBui — Market Intelligence</span>
     <h1 class="reveal reveal-delay-1">
-      Markets reward<br><em>precision.</em><br>Not guesses.
+      I've learned one thing<br>after years at the charts:<br><em>precision wins.</em>
     </h1>
     <p class="hero-sub reveal reveal-delay-2">
-      Most traders chase price. The edge belongs to those who read it first. I deliver institutional-grade multi-asset analysis — where Wyckoff structure, Elliott Wave timing, and purpose-built tools converge into setups worth acting on.
+      I don't guess. I read structure, map cycles, and wait for the confluence that makes a trade genuinely worth taking. Whether it's Gold, Bitcoin, or the VN30 — when I share a setup, it's one I've already stress-tested against my own money.
     </p>
     <div class="hero-ctas reveal reveal-delay-3">
       <a href="https://t.me/aangbui" class="btn btn-teal" target="_blank">
@@ -916,6 +860,9 @@ footer {
       </a>
       <a href="mailto:aangbui@gmail.com" class="btn btn-outline">
         ✉&ensp;Send an Email
+      </a>
+      <a href="https://vigco.co/la-com-inv/vi/aangbui" class="btn btn-ghost" target="_blank">
+        Open a Live Account →
       </a>
     </div>
   </div>
@@ -939,85 +886,81 @@ footer {
     <div class="services-intro">
       <div class="reveal">
         <div class="section-eyebrow">Coverage</div>
-        <h2>Where the Smart<br>Money Moves</h2>
+        <h2>The markets I watch so you<br>never miss the move</h2>
       </div>
       <div class="reveal reveal-delay-1">
-        <p>Precious metals, global indices, energy, commodities, and crypto — tracked with the same ruthless discipline across every session. Real-time signals delivered directly via Telegram and TradingView alerts, so you enter with precision and exit with purpose. No noise, no late calls — only the markets where asymmetric opportunity lives, timed to the candle.</p>
+        <p>I cover a wide range of assets because real edge doesn't live in just one market. Every session, I'm scanning Gold, Silver, crypto, Vietnamese indices, crude oil, and more — with the same disciplined framework across all of them. I send signals in real time so that when the setup is ready, you're ready too. No recycled analysis. No delayed calls. Just the markets where the opportunity is actually worth your capital, timed to the candle.</p>
       </div>
     </div>
 
     <div class="asset-categories">
 
-      <!-- Metals -->
       <div class="reveal">
         <div class="asset-category-label">Metals</div>
         <div class="asset-grid">
-          <div class="asset-card">
+          <div class="asset-card border-glow">
             <div class="asset-icon">Au</div>
             <div><span class="asset-name">XAUUSD</span><span class="asset-desc">Spot Gold</span></div>
           </div>
-          <div class="asset-card">
+          <div class="asset-card border-glow">
             <div class="asset-icon">Ag</div>
             <div><span class="asset-name">XAGUSD</span><span class="asset-desc">Spot Silver</span></div>
           </div>
-          <div class="asset-card">
+          <div class="asset-card border-glow">
             <div class="asset-icon">Pt</div>
             <div><span class="asset-name">XPTUSD</span><span class="asset-desc">Platinum</span></div>
           </div>
-          <div class="asset-card">
+          <div class="asset-card border-glow">
             <div class="asset-icon">Cu</div>
             <div><span class="asset-name">COPPER</span><span class="asset-desc">Copper Futures</span></div>
           </div>
         </div>
       </div>
 
-      <!-- Indices -->
       <div class="reveal reveal-delay-1">
         <div class="asset-category-label">Indices</div>
         <div class="asset-grid">
-          <div class="asset-card">
+          <div class="asset-card border-glow">
             <div class="asset-icon">S&amp;P</div>
             <div><span class="asset-name">SP500</span><span class="asset-desc">S&amp;P 500</span></div>
           </div>
-          <div class="asset-card">
+          <div class="asset-card border-glow">
             <div class="asset-icon">VN</div>
             <div><span class="asset-name">VNINDEX</span><span class="asset-desc">Vietnam Index</span></div>
           </div>
-          <div class="asset-card">
+          <div class="asset-card border-glow">
             <div class="asset-icon">F</div>
             <div><span class="asset-name">VN30F</span><span class="asset-desc">VN30 Futures</span></div>
           </div>
         </div>
       </div>
 
-      <!-- Energy & Commodities -->
       <div class="reveal reveal-delay-2">
         <div class="asset-category-label">Energy &amp; Commodities</div>
         <div class="asset-grid">
-          <div class="asset-card">
+          <div class="asset-card border-glow">
             <div class="asset-icon">⛽</div>
             <div><span class="asset-name">USOIL</span><span class="asset-desc">Crude Oil (WTI)</span></div>
           </div>
-          <div class="asset-card">
+          <div class="asset-card border-glow">
             <div class="asset-icon">☕</div>
             <div><span class="asset-name">COFFEE</span><span class="asset-desc">Arabica Futures</span></div>
           </div>
-          <div class="asset-card">
+          <div class="asset-card border-glow">
             <div class="asset-icon">🌾</div>
             <div><span class="asset-name">SOYBEAN</span><span class="asset-desc">ZS1! Futures</span></div>
           </div>
         </div>
       </div>
 
-      <!-- Crypto -->
       <div class="reveal reveal-delay-3">
         <div class="asset-category-label">Crypto</div>
         <div class="asset-grid">
-          <div class="asset-card">
+          <div class="asset-card border-glow">
             <div class="asset-icon">₿</div>
             <div><span class="asset-name">BTCUSDT</span><span class="asset-desc">Bitcoin</span></div>
           </div>
-          <div class="asset-card">
+          <div class="asset-card border-glow">
             <div class="asset-icon">Ξ</div>
             <div><span class="asset-name">ETHUSDT</span><span class="asset-desc">Ethereum</span></div>
           </div>
@@ -1026,13 +969,12 @@ footer {
 
     </div>
 
-    <!-- Signal delivery banner -->
     <div class="signal-banner reveal" style="margin-top:2.75rem;">
       <div class="signal-banner-inner">
         <div class="signal-pulse"></div>
         <div class="signal-text">
-          <span class="signal-banner-title">Real-Time Signals</span>
-          <span class="signal-banner-sub">Precise entries and exits delivered live — via Telegram channel and TradingView alerts. Trade the setup, not the news.</span>
+          <span class="signal-banner-title">I push signals the moment I see the setup</span>
+          <span class="signal-banner-sub">Entry, stop, and target — delivered live to your Telegram or TradingView feed before the move, not after. I trade what I share. Always.</span>
         </div>
         <div class="signal-channels">
           <a href="https://t.me/+ZzebhIGF_vJlNzFl" target="_blank" class="signal-chip">✈ Telegram</a>
@@ -1050,21 +992,20 @@ footer {
     <div class="method-header reveal">
       <div>
         <div class="section-eyebrow">The Framework</div>
-        <h2>Not one method.<br><em>One conviction.</em></h2>
+        <h2>This is how I think.<br>How I've <em>always</em> traded.</h2>
       </div>
       <div>
-        <p>Four disciplines — each independently powerful, together decisive. Every trade is filtered through structure, cycle, execution, and confirmation. Nothing gets through on one signal alone.</p>
+        <p>I didn't arrive here through a YouTube course or a Telegram group. Every framework I use was tested in live markets, refined through losses I couldn't afford to repeat, and proven through setups I'd stake my own capital on. These four disciplines work independently. Together, they're decisive.</p>
       </div>
     </div>
 
     <div class="method-grid">
 
-      <!-- Hero card -->
       <div class="method-card method-card--hero reveal">
         <div class="method-num">01</div>
         <div>
           <h3>Wyckoff Method</h3>
-          <p>Before price moves, institutions leave a trail. Wyckoff decodes it — mapping accumulation and distribution campaigns through volume behavior, price spread, and the geometry of structural phases that retail traders walk right past.</p>
+          <p>This is the lens I use to see what institutions are actually doing. Before price moves, the big players leave a trail — in volume behavior, in price spread, in the geometry of accumulation and distribution. Most traders walk right past it. I've spent years learning to read it, and I use it to map exactly where the next campaign is building before the breakout arrives.</p>
           <span class="method-tag">Structure</span>
         </div>
       </div>
@@ -1072,21 +1013,21 @@ footer {
       <div class="method-card reveal reveal-delay-1">
         <div class="method-num">02</div>
         <h3>Elliott Wave Analysis</h3>
-        <p>Markets don't move randomly — they breathe in patterns. Elliott Wave maps those cycles, identifying where price stands in the larger structure and projecting high-probability targets before the move fully unfolds.</p>
+        <p>Markets breathe in patterns — and once you learn to count them, you stop being surprised by price. I use Elliott Wave to know where we are in the larger structure, so every trade I take has a thesis behind it, not just a gut feeling. If I know we're in wave 3, I trade it differently than if we're correcting in wave 4.</p>
         <span class="method-tag">Cycles</span>
       </div>
 
       <div class="method-card reveal reveal-delay-2">
         <div class="method-num">03</div>
         <h3>Price Action</h3>
-        <p>Strip away the noise. The cleanest signal is the chart itself — raw candlestick behavior, key level reactions, and the fingerprints of institutional order flow. No lag, no distortion. Just price doing what it always has.</p>
+        <p>I've tried dozens of indicators over the years. The cleanest signal is always the chart itself. Candlestick behavior at key levels, the fingerprints of institutional order flow, the way price reacts when it matters — none of that gets cleaner by adding more tools. I keep my charts clean because clarity is an edge.</p>
         <span class="method-tag">Execution</span>
       </div>
 
       <div class="method-card reveal reveal-delay-3">
         <div class="method-num">04</div>
         <h3>Advanced RSI Divergence</h3>
-        <p>Momentum shifts before price does. Divergence signals plotted directly on the candle chart capture hidden exhaustion and reversal cues that conventional setups miss entirely.</p>
+        <p>Momentum tells you what price isn't showing yet. I built my own RSI divergence tool specifically because every version I found was either buried in a secondary pane or repainted after the fact. Mine plots directly on the candle chart — where context is immediate, decisions are fast, and you're not chasing a signal that already moved.</p>
         <span class="method-tag">Confirmation</span>
       </div>
 
@@ -1099,8 +1040,8 @@ footer {
   <div class="container">
     <div class="tools-header reveal">
       <div class="section-eyebrow">Custom Indicators</div>
-      <h2>Precision instruments.<br>Purpose-built.</h2>
-      <p>Not downloaded from a forum. Not reverse-engineered from YouTube. Every indicator was forged in live markets, refined through real P&amp;L, and built to do exactly one thing: give you a verifiable edge.</p>
+      <h2>I built these because<br>nothing else did what I needed.</h2>
+      <p>I got tired of indicators that lagged, repainted, or made me switch panes to understand what price was doing. So I built my own — forged in live sessions, refined through real P&L, and shared publicly because if they work for me, they should work for you too.</p>
     </div>
 
     <div class="tools-grid">
@@ -1112,28 +1053,28 @@ footer {
             <rect x="30"  y="48" width="14" height="34" fill="rgba(0,191,165,.22)" rx="2"/>
             <rect x="50"  y="53" width="14" height="29" fill="rgba(0,191,165,.15)" rx="2"/>
             <rect x="70"  y="36" width="14" height="46" fill="rgba(0,191,165,.35)" rx="2"/>
-            <rect x="90"  y="50" width="14" height="32" fill="rgba(0,191,165,.2)" rx="2"/>
+            <rect x="90"  y="50" width="14" height="32" fill="rgba(0,191,165,.2)"  rx="2"/>
             <rect x="110" y="42" width="14" height="40" fill="rgba(0,191,165,.28)" rx="2"/>
             <rect x="130" y="55" width="14" height="27" fill="rgba(0,191,165,.15)" rx="2"/>
             <rect x="150" y="30" width="14" height="52" fill="rgba(0,191,165,.45)" rx="2"/>
             <rect x="170" y="46" width="14" height="36" fill="rgba(0,191,165,.22)" rx="2"/>
-            <rect x="190" y="40" width="14" height="42" fill="rgba(0,191,165,.3)" rx="2"/>
+            <rect x="190" y="40" width="14" height="42" fill="rgba(0,191,165,.3)"  rx="2"/>
             <rect x="60" y="8" width="160" height="30" fill="rgba(0,191,165,.08)" rx="3"/>
-            <line x1="60" y1="8" x2="220" y2="8" stroke="rgba(0,191,165,.55)" stroke-width=".9" stroke-dasharray="4,3"/>
-            <line x1="60" y1="38" x2="220" y2="38" stroke="rgba(0,191,165,.3)" stroke-width=".7" stroke-dasharray="4,3"/>
+            <line x1="60" y1="8"  x2="220" y2="8"  stroke="rgba(0,191,165,.55)" stroke-width=".9" stroke-dasharray="4,3"/>
+            <line x1="60" y1="38" x2="220" y2="38" stroke="rgba(0,191,165,.3)"  stroke-width=".7" stroke-dasharray="4,3"/>
             <text x="66" y="20" font-family="monospace" font-size="7" fill="rgba(0,191,165,.75)">OB Zone</text>
             <line x1="220" y1="5"  x2="220" y2="66" stroke="rgba(232,237,245,.15)" stroke-width="1"/>
-            <rect x="216" y="14" width="8" height="30" fill="rgba(0,191,165,.6)" rx="1"/>
+            <rect x="216" y="14" width="8" height="30" fill="rgba(0,191,165,.6)"  rx="1"/>
             <line x1="236" y1="8"  x2="236" y2="68" stroke="rgba(232,237,245,.15)" stroke-width="1"/>
             <rect x="232" y="18" width="8" height="28" fill="rgba(232,237,245,.3)" rx="1"/>
             <line x1="252" y1="6"  x2="252" y2="60" stroke="rgba(232,237,245,.15)" stroke-width="1"/>
-            <rect x="248" y="8"  width="8" height="24" fill="rgba(0,191,165,.7)" rx="1"/>
+            <rect x="248" y="8"  width="8" height="24" fill="rgba(0,191,165,.7)"  rx="1"/>
             <polyline points="268,50 284,40 300,44 316,30 332,35 348,20 364,25 380,14 396,16" stroke="rgba(0,191,165,.75)" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </div>
         <span class="tool-label">Volume + Order Blocks</span>
         <h3>VolTick Orderblock</h3>
-        <p>Where volume and institutional order blocks converge, price reacts — and it rarely lies. VolTick isolates that exact confluence, marking the zones where smart money has already positioned so you can plan your entry before the move, not after it.</p>
+        <p>I built VolTick because I kept watching price react at levels I couldn't see clearly in real time. It detects the confluence of volume spikes and institutional order block zones — the exact areas where smart money has already positioned. Once you start seeing those zones, you stop entering in the middle of nowhere and start planning entries before the move, not after.</p>
         <a href="https://in.tradingview.com/script/PbA10iAJ-VolTick-Orderblock-by-aangbui/" class="tool-btn" target="_blank" onclick="event.stopPropagation()">
           View on TradingView →
         </a>
@@ -1145,19 +1086,19 @@ footer {
             <line x1="20"  y1="26" x2="20"  y2="70" stroke="rgba(232,237,245,.18)" stroke-width="1"/>
             <rect x="16"  y="34" width="8" height="24" fill="rgba(232,237,245,.35)" rx="1"/>
             <line x1="38"  y1="20" x2="38"  y2="64" stroke="rgba(232,237,245,.18)" stroke-width="1"/>
-            <rect x="34"  y="25" width="8" height="28" fill="rgba(0,191,165,.6)" rx="1"/>
+            <rect x="34"  y="25" width="8" height="28" fill="rgba(0,191,165,.6)"   rx="1"/>
             <line x1="56"  y1="29" x2="56"  y2="72" stroke="rgba(232,237,245,.18)" stroke-width="1"/>
             <rect x="52"  y="37" width="8" height="24" fill="rgba(232,237,245,.35)" rx="1"/>
             <line x1="74"  y1="18" x2="74"  y2="62" stroke="rgba(232,237,245,.18)" stroke-width="1"/>
-            <rect x="70"  y="22" width="8" height="30" fill="rgba(0,191,165,.6)" rx="1"/>
+            <rect x="70"  y="22" width="8" height="30" fill="rgba(0,191,165,.6)"   rx="1"/>
             <line x1="92"  y1="31" x2="92"  y2="74" stroke="rgba(232,237,245,.18)" stroke-width="1"/>
             <rect x="88"  y="40" width="8" height="26" fill="rgba(232,237,245,.35)" rx="1"/>
             <line x1="110" y1="22" x2="110" y2="66" stroke="rgba(232,237,245,.18)" stroke-width="1"/>
-            <rect x="106" y="28" width="8" height="28" fill="rgba(0,191,165,.6)" rx="1"/>
+            <rect x="106" y="28" width="8" height="28" fill="rgba(0,191,165,.6)"   rx="1"/>
             <line x1="128" y1="36" x2="128" y2="76" stroke="rgba(232,237,245,.18)" stroke-width="1"/>
             <rect x="124" y="44" width="8" height="26" fill="rgba(232,237,245,.35)" rx="1"/>
             <line x1="146" y1="18" x2="146" y2="62" stroke="rgba(232,237,245,.18)" stroke-width="1"/>
-            <rect x="142" y="22" width="8" height="30" fill="rgba(0,191,165,.6)" rx="1"/>
+            <rect x="142" y="22" width="8" height="30" fill="rgba(0,191,165,.6)"   rx="1"/>
             <line x1="38" y1="23" x2="146" y2="19" stroke="rgba(0,191,165,.85)" stroke-width="1.3" stroke-dasharray="3,2"/>
             <circle cx="38"  cy="23" r="3.5" fill="none" stroke="rgba(0,191,165,.9)" stroke-width="1.3"/>
             <circle cx="146" cy="19" r="3.5" fill="none" stroke="rgba(0,191,165,.9)" stroke-width="1.3"/>
@@ -1167,7 +1108,7 @@ footer {
         </div>
         <span class="tool-label">Momentum · Price Chart</span>
         <h3>RSI Divergence on Price Chart</h3>
-        <p>Divergence is the market's early warning system — and most traders find it a bar too late, buried in a secondary pane. This indicator surfaces hidden and regular divergence directly on the price chart, where context is immediate and execution is clear.</p>
+        <p>Every version of this I found was either buried in a second pane or repainted after the fact — useless for live trading. So I built one that plots directly on the candles, right where you're already looking. Regular and hidden divergence, visible in context, with no lag. It's become the first thing I check before committing to any reversal trade.</p>
         <a href="https://in.tradingview.com/script/siPMJq8U-RSI-divergence-on-Price-Chart/" class="tool-btn" target="_blank" onclick="event.stopPropagation()">
           View on TradingView →
         </a>
@@ -1182,8 +1123,8 @@ footer {
   <div class="container">
     <div class="reveal">
       <div class="section-eyebrow">Testimonials</div>
-      <h2 style="font-family:var(--ff-display);font-size:clamp(2rem,4vw,3.2rem);font-weight:700;letter-spacing:-.025em;line-height:1.12;max-width:520px;">
-        Traders who trade<br><em style="font-style:italic;color:var(--teal);">with conviction.</em>
+      <h2 style="font-family:var(--ff-display);font-size:clamp(2rem,4vw,3.2rem);font-weight:700;letter-spacing:-.025em;line-height:1.12;max-width:560px;">
+        Don't take my word for it.<br><em style="font-style:italic;color:var(--teal);">Here's what traders say.</em>
       </h2>
     </div>
 
@@ -1245,7 +1186,7 @@ footer {
 
           <div class="testimonial-card">
             <div class="testimonial-inner">
-              <p class="testimonial-text">"I used to trade crypto only on the higher timeframes — slow, patient entries, sometimes waiting days for a setup. Lower timeframes always felt like too much noise. An Bui's tools changed that completely. VolTick and the RSI Divergence indicator gave me a real framework to read intraday price action without second-guessing every candle. Now I trade LTF with actual confidence. It covers my daily expenses — and that genuinely matters."</p>
+              <p class="testimonial-text">"I used to trade crypto only on the higher timeframes — slow entries, waiting days for a setup. Lower timeframes always felt like too much noise. An Bui's tools changed that completely. VolTick and the RSI Divergence indicator gave me a real framework to read intraday price action without second-guessing every candle. Now I trade LTF with actual confidence. It covers my daily expenses — and that genuinely matters."</p>
               <div class="testimonial-author">
                 <div class="testimonial-avatar">KV</div>
                 <div>
@@ -1276,9 +1217,9 @@ footer {
 <section id="contact">
   <div class="container">
     <div class="reveal">
-      <div class="section-eyebrow" style="justify-content:center;color:var(--bg);opacity:.6;">Get In Touch</div>
-      <h2>The market<br>doesn't wait. <em>Neither should you.</em></h2>
-      <p class="sub">Analysis that sharpens your thesis. Indicators that sharpen your timing. A partnership that expands your reach. Whatever the conversation — it starts with a single message.</p>
+      <div class="section-eyebrow" style="justify-content:center;color:rgba(7,9,15,.55);">Get In Touch</div>
+      <h2>Let's talk. The market<br>doesn't wait — <em>and neither should you.</em></h2>
+      <p class="sub">I read every message personally. Whether you want analysis, a custom indicator, or just want to understand how I trade — send me a message. I'll respond. No bots, no team. Just me.</p>
       <div class="contact-btns">
         <a href="https://t.me/aangbui" class="btn btn-dark" target="_blank">
           ✈&ensp;Telegram: @aangbui
@@ -1291,8 +1232,8 @@ footer {
       <div class="divider"></div>
 
       <div class="contact-account">
-        <div class="contact-account-title">Open a Live Trading Account</div>
-        <div class="contact-account-sub">Ready to trade with a real edge? Join under my IB partnership — competitive spreads, dedicated support, and a community that trades with conviction, not emotion.</div>
+        <div class="contact-account-title">Trade under my IB partnership</div>
+        <div class="contact-account-sub">I've negotiated competitive spreads with Vigco for the traders in my community. If you're ready to open a live account, do it through my link — you get better conditions, I stay aligned with your success, and we grow together.</div>
         <a href="https://vigco.co/la-com-inv/vi/aangbui" class="btn btn-dark" target="_blank" style="margin:0 auto;">
           Open Account &amp; Join AangBui →
         </a>
@@ -1307,7 +1248,7 @@ footer {
     <div class="footer-inner">
       <div>
         <div class="footer-brand">Trading with <span>AangBui</span></div>
-        <div class="footer-tagline">Precision Market Intelligence. Edge-Driven Analysis.</div>
+        <div class="footer-tagline">I trade what I share. Always.</div>
       </div>
       <div class="footer-links">
         <a href="https://t.me/aangbui" target="_blank">✈ Telegram @aangbui</a>
@@ -1337,7 +1278,7 @@ const io = new IntersectionObserver((entries) => {
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 document.querySelectorAll('.hero .reveal').forEach(el => setTimeout(() => el.classList.add('visible'), 80));
 
-/* ── Hero canvas — teal price line ── */
+/* ── Hero canvas ── */
 (function () {
   const canvas = document.getElementById('hero-canvas');
   const ctx = canvas.getContext('2d');
@@ -1373,9 +1314,7 @@ document.querySelectorAll('.hero .reveal').forEach(el => setTimeout(() => el.cla
 
   function draw() {
     ctx.clearRect(0, 0, W, H);
-
-    ctx.strokeStyle = CREAM + '.02)';
-    ctx.lineWidth = 1;
+    ctx.strokeStyle = CREAM + '.02)'; ctx.lineWidth = 1;
     for (let gx = 0; gx < W; gx += 80) { ctx.beginPath(); ctx.moveTo(gx,0); ctx.lineTo(gx,H); ctx.stroke(); }
     for (let gy = 0; gy < H; gy += 80) { ctx.beginPath(); ctx.moveTo(0,gy); ctx.lineTo(W,gy); ctx.stroke(); }
 
@@ -1390,9 +1329,9 @@ document.querySelectorAll('.hero .reveal').forEach(el => setTimeout(() => el.cla
     }
 
     const grad = ctx.createLinearGradient(0, 0, W, 0);
-    grad.addColorStop(0,   TEAL + '.04)');
-    grad.addColorStop(.5,  TEAL + '.85)');
-    grad.addColorStop(1,   TEAL + '.35)');
+    grad.addColorStop(0,  TEAL + '.04)');
+    grad.addColorStop(.5, TEAL + '.85)');
+    grad.addColorStop(1,  TEAL + '.35)');
     ctx.beginPath();
     const shift = Math.sin(frame * .008) * H * .02;
     ctx.moveTo(points[0].x, points[0].y + shift);
@@ -1401,12 +1340,9 @@ document.querySelectorAll('.hero .reveal').forEach(el => setTimeout(() => el.cla
       const my = (points[i].y + points[i+1].y) / 2 + shift;
       ctx.quadraticCurveTo(points[i].x, points[i].y + shift, mx, my);
     }
-    ctx.strokeStyle = grad;
-    ctx.lineWidth = 1.8;
-    ctx.shadowColor = TEAL + '.5)';
-    ctx.shadowBlur  = 10;
-    ctx.stroke();
-    ctx.shadowBlur = 0;
+    ctx.strokeStyle = grad; ctx.lineWidth = 1.8;
+    ctx.shadowColor = TEAL + '.5)'; ctx.shadowBlur = 10;
+    ctx.stroke(); ctx.shadowBlur = 0;
 
     ctx.beginPath();
     ctx.moveTo(points[0].x, points[0].y + shift);
@@ -1417,10 +1353,8 @@ document.querySelectorAll('.hero .reveal').forEach(el => setTimeout(() => el.cla
     }
     ctx.lineTo(W, H); ctx.lineTo(0, H); ctx.closePath();
     const fill = ctx.createLinearGradient(0, 0, 0, H);
-    fill.addColorStop(0, TEAL + '.06)');
-    fill.addColorStop(1, TEAL + '0)');
-    ctx.fillStyle = fill;
-    ctx.fill();
+    fill.addColorStop(0, TEAL + '.06)'); fill.addColorStop(1, TEAL + '0)');
+    ctx.fillStyle = fill; ctx.fill();
 
     frame++;
     if (frame % 300 === 0) {
@@ -1439,18 +1373,18 @@ document.querySelectorAll('.hero .reveal').forEach(el => setTimeout(() => el.cla
 /* ── Ticker ── */
 (function () {
   const items = [
-    { sym: 'XAUUSD',  label: 'Spot Gold'       },
-    { sym: 'XAGUSD',  label: 'Spot Silver'      },
-    { sym: 'XPTUSD',  label: 'Platinum'         },
-    { sym: 'COPPER',  label: 'Copper Futures'   },
-    { sym: 'SP500',   label: 'S&P 500'          },
-    { sym: 'VNINDEX', label: 'Vietnam Index'    },
-    { sym: 'VN30F',   label: 'VN30 Futures'     },
-    { sym: 'USOIL',   label: 'Crude Oil WTI'    },
-    { sym: 'COFFEE',  label: 'Arabica Futures'  },
-    { sym: 'SOYBEAN', label: 'ZS1! Futures'     },
-    { sym: 'BTCUSDT', label: 'Bitcoin'          },
-    { sym: 'ETHUSDT', label: 'Ethereum'         },
+    { sym: 'XAUUSD',  label: 'Spot Gold'      },
+    { sym: 'XAGUSD',  label: 'Spot Silver'     },
+    { sym: 'XPTUSD',  label: 'Platinum'        },
+    { sym: 'COPPER',  label: 'Copper Futures'  },
+    { sym: 'SP500',   label: 'S&P 500'         },
+    { sym: 'VNINDEX', label: 'Vietnam Index'   },
+    { sym: 'VN30F',   label: 'VN30 Futures'    },
+    { sym: 'USOIL',   label: 'Crude Oil WTI'   },
+    { sym: 'COFFEE',  label: 'Arabica Futures' },
+    { sym: 'SOYBEAN', label: 'ZS1! Futures'    },
+    { sym: 'BTCUSDT', label: 'Bitcoin'         },
+    { sym: 'ETHUSDT', label: 'Ethereum'        },
   ];
   const track = document.getElementById('tickerTrack');
   const html = items.map(it =>
