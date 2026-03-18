@@ -332,18 +332,36 @@ nav {
   line-height: 1.75;
 }
 
+.asset-categories {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.asset-category-label {
+  font-family: var(--ff-mono);
+  font-size: .68rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--cream-dim);
+  opacity: .55;
+  margin-bottom: .9rem;
+  padding-bottom: .6rem;
+  border-bottom: 1px solid var(--border2);
+}
+
 .asset-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: .75rem;
 }
 
 .asset-card {
   background: var(--bg3);
   border: 1px solid var(--border2);
   border-radius: 8px;
-  padding: 1.4rem 1.5rem;
-  display: flex; align-items: center; gap: 1rem;
+  padding: 1.1rem 1.2rem;
+  display: flex; align-items: center; gap: .85rem;
   transition: border-color .25s, transform .25s;
   cursor: default;
 }
@@ -353,23 +371,29 @@ nav {
 }
 
 .asset-icon {
-  width: 40px; height: 40px; border-radius: 50%;
+  width: 36px; height: 36px; border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
-  font-size: 1.1rem; flex-shrink: 0;
+  font-family: var(--ff-mono);
+  font-size: .62rem;
+  font-weight: 500;
+  letter-spacing: -.01em;
+  color: var(--gold);
+  flex-shrink: 0;
   background: var(--gold-glow);
   border: 1px solid var(--border);
 }
 
 .asset-name {
   font-family: var(--ff-mono);
-  font-size: .82rem;
+  font-size: .8rem;
   color: var(--gold);
   font-weight: 500;
   display: block;
-  margin-bottom: .15rem;
+  margin-bottom: .12rem;
+  letter-spacing: .02em;
 }
 .asset-desc {
-  font-size: .78rem;
+  font-size: .74rem;
   color: var(--cream-dim);
 }
 
@@ -732,54 +756,125 @@ footer {
       </div>
       <div class="reveal reveal-delay-1">
         <p>
-          Gold. Bitcoin. Platinum. Commodities. The markets that matter — tracked with the same ruthless discipline across every session. No noise, no diversification theatre. Only the assets where asymmetric opportunity lives, and the structural clarity to find it before the crowd does.
+          Precious metals, global indices, energy, commodities, and crypto — tracked with the same ruthless discipline across every session. From XAUUSD to VNINDEX to USOIL, the coverage is broad; the analysis stays surgical. No noise, no diversification theatre. Only the markets where asymmetric opportunity lives, and the structural clarity to find it before the crowd does.
         </p>
       </div>
     </div>
 
-    <div class="asset-grid">
-      <div class="asset-card reveal">
-        <div class="asset-icon">⚡</div>
-        <div>
-          <span class="asset-name">XAUUSD</span>
-          <span class="asset-desc">Spot Gold</span>
+    <div class="asset-categories">
+
+      <!-- Metals -->
+      <div class="reveal">
+        <div class="asset-category-label">Metals</div>
+        <div class="asset-grid">
+          <div class="asset-card">
+            <div class="asset-icon">Au</div>
+            <div>
+              <span class="asset-name">XAUUSD</span>
+              <span class="asset-desc">Spot Gold</span>
+            </div>
+          </div>
+          <div class="asset-card">
+            <div class="asset-icon">Ag</div>
+            <div>
+              <span class="asset-name">XAGUSD</span>
+              <span class="asset-desc">Spot Silver</span>
+            </div>
+          </div>
+          <div class="asset-card">
+            <div class="asset-icon">Pt</div>
+            <div>
+              <span class="asset-name">XPTUSD</span>
+              <span class="asset-desc">Platinum</span>
+            </div>
+          </div>
+          <div class="asset-card">
+            <div class="asset-icon">Cu</div>
+            <div>
+              <span class="asset-name">COPPER</span>
+              <span class="asset-desc">Copper Futures</span>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="asset-card reveal reveal-delay-1">
-        <div class="asset-icon">💎</div>
-        <div>
-          <span class="asset-name">Platinum</span>
-          <span class="asset-desc">PGM Metals</span>
+
+      <!-- Indices -->
+      <div class="reveal reveal-delay-1">
+        <div class="asset-category-label">Indices</div>
+        <div class="asset-grid">
+          <div class="asset-card">
+            <div class="asset-icon">S&P</div>
+            <div>
+              <span class="asset-name">SP500</span>
+              <span class="asset-desc">S&amp;P 500</span>
+            </div>
+          </div>
+          <div class="asset-card">
+            <div class="asset-icon">VN</div>
+            <div>
+              <span class="asset-name">VNINDEX</span>
+              <span class="asset-desc">Vietnam Index</span>
+            </div>
+          </div>
+          <div class="asset-card">
+            <div class="asset-icon">F</div>
+            <div>
+              <span class="asset-name">VN30F</span>
+              <span class="asset-desc">VN30 Futures</span>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="asset-card reveal reveal-delay-2">
-        <div class="asset-icon">₿</div>
-        <div>
-          <span class="asset-name">BTCUSDT</span>
-          <span class="asset-desc">Bitcoin</span>
+
+      <!-- Energy & Commodities -->
+      <div class="reveal reveal-delay-2">
+        <div class="asset-category-label">Energy &amp; Commodities</div>
+        <div class="asset-grid">
+          <div class="asset-card">
+            <div class="asset-icon">⛽</div>
+            <div>
+              <span class="asset-name">USOIL</span>
+              <span class="asset-desc">Crude Oil (WTI)</span>
+            </div>
+          </div>
+          <div class="asset-card">
+            <div class="asset-icon">☕</div>
+            <div>
+              <span class="asset-name">COFFEE</span>
+              <span class="asset-desc">Arabica Futures</span>
+            </div>
+          </div>
+          <div class="asset-card">
+            <div class="asset-icon">🌾</div>
+            <div>
+              <span class="asset-name">SOYBEAN</span>
+              <span class="asset-desc">ZS1! Futures</span>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="asset-card reveal reveal-delay-3">
-        <div class="asset-icon">Ξ</div>
-        <div>
-          <span class="asset-name">ETH/USDT</span>
-          <span class="asset-desc">Ethereum</span>
+
+      <!-- Crypto -->
+      <div class="reveal reveal-delay-3">
+        <div class="asset-category-label">Crypto</div>
+        <div class="asset-grid">
+          <div class="asset-card">
+            <div class="asset-icon">₿</div>
+            <div>
+              <span class="asset-name">BTCUSDT</span>
+              <span class="asset-desc">Bitcoin</span>
+            </div>
+          </div>
+          <div class="asset-card">
+            <div class="asset-icon">Ξ</div>
+            <div>
+              <span class="asset-name">ETHUSDT</span>
+              <span class="asset-desc">Ethereum</span>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="asset-card reveal reveal-delay-4">
-        <div class="asset-icon">🌾</div>
-        <div>
-          <span class="asset-name">Soybean</span>
-          <span class="asset-desc">Agricultural</span>
-        </div>
-      </div>
-      <div class="asset-card reveal">
-        <div class="asset-icon">+</div>
-        <div>
-          <span class="asset-name">More</span>
-          <span class="asset-desc">On Request</span>
-        </div>
-      </div>
+
     </div>
   </div>
 </section>
@@ -1103,14 +1198,18 @@ document.querySelectorAll('.hero .reveal').forEach(el => {
 /* ── Ticker ── */
 (function () {
   const items = [
-    { sym: 'XAUUSD',   label: 'Spot Gold' },
-    { sym: 'BTCUSDT',  label: 'Bitcoin' },
-    { sym: 'XPTUSD',   label: 'Platinum' },
-    { sym: 'ETH/USDT', label: 'Ethereum' },
-    { sym: 'ZS1!',     label: 'Soybean' },
-    { sym: 'DXY',      label: 'Dollar Index' },
-    { sym: 'XAGUSD',   label: 'Silver' },
-    { sym: 'NQ1!',     label: 'Nasdaq Futures' },
+    { sym: 'XAUUSD',  label: 'Spot Gold'        },
+    { sym: 'XAGUSD',  label: 'Spot Silver'       },
+    { sym: 'XPTUSD',  label: 'Platinum'          },
+    { sym: 'COPPER',  label: 'Copper Futures'    },
+    { sym: 'SP500',   label: 'S&P 500'           },
+    { sym: 'VNINDEX', label: 'Vietnam Index'     },
+    { sym: 'VN30F',   label: 'VN30 Futures'      },
+    { sym: 'USOIL',   label: 'Crude Oil WTI'     },
+    { sym: 'COFFEE',  label: 'Arabica Futures'   },
+    { sym: 'SOYBEAN', label: 'ZS1! Futures'      },
+    { sym: 'BTCUSDT', label: 'Bitcoin'           },
+    { sym: 'ETHUSDT', label: 'Ethereum'          },
   ];
   const track = document.getElementById('tickerTrack');
   // build two copies for seamless loop
