@@ -397,6 +397,66 @@ nav {
   color: var(--cream-dim);
 }
 
+/* ─── SIGNAL BANNER ─────────────────────────────────────────── */
+.signal-banner-inner {
+  display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;
+  background: var(--bg3);
+  border: 1px solid rgba(201,168,76,.22);
+  border-radius: 10px;
+  padding: 1.5rem 2rem;
+}
+
+.signal-pulse {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--gold);
+  flex-shrink: 0;
+  box-shadow: 0 0 0 0 rgba(201,168,76,.6);
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%,100% { box-shadow: 0 0 0 0 rgba(201,168,76,.55); }
+  50%      { box-shadow: 0 0 0 8px rgba(201,168,76,0); }
+}
+
+.signal-text { flex: 1; min-width: 200px; }
+
+.signal-banner-title {
+  display: block;
+  font-family: var(--ff-body);
+  font-size: .92rem;
+  font-weight: 600;
+  color: var(--gold);
+  margin-bottom: .25rem;
+}
+
+.signal-banner-sub {
+  display: block;
+  font-size: .84rem;
+  color: var(--cream-dim);
+  line-height: 1.6;
+}
+
+.signal-channels {
+  display: flex; gap: .65rem; flex-shrink: 0; flex-wrap: wrap;
+}
+
+.signal-chip {
+  font-family: var(--ff-mono);
+  font-size: .72rem;
+  letter-spacing: .05em;
+  color: var(--gold);
+  border: 1px solid rgba(201,168,76,.3);
+  border-radius: 4px;
+  padding: .4rem .9rem;
+  text-decoration: none;
+  transition: background .2s, border-color .2s;
+  white-space: nowrap;
+}
+.signal-chip:hover {
+  background: var(--gold-glow);
+  border-color: rgba(201,168,76,.6);
+}
+
 /* ─── METHODOLOGY ───────────────────────────────────────────── */
 #methodology {
   padding: 7rem 0;
@@ -570,18 +630,30 @@ nav {
 
 .testimonial-track-wrap {
   overflow: hidden;
+  /* reveal ~10% of adjacent cards on each side */
+  margin: 0 -1rem;
+  padding: 0 1rem;
 }
 
 .testimonial-track {
   display: flex;
-  transition: transform .55s cubic-bezier(.22,1,.36,1);
+  transition: transform .6s cubic-bezier(.22,1,.36,1);
   will-change: transform;
 }
 
 .testimonial-card {
-  min-width: 100%;
-  padding: 0 1rem;
+  min-width: 80%;
+  padding: 0 .75rem;
   box-sizing: border-box;
+  transition: opacity .5s ease;
+  opacity: .35;
+}
+.testimonial-card.active {
+  opacity: 1;
+}
+
+@media (max-width: 700px) {
+  .testimonial-card { min-width: 90%; }
 }
 
 .testimonial-inner {
@@ -729,6 +801,21 @@ nav {
 
 .contact-btns {
   display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+}
+
+.btn-vigco {
+  background: transparent;
+  color: var(--gold);
+  border: 1px solid rgba(201,168,76,.45);
+  font-size: .9rem;
+  letter-spacing: .03em;
+}
+.btn-vigco:hover {
+  background: var(--gold-glow);
+  border-color: rgba(201,168,76,.8);
+  color: var(--gold);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(201,168,76,.12);
 }
 
 /* divider */
@@ -889,7 +976,7 @@ footer {
       </div>
       <div class="reveal reveal-delay-1">
         <p>
-          Precious metals, global indices, energy, commodities, and crypto — tracked with the same ruthless discipline across every session. From XAUUSD to VNINDEX to USOIL, the coverage is broad; the analysis stays surgical. No noise, no diversification theatre. Only the markets where asymmetric opportunity lives, and the structural clarity to find it before the crowd does.
+          Precious metals, global indices, energy, commodities, and crypto — tracked with the same ruthless discipline across every session. Real-time signals delivered directly via Telegram and TradingView alerts, so you enter with precision and exit with purpose. From XAUUSD to VNINDEX to USOIL, the coverage is broad; the analysis stays surgical. No noise, no late calls — only the markets where asymmetric opportunity lives, timed to the candle.
         </p>
       </div>
     </div>
@@ -1009,6 +1096,22 @@ footer {
       </div>
 
     </div>
+
+    <!-- Signal delivery banner -->
+    <div class="signal-banner reveal" style="margin-top:2.5rem;">
+      <div class="signal-banner-inner">
+        <div class="signal-pulse"></div>
+        <div class="signal-text">
+          <span class="signal-banner-title">Real-Time Signals</span>
+          <span class="signal-banner-sub">Precise entries and exits delivered live — via Telegram channel and TradingView alerts. Trade the setup, not the news.</span>
+        </div>
+        <div class="signal-channels">
+          <a href="https://t.me/aangbui" target="_blank" class="signal-chip">✈ Telegram</a>
+          <a href="https://in.tradingview.com/u/aangbui/" target="_blank" class="signal-chip">◈ TradingView</a>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -1221,13 +1324,29 @@ footer {
           <div class="testimonial-card">
             <div class="testimonial-inner">
               <p class="testimonial-text">
-                "What sets Aang apart is the discipline. No hype, no moon calls — just structured analysis with a defined edge. His coverage of XAGUSD and commodities gave me an angle I had completely overlooked. If you are serious about trading, this is the kind of insight worth paying for."
+                "I'm based in Singapore and found Aang through a referral. What surprised me was that the pricing was genuinely accessible — this isn't a service priced for hedge funds. Yet the depth of analysis, the clarity of the setups, the honesty when a trade doesn't work out — it all reflects the integrity of someone who actually trades his own calls. International quality, local heart. That's rare."
               </p>
               <div class="testimonial-author">
                 <div class="testimonial-avatar">LN</div>
                 <div>
                   <span class="testimonial-name">Linh Nguyen</span>
-                  <span class="testimonial-role">Commodities Analyst · Singapore</span>
+                  <span class="testimonial-role">Independent Trader · Singapore</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="testimonial-card">
+            <div class="testimonial-inner">
+              <p class="testimonial-text">
+                "I came from trading crypto on the higher timeframes — big picture stuff, slow entries, waiting days for a setup. I always avoided lower timeframes because the noise was too much. An Bui's indicators changed that. The VolTick and RSI Divergence tools gave me a framework to read LTF price action without second-guessing every candle. Now I can take trades intraday with confidence. It genuinely covers my daily expenses — and that means a lot."
+              </p>
+              <div class="testimonial-author">
+                <div class="testimonial-avatar">KV</div>
+                <div>
+                  <span class="testimonial-name">Khue Vo</span>
+                  <span class="testimonial-role">Crypto Trader · Ho Chi Minh City</span>
                 </div>
               </div>
             </div>
@@ -1266,6 +1385,11 @@ footer {
           ✉&ensp;Email: aangbui@gmail.com
         </a>
       </div>
+      <div class="divider"></div>
+      <p class="sub" style="margin-bottom:1.5rem;">Ready to open a live account and trade under my IB partnership? Get access to competitive spreads, dedicated support, and join a community of traders who trade with an edge.</p>
+      <a href="https://vigco.co/la-com-inv/vi/aangbui" class="btn btn-vigco" target="_blank">
+        Open a Live Account &rarr; Join via AangBui
+      </a>
     </div>
   </div>
 </section>
@@ -1456,10 +1580,15 @@ document.querySelectorAll('.hero .reveal').forEach(el => {
 (function () {
   const track  = document.getElementById('testimonialTrack');
   const dotsEl = document.getElementById('tDots');
-  const cards  = track.querySelectorAll('.testimonial-card');
+  const cards  = Array.from(track.querySelectorAll('.testimonial-card'));
   const total  = cards.length;
   let current  = 0;
   let timer;
+
+  // Card width as % of track — must match CSS min-width
+  function cardPct() {
+    return window.innerWidth <= 700 ? 90 : 80;
+  }
 
   // Build dots
   cards.forEach((_, i) => {
@@ -1472,7 +1601,12 @@ document.querySelectorAll('.hero .reveal').forEach(el => {
 
   function goTo(idx) {
     current = (idx + total) % total;
-    track.style.transform = `translateX(-${current * 100}%)`;
+    const pct = cardPct();
+    // Offset so active card is centred: shift by (100-pct)/2 to align first card, then advance by pct per step
+    const offset = (100 - pct) / 2;
+    track.style.transform = `translateX(calc(-${current * pct}% + ${offset}%))`;
+
+    cards.forEach((c, i) => c.classList.toggle('active', i === current));
     dotsEl.querySelectorAll('.testimonial-dot').forEach((d, i) =>
       d.classList.toggle('active', i === current)
     );
@@ -1481,18 +1615,18 @@ document.querySelectorAll('.hero .reveal').forEach(el => {
 
   function resetTimer() {
     clearInterval(timer);
-    timer = setInterval(() => goTo(current + 1), 6000);
+    timer = setInterval(() => goTo(current + 1), 6500);
   }
 
   document.getElementById('tPrev').addEventListener('click', () => goTo(current - 1));
   document.getElementById('tNext').addEventListener('click', () => goTo(current + 1));
 
-  // Swipe support
+  // Swipe
   let startX = 0;
   track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
   track.addEventListener('touchend',   e => {
     const dx = e.changedTouches[0].clientX - startX;
-    if (Math.abs(dx) > 50) goTo(dx < 0 ? current + 1 : current - 1);
+    if (Math.abs(dx) > 45) goTo(dx < 0 ? current + 1 : current - 1);
   });
 
   // Pause on hover
@@ -1500,6 +1634,10 @@ document.querySelectorAll('.hero .reveal').forEach(el => {
   wrap.addEventListener('mouseenter', () => clearInterval(timer));
   wrap.addEventListener('mouseleave', resetTimer);
 
+  // Recalculate on resize
+  window.addEventListener('resize', () => goTo(current));
+
+  goTo(0); // init with centering
   resetTimer();
 })();
 </script>
