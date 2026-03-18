@@ -366,9 +366,9 @@ nav.scrolled {
 }
 .section::before {
   content: '';
-  position: absolute; inset: -30%; z-index: 0;
-  background: radial-gradient(ellipse 55% 45% at 50% 50%, rgba(0,194,168,.06), transparent 70%);
-  transform: translateY(var(--py, 0px));
+  position: absolute; inset: -40%; z-index: 0;
+  background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(0,194,168,.07), transparent 70%);
+  transform: translate(var(--px, 0px), var(--py, 0px));
   pointer-events: none; will-change: transform;
 }
 .section-rule {
@@ -1370,11 +1370,20 @@ document.querySelectorAll('.hero .reveal').forEach(el => setTimeout(() => el.cla
       cGlow.style.transform = `translate3d(0,${(r.top + r.height / 2 - h / 2) * -0.3}px,0)`;
     }
 
-    // Each section::before bg layer parallaxes at 40% relative to section centre
-    sections.forEach(sec => {
-      const r      = sec.getBoundingClientRect();
-      const centre = r.top + r.height / 2 - h / 2;
-      sec.style.setProperty('--py', `${centre * 0.4}px`);
+    // Each section bg sweeps fully as it passes through the viewport
+    // progress 0 = section entering bottom, 1 = section exiting top
+    sections.forEach((sec, i) => {
+      const r        = sec.getBoundingClientRect();
+      const progress = (h - r.top) / (h + r.height); // 0 → 1
+      const offset   = (progress - 0.5) * 300;        // −150px → +150px sweep
+      // Alternate: even sections sweep vertically, odd sections sweep horizontally
+      if (i % 2 === 0) {
+        sec.style.setProperty('--py', `${offset}px`);
+        sec.style.setProperty('--px', '0px');
+      } else {
+        sec.style.setProperty('--px', `${offset}px`);
+        sec.style.setProperty('--py', '0px');
+      }
     });
 
     ticking = false;
