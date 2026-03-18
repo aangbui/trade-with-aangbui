@@ -192,6 +192,22 @@ nav.scrolled {
   transition: background .2s !important;
 }
 .nav-cta:hover { background: rgba(255,255,255,.12) !important; }
+#langToggle {
+  font-family: var(--ff-mono); font-size: .7rem;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: var(--muted); background: transparent;
+  border: 1px solid var(--border-2);
+  border-radius: var(--pill); padding: .35rem .8rem;
+  cursor: pointer; margin-right: .5rem;
+  transition: color .2s, border-color .2s, background .2s;
+}
+#langToggle:hover {
+  color: var(--teal); border-color: var(--teal-border);
+  background: var(--teal-glass);
+}
+#langToggle.lang-vi {
+  color: var(--teal); border-color: var(--teal-border);
+}
 .nav-toggle {
   display: none; flex-direction: column; gap: 5px;
   cursor: pointer; padding: 4px;
@@ -805,13 +821,14 @@ footer {
   <div class="nav-inner">
     <a href="#" class="nav-logo">Trading with <span>AangBui</span></a>
     <ul class="nav-links" id="navLinks">
-      <li><a href="#services">Markets</a></li>
-      <li><a href="#methodology">Methodology</a></li>
-      <li><a href="#tools">Indicators</a></li>
-      <li><a href="#testimonials">Testimonials</a></li>
-      <li><a href="#contact" class="nav-cta">Join the Community →</a></li>
+      <li><a href="#services" data-i18n="nav.markets">Markets</a></li>
+      <li><a href="#methodology" data-i18n="nav.methodology">Methodology</a></li>
+      <li><a href="#tools" data-i18n="nav.indicators">Indicators</a></li>
+      <li><a href="#testimonials" data-i18n="nav.testimonials">Testimonials</a></li>
+      <li><a href="#contact" class="nav-cta" data-i18n="nav.cta">Join the Community →</a></li>
     </ul>
-    <div class="nav-toggle" id="navToggle" aria-label="Menu">
+    <button id="langToggle" aria-label="Switch language">VI</button>
+    <div class="nav-toggle" id="navToggle" data-i18n-aria="nav.toggle.label" aria-label="Menu">
       <span></span><span></span><span></span>
     </div>
   </div>
@@ -821,21 +838,21 @@ footer {
 <section class="hero" id="home">
   <canvas id="hero-canvas"></canvas>
   <div class="hero-content">
-    <div class="hero-eyebrow reveal">Market Intelligence · AangBui</div>
-    <h1 class="reveal d1">
+    <div class="hero-eyebrow reveal" data-i18n="hero.eyebrow">Market Intelligence · AangBui</div>
+    <h1 class="reveal d1" data-i18n-html="hero.h1">
       Markets reward<br><strong><em>precision.</em></strong><br>Not guesses.
     </h1>
-    <p class="hero-sub reveal d2">
+    <p class="hero-sub reveal d2" data-i18n="hero.sub">
       Real analysis across Gold, Bitcoin, indices, and commodities — combining Wyckoff, Elliott Wave, and custom-built tools into high-conviction setups. Every call published is one traded with real capital.
     </p>
     <div class="hero-ctas reveal d3">
-      <a href="https://t.me/aangbui" class="btn btn-white" target="_blank">✈&ensp;Connect on Telegram</a>
-      <a href="mailto:aangbui@gmail.com" class="btn btn-glass">✉&ensp;Send an Email</a>
-      <a href="https://vigco.co/la-com-inv/vi/aangbui" class="btn btn-teal" target="_blank">Open a Live Account →</a>
+      <a href="https://t.me/aangbui" class="btn btn-white" target="_blank" data-i18n="hero.btn.telegram">✈&ensp;Connect on Telegram</a>
+      <a href="mailto:aangbui@gmail.com" class="btn btn-glass" data-i18n="hero.btn.email">✉&ensp;Send an Email</a>
+      <a href="https://vigco.co/la-com-inv/vi/aangbui" class="btn btn-teal" target="_blank" data-i18n="hero.btn.account">Open a Live Account →</a>
     </div>
   </div>
   <div class="scroll-hint">
-    <span>Scroll</span>
+    <span data-i18n="scroll.hint">Scroll</span>
     <svg width="10" height="16" viewBox="0 0 10 16" fill="none">
       <path d="M5 1v9M1 7l4 5 4-5" stroke="rgba(255,255,255,.35)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
@@ -854,11 +871,11 @@ footer {
   <div class="container">
     <div class="services-layout">
       <div class="reveal from-left">
-        <div class="eyebrow">Coverage</div>
-        <h2 class="section-h2">The markets tracked.<br><strong>Every session.</strong></h2>
+        <div class="eyebrow" data-i18n="services.eyebrow">Coverage</div>
+        <h2 class="section-h2" data-i18n-html="services.h2">The markets tracked.<br><strong>Every session.</strong></h2>
       </div>
       <div class="reveal d1 from-right">
-        <p class="section-lead">Real-time signals powered by first-party data from broker feeds and TradingView — delivered directly to your inbox or Telegram the moment a setup is confirmed. No middlemen, no delay. Cutting-edge technology working continuously so you never miss a move.</p>
+        <p class="section-lead" data-i18n="services.lead">Real-time signals powered by first-party data from broker feeds and TradingView — delivered directly to your inbox or Telegram the moment a setup is confirmed. No middlemen, no delay. Cutting-edge technology working continuously so you never miss a move.</p>
       </div>
     </div>
 
@@ -866,8 +883,8 @@ footer {
       <div class="glass-card signal-card">
         <div class="signal-pulse"></div>
         <div class="signal-text">
-          <span class="signal-title">Real-time signals. Every session.</span>
-          <span class="signal-sub">Entry, stop, and target delivered live — via Telegram and TradingView alerts — before the move develops, not after. Every signal is traded with real capital.</span>
+          <span class="signal-title" data-i18n="services.signal.title">Real-time signals. Every session.</span>
+          <span class="signal-sub" data-i18n="services.signal.sub">Entry, stop, and target delivered live — via Telegram and TradingView alerts — before the move develops, not after. Every signal is traded with real capital.</span>
         </div>
         <div class="signal-chips">
           <a href="https://t.me/+ZzebhIGF_vJlNzFl" target="_blank" class="chip">✈ Telegram</a>
@@ -884,16 +901,16 @@ footer {
 <section class="section" id="methodology">
   <div class="container">
     <div class="reveal from-right" style="margin-bottom:3.5rem;">
-      <div class="eyebrow">The Framework</div>
-      <h2 class="section-h2">Four disciplines.<br><em>One conviction.</em></h2>
-      <p class="section-lead">Each technical analysis framework gives a distinct view of market movement — structure, cycle, execution, momentum. Together they remove ambiguity and produce clarity: a unified read of what the market is doing and a concrete action plan.</p>
+      <div class="eyebrow" data-i18n="method.eyebrow">The Framework</div>
+      <h2 class="section-h2" data-i18n-html="method.h2">Four disciplines.<br><em>One conviction.</em></h2>
+      <p class="section-lead" data-i18n="method.lead">Each technical analysis framework gives a distinct view of market movement — structure, cycle, execution, momentum. Together they remove ambiguity and produce clarity: a unified read of what the market is doing and a concrete action plan.</p>
     </div>
 
     <div class="method-tabs reveal d1 from-left" role="tablist">
-      <button class="method-tab active" data-panel="0" role="tab">Wyckoff</button>
-      <button class="method-tab" data-panel="1" role="tab">Elliott Wave</button>
-      <button class="method-tab" data-panel="2" role="tab">Price Action</button>
-      <button class="method-tab" data-panel="3" role="tab">RSI Indicators</button>
+      <button class="method-tab active" data-panel="0" role="tab" data-i18n="method.tab.0">Wyckoff</button>
+      <button class="method-tab" data-panel="1" role="tab" data-i18n="method.tab.1">Elliott Wave</button>
+      <button class="method-tab" data-panel="2" role="tab" data-i18n="method.tab.2">Price Action</button>
+      <button class="method-tab" data-panel="3" role="tab" data-i18n="method.tab.3">RSI Indicators</button>
     </div>
 
     <div class="reveal d2 method-panels-wrap">
@@ -902,9 +919,9 @@ footer {
         <div class="method-panel-inner">
           <div class="method-number">01</div>
           <div class="method-content">
-            <h3>Wyckoff</h3>
-            <p>Institutional accumulation and distribution leave a footprint in volume and price spread. Wyckoff decodes that footprint — mapping the structural phases that precede major moves long before they reach the breakout bar. It separates reading price from understanding what's actually driving it.</p>
-            <span class="method-badge">Structure</span>
+            <h3 data-i18n="method.title.0">Wyckoff</h3>
+            <p data-i18n="method.body.0">Institutional accumulation and distribution leave a footprint in volume and price spread. Wyckoff decodes that footprint — mapping the structural phases that precede major moves long before they reach the breakout bar. It separates reading price from understanding what's actually driving it.</p>
+            <span class="method-badge" data-i18n="method.badge.0">Structure</span>
           </div>
         </div>
       </div>
@@ -913,9 +930,9 @@ footer {
         <div class="method-panel-inner">
           <div class="method-number">02</div>
           <div class="method-content">
-            <h3>Elliott Wave Analysis</h3>
-            <p>Markets move in identifiable cycles. Elliott Wave provides the structural roadmap — locating where price stands in the larger pattern and projecting high-probability targets before the move fully develops. Every trade has a thesis, not just a trigger.</p>
-            <span class="method-badge">Cycles</span>
+            <h3 data-i18n="method.title.1">Elliott Wave Analysis</h3>
+            <p data-i18n="method.body.1">Markets move in identifiable cycles. Elliott Wave provides the structural roadmap — locating where price stands in the larger pattern and projecting high-probability targets before the move fully develops. Every trade has a thesis, not just a trigger.</p>
+            <span class="method-badge" data-i18n="method.badge.1">Cycles</span>
           </div>
         </div>
       </div>
@@ -924,9 +941,9 @@ footer {
         <div class="method-panel-inner">
           <div class="method-number">03</div>
           <div class="method-content">
-            <h3>Price Action</h3>
-            <p>The cleanest signal is still the chart. Candlestick behavior at key levels, institutional order flow fingerprints, structural reactions — read without lag or distortion. Fewer tools, sharper reads. Clarity itself is an edge.</p>
-            <span class="method-badge">Execution</span>
+            <h3 data-i18n="method.title.2">Price Action</h3>
+            <p data-i18n="method.body.2">The cleanest signal is still the chart. Candlestick behavior at key levels, institutional order flow fingerprints, structural reactions — read without lag or distortion. Fewer tools, sharper reads. Clarity itself is an edge.</p>
+            <span class="method-badge" data-i18n="method.badge.2">Execution</span>
           </div>
         </div>
       </div>
@@ -935,9 +952,9 @@ footer {
         <div class="method-panel-inner">
           <div class="method-number">04</div>
           <div class="method-content">
-            <h3>Advanced RSI</h3>
-            <p>Momentum shifts before price confirms. Advanced divergence signals plotted directly on the candle chart — not buried in a secondary pane — surface exhaustion and reversal cues that conventional setups consistently miss. No repainting. No chasing.</p>
-            <span class="method-badge">Confirmation</span>
+            <h3 data-i18n="method.title.3">Advanced RSI</h3>
+            <p data-i18n="method.body.3">Momentum shifts before price confirms. Advanced divergence signals plotted directly on the candle chart — not buried in a secondary pane — surface exhaustion and reversal cues that conventional setups consistently miss. No repainting. No chasing.</p>
+            <span class="method-badge" data-i18n="method.badge.3">Confirmation</span>
           </div>
         </div>
       </div>
@@ -952,9 +969,9 @@ footer {
 <section class="section" id="tools">
   <div class="container">
     <div class="reveal from-left">
-      <div class="eyebrow">Custom Indicators</div>
-      <h2 class="section-h2">Precision instruments.<br><strong>Purpose-built.</strong></h2>
-      <p class="section-lead">These are the tools that give us the edge — built to fill gaps that off-the-shelf indicators miss, forged in live sessions and refined through real P&amp;L. See the samples below, and if you have a trading need that no existing tool solves, we're open to building it together.</p>
+      <div class="eyebrow" data-i18n="tools.eyebrow">Custom Indicators</div>
+      <h2 class="section-h2" data-i18n-html="tools.h2">Precision instruments.<br><strong>Purpose-built.</strong></h2>
+      <p class="section-lead" data-i18n="tools.lead">These are the tools that give us the edge — built to fill gaps that off-the-shelf indicators miss, forged in live sessions and refined through real P&amp;L. See the samples below, and if you have a trading need that no existing tool solves, we're open to building it together.</p>
     </div>
 
     <div class="tools-grid">
@@ -981,10 +998,10 @@ footer {
             <polyline points="250,50 270,38 290,44 310,28 330,34 350,18 370,24 392,14" stroke="rgba(43,255,214,.65)" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </div>
-        <span class="tool-label">Volume + Order Blocks</span>
-        <h3>VolTick Orderblock</h3>
-        <p>Detects the confluence of volume spikes and institutional order block zones — marking the precise areas where smart money has already positioned. Plan entries before the move, not after it.</p>
-        <span class="tool-link" onclick="event.stopPropagation()">View on TradingView →</span>
+        <span class="tool-label" data-i18n="tools.label.0">Volume + Order Blocks</span>
+        <h3 data-i18n="tools.title.0">VolTick Orderblock</h3>
+        <p data-i18n="tools.body.0">Detects the confluence of volume spikes and institutional order block zones — marking the precise areas where smart money has already positioned. Plan entries before the move, not after it.</p>
+        <span class="tool-link" onclick="event.stopPropagation()" data-i18n="tools.link">View on TradingView →</span>
       </a>
 
       <a class="glass-card tool-card reveal d2 from-right" href="https://in.tradingview.com/script/siPMJq8U-RSI-divergence-on-Price-Chart/" target="_blank">
@@ -1009,10 +1026,10 @@ footer {
             <polyline points="180,64 202,46 224,56 246,36 268,46 290,26 312,36 334,16 356,24 378,12 398,16" stroke="rgba(43,255,214,.55)" stroke-width="1.6" fill="none" stroke-linecap="round"/>
           </svg>
         </div>
-        <span class="tool-label">Momentum · Price Chart</span>
-        <h3>RSI Divergence on Price Chart</h3>
-        <p>Regular and hidden divergence plotted directly on the price chart — where context is immediate and execution is fast. No secondary pane, no repainting. The momentum warning system that belongs on the candles.</p>
-        <span class="tool-link" onclick="event.stopPropagation()">View on TradingView →</span>
+        <span class="tool-label" data-i18n="tools.label.1">Momentum · Price Chart</span>
+        <h3 data-i18n="tools.title.1">RSI Divergence on Price Chart</h3>
+        <p data-i18n="tools.body.1">Regular and hidden divergence plotted directly on the price chart — where context is immediate and execution is fast. No secondary pane, no repainting. The momentum warning system that belongs on the candles.</p>
+        <span class="tool-link" onclick="event.stopPropagation()" data-i18n="tools.link">View on TradingView →</span>
       </a>
 
     </div>
@@ -1025,8 +1042,8 @@ footer {
 <section class="section" id="testimonials">
   <div class="container">
     <div class="reveal from-right">
-      <div class="eyebrow">Testimonials</div>
-      <h2 class="section-h2">Results speak louder.<br><em>Here's what traders say.</em></h2>
+      <div class="eyebrow" data-i18n="testi.eyebrow">Testimonials</div>
+      <h2 class="section-h2" data-i18n-html="testi.h2">Results speak louder.<br><em>Here's what traders say.</em></h2>
     </div>
 
     <div class="testimonial-wrap reveal d1">
@@ -1035,12 +1052,12 @@ footer {
 
           <div class="testimonial-slide">
             <div class="glass-card t-inner">
-              <p class="t-quote">"AangBui's Wyckoff read on XAUUSD was a level above anything I had seen from a retail analyst. He called the accumulation phase before the breakout, gave me a clear invalidation, and the trade ran exactly as mapped. This is what institutional thinking actually looks like."</p>
+              <p class="t-quote" data-i18n="testi.quote.0">"AangBui's Wyckoff read on XAUUSD was a level above anything I had seen from a retail analyst. He called the accumulation phase before the breakout, gave me a clear invalidation, and the trade ran exactly as mapped. This is what institutional thinking actually looks like."</p>
               <div class="t-author">
                 <div class="t-avatar">NN</div>
                 <div>
                   <span class="t-name">Nam Nguyen</span>
-                  <span class="t-role">Prop Trader · Ho Chi Minh City</span>
+                  <span class="t-role" data-i18n="testi.role.0">Prop Trader · Ho Chi Minh City</span>
                 </div>
               </div>
             </div>
@@ -1048,12 +1065,12 @@ footer {
 
           <div class="testimonial-slide">
             <div class="glass-card t-inner">
-              <p class="t-quote">"I had been struggling to make sense of the VN30F structure for months. One session with Aang using Elliott Wave mapping and suddenly the noise became a roadmap. The VolTick indicator alone changed how I time entries — it removed the guesswork from order blocks entirely."</p>
+              <p class="t-quote" data-i18n="testi.quote.1">"I had been struggling to make sense of the VN30F structure for months. One session with Aang using Elliott Wave mapping and suddenly the noise became a roadmap. The VolTick indicator alone changed how I time entries — it removed the guesswork from order blocks entirely."</p>
               <div class="t-author">
                 <div class="t-avatar">DN</div>
                 <div>
                   <span class="t-name">Dat Nguyen</span>
-                  <span class="t-role">Stock Trader · Ho Chi Minh City</span>
+                  <span class="t-role" data-i18n="testi.role.1">Stock Trader · Ho Chi Minh City</span>
                 </div>
               </div>
             </div>
@@ -1061,12 +1078,12 @@ footer {
 
           <div class="testimonial-slide">
             <div class="glass-card t-inner">
-              <p class="t-quote">"The RSI indicator is the most honest momentum tool I have used on BTC. No repainting, no lag — just clean signals on the price chart where they belong. Aang's analysis backs it up with context that most traders never bother to build."</p>
+              <p class="t-quote" data-i18n="testi.quote.2">"The RSI indicator is the most honest momentum tool I have used on BTC. No repainting, no lag — just clean signals on the price chart where they belong. Aang's analysis backs it up with context that most traders never bother to build."</p>
               <div class="t-author">
                 <div class="t-avatar">DUY</div>
                 <div>
                   <span class="t-name">Duy Nguyen</span>
-                  <span class="t-role">Crypto Swing Trader · Ha Noi</span>
+                  <span class="t-role" data-i18n="testi.role.2">Crypto Swing Trader · Ha Noi</span>
                 </div>
               </div>
             </div>
@@ -1074,12 +1091,12 @@ footer {
 
           <div class="testimonial-slide">
             <div class="glass-card t-inner">
-              <p class="t-quote">"I'm based in Hanoi and found Aang through a referral. What surprised me most was that the pricing was genuinely accessible — yet the depth of analysis, the clarity of setups, the honesty when a trade doesn't work out — it all reflects the integrity of someone who actually trades his own calls. International quality, local heart. That's rare."</p>
+              <p class="t-quote" data-i18n="testi.quote.3">"I'm based in Hanoi and found Aang through a referral. What surprised me most was that the pricing was genuinely accessible — yet the depth of analysis, the clarity of setups, the honesty when a trade doesn't work out — it all reflects the integrity of someone who actually trades his own calls. International quality, local heart. That's rare."</p>
               <div class="t-author">
                 <div class="t-avatar">LN</div>
                 <div>
                   <span class="t-name">Linh Nguyen</span>
-                  <span class="t-role">Independent Trader · Ha Noi</span>
+                  <span class="t-role" data-i18n="testi.role.3">Independent Trader · Ha Noi</span>
                 </div>
               </div>
             </div>
@@ -1087,12 +1104,12 @@ footer {
 
           <div class="testimonial-slide">
             <div class="glass-card t-inner">
-              <p class="t-quote">"I used to trade crypto only on higher timeframes — slow entries, waiting days for a setup. Lower timeframes always felt like too much noise. Aang Bui's tools changed that completely. VolTick and the RSI Divergence indicator gave me a real framework to read intraday price action. Now I trade LTF with actual confidence — it covers my daily living expenses, and that genuinely matters."</p>
+              <p class="t-quote" data-i18n="testi.quote.4">"I used to trade crypto only on higher timeframes — slow entries, waiting days for a setup. Lower timeframes always felt like too much noise. Aang Bui's tools changed that completely. VolTick and the RSI Divergence indicator gave me a real framework to read intraday price action. Now I trade LTF with actual confidence — it covers my daily living expenses, and that genuinely matters."</p>
               <div class="t-author">
                 <div class="t-avatar">KV</div>
                 <div>
                   <span class="t-name">Khue Vo</span>
-                  <span class="t-role">Crypto Trader · Ho Chi Minh City</span>
+                  <span class="t-role" data-i18n="testi.role.4">Crypto Trader · Ho Chi Minh City</span>
                 </div>
               </div>
             </div>
@@ -1102,11 +1119,11 @@ footer {
       </div>
 
       <div class="t-controls">
-        <button class="t-btn" id="tPrev" aria-label="Previous">
+        <button class="t-btn" id="tPrev" aria-label="Previous" data-i18n-aria="carousel.prev.label">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M9 2L4 7l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
         <div class="t-dots" id="tDots"></div>
-        <button class="t-btn" id="tNext" aria-label="Next">
+        <button class="t-btn" id="tNext" aria-label="Next" data-i18n-aria="carousel.next.label">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
       </div>
@@ -1120,18 +1137,18 @@ footer {
   <div class="container">
     <div class="reveal from-top">
       <div class="glass-card contact-card">
-        <div class="eyebrow" style="justify-content:center;display:flex;">Get In Touch</div>
-        <h2>The market doesn't wait.<br><em>Join the Wave.</em></h2>
-        <p class="sub">Whether you're here for the analysis, the tools, or to trade through the IB partnership — every conversation is handled personally. The door is open.</p>
+        <div class="eyebrow" style="justify-content:center;display:flex;" data-i18n="contact.eyebrow">Get In Touch</div>
+        <h2 data-i18n-html="contact.h2">The market doesn't wait.<br><em>Join the Wave.</em></h2>
+        <p class="sub" data-i18n="contact.sub">Whether you're here for the analysis, the tools, or to trade through the IB partnership — every conversation is handled personally. The door is open.</p>
         <div class="contact-btns">
-          <a href="https://t.me/aangbui" class="btn btn-white" target="_blank">✈&ensp;Telegram: @aangbui</a>
-          <a href="mailto:aangbui@gmail.com" class="btn btn-glass">✉&ensp;aangbui@gmail.com</a>
+          <a href="https://t.me/aangbui" class="btn btn-white" target="_blank" data-i18n="contact.btn.telegram">✈&ensp;Telegram: @aangbui</a>
+          <a href="mailto:aangbui@gmail.com" class="btn btn-glass" data-i18n="contact.btn.email">✉&ensp;aangbui@gmail.com</a>
         </div>
         <span class="contact-divider"></span>
         <div class="account-block">
-          <h3>Trade smarter. Pay less in spreads.</h3>
-          <p>Open a live account through the AangBui IB partnership with Vantage — and trade with tighter spreads negotiated for this community. Same platform. Better conditions.</p>
-          <a href="https://vigco.co/la-com-inv/vi/aangbui" class="btn btn-teal" target="_blank" style="margin:0 auto;">Open Account &amp; Join AangBui →</a>
+          <h3 data-i18n="account.title">Trade smarter. Pay less in spreads.</h3>
+          <p data-i18n="account.body">Open a live account through the AangBui IB partnership with Vantage — and trade with tighter spreads negotiated for this community. Same platform. Better conditions.</p>
+          <a href="https://vigco.co/la-com-inv/vi/aangbui" class="btn btn-teal" target="_blank" style="margin:0 auto;" data-i18n="account.btn">Open Account &amp; Join AangBui →</a>
         </div>
       </div>
     </div>
@@ -1143,19 +1160,19 @@ footer {
   <div class="container">
     <div class="footer-brand">Trading with <span>AangBui</span></div>
     <div class="footer-inner">
-      <div class="footer-tag">Real Analysis. Real Capital. Real Edge.</div>
+      <div class="footer-tag" data-i18n="footer.tag">Real Analysis. Real Capital. Real Edge.</div>
       <div class="footer-links">
-        <a href="https://t.me/aangbui" target="_blank">✈ Telegram @aangbui</a>
-        <a href="mailto:aangbui@gmail.com">✉ aangbui@gmail.com</a>
-        <a href="https://in.tradingview.com/u/aangbui/" target="_blank">◈ TradingView Profile</a>
+        <a href="https://t.me/aangbui" target="_blank" data-i18n="footer.link.telegram">✈ Telegram @aangbui</a>
+        <a href="mailto:aangbui@gmail.com" data-i18n="footer.link.email">✉ aangbui@gmail.com</a>
+        <a href="https://in.tradingview.com/u/aangbui/" target="_blank" data-i18n="footer.link.tv">◈ TradingView Profile</a>
       </div>
     </div>
     <div class="footer-bottom">
-      <span class="footer-copy">© 2026 Trading with AangBui. All rights reserved.</span>
-      <span class="footer-copy">Trading involves substantial risk. Not financial advice.</span>
+      <span class="footer-copy" data-i18n="footer.copy.rights">© 2026 Trading with AangBui. All rights reserved.</span>
+      <span class="footer-copy" data-i18n="footer.copy.risk">Trading involves substantial risk. Not financial advice.</span>
     </div>
     <div class="footer-disclaimer">
-      <p>Trading with AangBui is an independent market analysis and education platform. All content published on this website, Telegram channel, or any associated channels — including trade ideas, indicator signals, market commentary, and analysis — is provided for informational and educational purposes only. Nothing on this platform constitutes financial advice, investment advice, trading advice, or a recommendation to buy or sell any financial instrument. Past performance is not indicative of future results. Trading leveraged products such as forex, commodities, indices, and futures carries a high level of risk and may not be suitable for all investors. You may lose more than your initial investment. You should carefully consider your investment objectives, level of experience, and risk appetite before making any trading decisions. AangBui is not a licensed financial advisor, broker, or registered investment adviser under any jurisdiction. Any reliance you place on information provided here is strictly at your own risk. Always conduct your own research and consult a qualified financial professional before making investment decisions.</p>
+      <p data-i18n="footer.disclaimer">Trading with AangBui is an independent market analysis and education platform. All content published on this website, Telegram channel, or any associated channels — including trade ideas, indicator signals, market commentary, and analysis — is provided for informational and educational purposes only. Nothing on this platform constitutes financial advice, investment advice, trading advice, or a recommendation to buy or sell any financial instrument. Past performance is not indicative of future results. Trading leveraged products such as forex, commodities, indices, and futures carries a high level of risk and may not be suitable for all investors. You may lose more than your initial investment. You should carefully consider your investment objectives, level of experience, and risk appetite before making any trading decisions. AangBui is not a licensed financial advisor, broker, or registered investment adviser under any jurisdiction. Any reliance you place on information provided here is strictly at your own risk. Always conduct your own research and consult a qualified financial professional before making investment decisions.</p>
     </div>
   </div>
 </footer>
@@ -1254,25 +1271,41 @@ document.querySelectorAll('.hero .reveal').forEach(el => setTimeout(() => el.cla
 })();
 
 /* ── Ticker ── */
-(function () {
-  const items = [
-    { sym: 'XAUUSD',   label: 'Spot Gold'       },
-    { sym: 'XAGUSD',   label: 'Spot Silver'     },
-    { sym: 'XCUUSD',   label: 'Copper'          },
-    { sym: 'RC1!',     label: 'Robusta Coffee'  },
-    { sym: 'SP500',    label: 'S&P 500'         },
-    { sym: 'USOIL',    label: 'Crude Oil WTI'   },
-    { sym: 'BTCUSDT',  label: 'Bitcoin'         },
-    { sym: 'VN30F',    label: 'VN30 Futures'    },
-    { sym: 'PL1!',     label: 'Platinum'        },
-    { sym: 'VNINDEX',  label: 'Vietnam Index'   },
-  ];
+const TICKER_ITEMS = {
+  en: [
+    { sym: 'XAUUSD',  label: 'Spot Gold'      },
+    { sym: 'XAGUSD',  label: 'Spot Silver'    },
+    { sym: 'XCUUSD',  label: 'Copper'         },
+    { sym: 'RC1!',    label: 'Robusta Coffee' },
+    { sym: 'SP500',   label: 'S&P 500'        },
+    { sym: 'USOIL',   label: 'Crude Oil WTI'  },
+    { sym: 'BTCUSDT', label: 'Bitcoin'        },
+    { sym: 'VN30F',   label: 'VN30 Futures'   },
+    { sym: 'PL1!',    label: 'Platinum'       },
+    { sym: 'VNINDEX', label: 'Vietnam Index'  },
+  ],
+  vi: [
+    { sym: 'XAUUSD',  label: 'Vàng Giao Ngay'   },
+    { sym: 'XAGUSD',  label: 'Bạc Giao Ngay'    },
+    { sym: 'XCUUSD',  label: 'Đồng'              },
+    { sym: 'RC1!',    label: 'Cà Phê Robusta'   },
+    { sym: 'SP500',   label: 'S&P 500'           },
+    { sym: 'USOIL',   label: 'Dầu Thô WTI'      },
+    { sym: 'BTCUSDT', label: 'Bitcoin'           },
+    { sym: 'VN30F',   label: 'Hợp Đồng VN30'    },
+    { sym: 'PL1!',    label: 'Bạch Kim'          },
+    { sym: 'VNINDEX', label: 'Chỉ Số VNINDEX'   },
+  ]
+};
+function renderTicker(lang) {
   const track = document.getElementById('tickerTrack');
+  const items = TICKER_ITEMS[lang] || TICKER_ITEMS.en;
   const html = items.map(it =>
     `<div class="ticker-item"><span class="sym">${it.sym}</span><span>${it.label}</span><span class="ticker-dot"></span></div>`
   ).join('');
   track.innerHTML = html + html;
-})();
+}
+renderTicker('en');
 
 /* ── Method tabs — auto-advance ── */
 (function () {
@@ -1424,6 +1457,231 @@ document.querySelectorAll('.hero .reveal').forEach(el => setTimeout(() => el.cla
   }, { passive: true });
 
   tick();
+})();
+
+/* ── i18n ── */
+const TRANSLATIONS = {
+  en: {
+    'meta.title':           'Trading with AangBui — Precision Market Intelligence',
+    'meta.desc':            'Institutional-grade multi-asset market analysis by AangBui — covering XAUUSD, Bitcoin, VN30, SP500, crude oil and more. Wyckoff, Elliott Wave, and custom TradingView indicators for traders who demand an edge.',
+    'meta.og.title':        'Trading with AangBui — Precision Market Intelligence',
+    'meta.og.desc':         'Institutional-grade multi-asset analysis — Wyckoff, Elliott Wave, and purpose-built TradingView indicators. Real-time signals across Gold, Bitcoin, VN30, SP500, and more.',
+    'meta.twitter.title':   'Trading with AangBui — Precision Market Intelligence',
+    'meta.twitter.desc':    'Institutional-grade multi-asset analysis — Wyckoff, Elliott Wave, and purpose-built TradingView indicators.',
+    'switcher.label':       'VI',
+    'nav.markets':          'Markets',
+    'nav.methodology':      'Methodology',
+    'nav.indicators':       'Indicators',
+    'nav.testimonials':     'Testimonials',
+    'nav.cta':              'Join the Community →',
+    'nav.toggle.label':     'Menu',
+    'hero.eyebrow':         'Market Intelligence · AangBui',
+    'hero.h1':              'Markets reward<br><strong><em>precision.</em></strong><br>Not guesses.',
+    'hero.sub':             'Real analysis across Gold, Bitcoin, indices, and commodities — combining Wyckoff, Elliott Wave, and custom-built tools into high-conviction setups. Every call published is one traded with real capital.',
+    'hero.btn.telegram':    '✈\u2005Connect on Telegram',
+    'hero.btn.email':       '✉\u2005Send an Email',
+    'hero.btn.account':     'Open a Live Account →',
+    'scroll.hint':          'Scroll',
+    'services.eyebrow':     'Coverage',
+    'services.h2':          'The markets tracked.<br><strong>Every session.</strong>',
+    'services.lead':        'Real-time signals powered by first-party data from broker feeds and TradingView — delivered directly to your inbox or Telegram the moment a setup is confirmed. No middlemen, no delay. Cutting-edge technology working continuously so you never miss a move.',
+    'services.signal.title':'Real-time signals. Every session.',
+    'services.signal.sub':  'Entry, stop, and target delivered live — via Telegram and TradingView alerts — before the move develops, not after. Every signal is traded with real capital.',
+    'method.eyebrow':       'The Framework',
+    'method.h2':            'Four disciplines.<br><em>One conviction.</em>',
+    'method.lead':          'Each technical analysis framework gives a distinct view of market movement — structure, cycle, execution, momentum. Together they remove ambiguity and produce clarity: a unified read of what the market is doing and a concrete action plan.',
+    'method.tab.0':         'Wyckoff',
+    'method.tab.1':         'Elliott Wave',
+    'method.tab.2':         'Price Action',
+    'method.tab.3':         'RSI Indicators',
+    'method.title.0':       'Wyckoff',
+    'method.title.1':       'Elliott Wave Analysis',
+    'method.title.2':       'Price Action',
+    'method.title.3':       'Advanced RSI',
+    'method.body.0':        'Institutional accumulation and distribution leave a footprint in volume and price spread. Wyckoff decodes that footprint — mapping the structural phases that precede major moves long before they reach the breakout bar. It separates reading price from understanding what\'s actually driving it.',
+    'method.body.1':        'Markets move in identifiable cycles. Elliott Wave provides the structural roadmap — locating where price stands in the larger pattern and projecting high-probability targets before the move fully develops. Every trade has a thesis, not just a trigger.',
+    'method.body.2':        'The cleanest signal is still the chart. Candlestick behavior at key levels, institutional order flow fingerprints, structural reactions — read without lag or distortion. Fewer tools, sharper reads. Clarity itself is an edge.',
+    'method.body.3':        'Momentum shifts before price confirms. Advanced divergence signals plotted directly on the candle chart — not buried in a secondary pane — surface exhaustion and reversal cues that conventional setups consistently miss. No repainting. No chasing.',
+    'method.badge.0':       'Structure',
+    'method.badge.1':       'Cycles',
+    'method.badge.2':       'Execution',
+    'method.badge.3':       'Confirmation',
+    'tools.eyebrow':        'Custom Indicators',
+    'tools.h2':             'Precision instruments.<br><strong>Purpose-built.</strong>',
+    'tools.lead':           'These are the tools that give us the edge — built to fill gaps that off-the-shelf indicators miss, forged in live sessions and refined through real P&L. See the samples below, and if you have a trading need that no existing tool solves, we\'re open to building it together.',
+    'tools.label.0':        'Volume + Order Blocks',
+    'tools.label.1':        'Momentum · Price Chart',
+    'tools.title.0':        'VolTick Orderblock',
+    'tools.title.1':        'RSI Divergence on Price Chart',
+    'tools.body.0':         'Detects the confluence of volume spikes and institutional order block zones — marking the precise areas where smart money has already positioned. Plan entries before the move, not after it.',
+    'tools.body.1':         'Regular and hidden divergence plotted directly on the price chart — where context is immediate and execution is fast. No secondary pane, no repainting. The momentum warning system that belongs on the candles.',
+    'tools.link':           'View on TradingView →',
+    'testi.eyebrow':        'Testimonials',
+    'testi.h2':             'Results speak louder.<br><em>Here\'s what traders say.</em>',
+    'testi.quote.0':        '"AangBui\'s Wyckoff read on XAUUSD was a level above anything I had seen from a retail analyst. He called the accumulation phase before the breakout, gave me a clear invalidation, and the trade ran exactly as mapped. This is what institutional thinking actually looks like."',
+    'testi.quote.1':        '"I had been struggling to make sense of the VN30F structure for months. One session with Aang using Elliott Wave mapping and suddenly the noise became a roadmap. The VolTick indicator alone changed how I time entries — it removed the guesswork from order blocks entirely."',
+    'testi.quote.2':        '"The RSI indicator is the most honest momentum tool I have used on BTC. No repainting, no lag — just clean signals on the price chart where they belong. Aang\'s analysis backs it up with context that most traders never bother to build."',
+    'testi.quote.3':        '"I\'m based in Hanoi and found Aang through a referral. What surprised me most was that the pricing was genuinely accessible — yet the depth of analysis, the clarity of setups, the honesty when a trade doesn\'t work out — it all reflects the integrity of someone who actually trades his own calls. International quality, local heart. That\'s rare."',
+    'testi.quote.4':        '"I used to trade crypto only on higher timeframes — slow entries, waiting days for a setup. Lower timeframes always felt like too much noise. Aang Bui\'s tools changed that completely. VolTick and the RSI Divergence indicator gave me a real framework to read intraday price action. Now I trade LTF with actual confidence — it covers my daily living expenses, and that genuinely matters."',
+    'testi.role.0':         'Prop Trader · Ho Chi Minh City',
+    'testi.role.1':         'Stock Trader · Ho Chi Minh City',
+    'testi.role.2':         'Crypto Swing Trader · Ha Noi',
+    'testi.role.3':         'Independent Trader · Ha Noi',
+    'testi.role.4':         'Crypto Trader · Ho Chi Minh City',
+    'carousel.prev.label':  'Previous',
+    'carousel.next.label':  'Next',
+    'contact.eyebrow':      'Get In Touch',
+    'contact.h2':           'The market doesn\'t wait.<br><em>Join the Wave.</em>',
+    'contact.sub':          'Whether you\'re here for the analysis, the tools, or to trade through the IB partnership — every conversation is handled personally. The door is open.',
+    'contact.btn.telegram': '✈\u2005Telegram: @aangbui',
+    'contact.btn.email':    '✉\u2005aangbui@gmail.com',
+    'account.title':        'Trade smarter. Pay less in spreads.',
+    'account.body':         'Open a live account through the AangBui IB partnership with Vantage — and trade with tighter spreads negotiated for this community. Same platform. Better conditions.',
+    'account.btn':          'Open Account & Join AangBui →',
+    'footer.tag':           'Real Analysis. Real Capital. Real Edge.',
+    'footer.link.telegram': '✈ Telegram @aangbui',
+    'footer.link.email':    '✉ aangbui@gmail.com',
+    'footer.link.tv':       '◈ TradingView Profile',
+    'footer.copy.rights':   '© 2026 Trading with AangBui. All rights reserved.',
+    'footer.copy.risk':     'Trading involves substantial risk. Not financial advice.',
+    'footer.disclaimer':    'Trading with AangBui is an independent market analysis and education platform. All content published on this website, Telegram channel, or any associated channels — including trade ideas, indicator signals, market commentary, and analysis — is provided for informational and educational purposes only. Nothing on this platform constitutes financial advice, investment advice, trading advice, or a recommendation to buy or sell any financial instrument. Past performance is not indicative of future results. Trading leveraged products such as forex, commodities, indices, and futures carries a high level of risk and may not be suitable for all investors. You may lose more than your initial investment. You should carefully consider your investment objectives, level of experience, and risk appetite before making any trading decisions. AangBui is not a licensed financial advisor, broker, or registered investment adviser under any jurisdiction. Any reliance you place on information provided here is strictly at your own risk. Always conduct your own research and consult a qualified financial professional before making investment decisions.',
+  },
+  vi: {
+    'meta.title':           'Trading with AangBui — Phân Tích Thị Trường Chính Xác',
+    'meta.desc':            'Phân tích thị trường đa tài sản theo chuẩn tổ chức bởi AangBui — bao gồm XAUUSD, Bitcoin, VN30, SP500, dầu thô và nhiều hơn nữa. Wyckoff, Sóng Elliott và các chỉ báo TradingView tùy chỉnh dành cho nhà giao dịch cần lợi thế thực sự.',
+    'meta.og.title':        'Trading with AangBui — Phân Tích Thị Trường Chính Xác',
+    'meta.og.desc':         'Phân tích đa tài sản theo chuẩn tổ chức — Wyckoff, Sóng Elliott và các chỉ báo TradingView được xây dựng có mục đích. Tín hiệu thời gian thực trên Vàng, Bitcoin, VN30, SP500 và nhiều hơn nữa.',
+    'meta.twitter.title':   'Trading with AangBui — Phân Tích Thị Trường Chính Xác',
+    'meta.twitter.desc':    'Phân tích đa tài sản theo chuẩn tổ chức — Wyckoff, Sóng Elliott và các chỉ báo TradingView được xây dựng có mục đích.',
+    'switcher.label':       'EN',
+    'nav.markets':          'Thị Trường',
+    'nav.methodology':      'Phương Pháp',
+    'nav.indicators':       'Chỉ Báo',
+    'nav.testimonials':     'Đánh Giá',
+    'nav.cta':              'Tham Gia Cộng Đồng →',
+    'nav.toggle.label':     'Menu',
+    'hero.eyebrow':         'Phân Tích Thị Trường · AangBui',
+    'hero.h1':              'Thị trường thưởng<br><strong><em>sự chính xác.</em></strong><br>Không phải dự đoán.',
+    'hero.sub':             'Phân tích thực tiễn về Vàng, Bitcoin, chỉ số và hàng hóa — kết hợp Wyckoff, Sóng Elliott và công cụ tự xây dựng thành các setup có độ tin cậy cao. Mọi tín hiệu được công bố đều được giao dịch bằng vốn thực.',
+    'hero.btn.telegram':    '✈\u2005Kết Nối Telegram',
+    'hero.btn.email':       '✉\u2005Gửi Email',
+    'hero.btn.account':     'Mở Tài Khoản Thực →',
+    'scroll.hint':          'Cuộn',
+    'services.eyebrow':     'Phạm Vi Phủ Sóng',
+    'services.h2':          'Các thị trường được theo dõi.<br><strong>Mỗi phiên giao dịch.</strong>',
+    'services.lead':        'Tín hiệu thời gian thực từ dữ liệu trực tiếp của sàn môi giới và TradingView — được giao thẳng đến hộp thư hoặc Telegram của bạn ngay khi setup được xác nhận. Không qua trung gian, không có độ trễ. Công nghệ tiên tiến hoạt động liên tục để bạn không bỏ lỡ bất kỳ cơ hội nào.',
+    'services.signal.title':'Tín hiệu thời gian thực. Mỗi phiên giao dịch.',
+    'services.signal.sub':  'Điểm vào, dừng lỗ và mục tiêu được giao trực tiếp — qua Telegram và cảnh báo TradingView — trước khi cú đi giá hình thành, không phải sau. Mọi tín hiệu đều được giao dịch bằng vốn thực.',
+    'method.eyebrow':       'Khung Phân Tích',
+    'method.h2':            'Bốn trường phái.<br><em>Một kết luận.</em>',
+    'method.lead':          'Mỗi khung phân tích kỹ thuật cho thấy một góc nhìn riêng về chuyển động thị trường — cấu trúc, chu kỳ, thực thi, động lượng. Kết hợp lại, chúng loại bỏ sự mơ hồ và tạo ra sự rõ ràng: một đánh giá thống nhất về thị trường đang làm gì và một kế hoạch hành động cụ thể.',
+    'method.tab.0':         'Wyckoff',
+    'method.tab.1':         'Sóng Elliott',
+    'method.tab.2':         'Price Action',
+    'method.tab.3':         'Chỉ Báo RSI',
+    'method.title.0':       'Wyckoff',
+    'method.title.1':       'Phân Tích Sóng Elliott',
+    'method.title.2':       'Price Action',
+    'method.title.3':       'RSI Nâng Cao',
+    'method.body.0':        'Tích lũy và phân phối của tổ chức để lại dấu vết trong khối lượng và biên độ giá. Wyckoff giải mã dấu vết đó — lập bản đồ các giai đoạn cấu trúc diễn ra trước các đợt di chuyển lớn từ lâu trước khi chúng đạt đến thanh breakout. Nó phân biệt việc đọc giá với việc hiểu thực sự điều gì đang thúc đẩy nó.',
+    'method.body.1':        'Thị trường di chuyển theo các chu kỳ có thể nhận biết. Sóng Elliott cung cấp lộ trình cấu trúc — xác định vị trí giá đang đứng trong mô hình lớn hơn và dự báo các mục tiêu xác suất cao trước khi cú đi giá hoàn toàn phát triển. Mọi giao dịch đều có luận điểm, không chỉ là trigger.',
+    'method.body.2':        'Tín hiệu rõ ràng nhất vẫn là biểu đồ. Hành vi nến tại các mức quan trọng, dấu vết dòng tiền tổ chức, phản ứng cấu trúc — được đọc mà không có độ trễ hay méo mó. Ít công cụ hơn, đọc sắc nét hơn. Sự rõ ràng bản thân nó là một lợi thế.',
+    'method.body.3':        'Động lượng dịch chuyển trước khi giá xác nhận. Tín hiệu phân kỳ nâng cao được vẽ trực tiếp trên biểu đồ nến — không chôn vùi trong khung phụ — phát hiện dấu hiệu kiệt sức và đảo chiều mà các setup thông thường liên tục bỏ lỡ. Không vẽ lại. Không đuổi giá.',
+    'method.badge.0':       'Cấu Trúc',
+    'method.badge.1':       'Chu Kỳ',
+    'method.badge.2':       'Thực Thi',
+    'method.badge.3':       'Xác Nhận',
+    'tools.eyebrow':        'Chỉ Báo Tùy Chỉnh',
+    'tools.h2':             'Công cụ chính xác.<br><strong>Được xây dựng có mục đích.</strong>',
+    'tools.lead':           'Đây là những công cụ mang lại lợi thế cho chúng tôi — được xây dựng để lấp đầy khoảng trống mà các chỉ báo thông thường bỏ lỡ, được rèn giũa trong các phiên giao dịch thực và tinh chỉnh qua P&L thực tế. Xem các mẫu bên dưới, và nếu bạn có nhu cầu giao dịch mà không có công cụ hiện tại nào giải quyết được, chúng tôi sẵn sàng xây dựng cùng bạn.',
+    'tools.label.0':        'Khối Lượng + Khối Lệnh',
+    'tools.label.1':        'Động Lượng · Biểu Đồ Giá',
+    'tools.title.0':        'VolTick Orderblock',
+    'tools.title.1':        'RSI Divergence trên Biểu Đồ Giá',
+    'tools.body.0':         'Phát hiện sự hội tụ của đỉnh khối lượng và vùng khối lệnh tổ chức — đánh dấu chính xác các khu vực nơi tiền thông minh đã vào vị thế. Lập kế hoạch điểm vào trước cú đi giá, không phải sau đó.',
+    'tools.body.1':         'Phân kỳ thường và ẩn được vẽ trực tiếp trên biểu đồ giá — nơi bối cảnh là tức thời và thực thi là nhanh chóng. Không có khung phụ, không vẽ lại. Hệ thống cảnh báo động lượng thuộc về nến.',
+    'tools.link':           'Xem trên TradingView →',
+    'testi.eyebrow':        'Đánh Giá',
+    'testi.h2':             'Kết quả nói lên tất cả.<br><em>Đây là những gì nhà giao dịch nói.</em>',
+    'testi.quote.0':        '"Phân tích Wyckoff của AangBui về XAUUSD vượt xa bất kỳ nhà phân tích bán lẻ nào tôi từng gặp. Anh ấy xác định giai đoạn tích lũy trước breakout, đưa ra điểm mất hiệu lực rõ ràng, và giao dịch diễn ra chính xác như đã lập bản đồ. Đây mới là tư duy thực sự của tổ chức."',
+    'testi.quote.1':        '"Tôi đã vật lộn hàng tháng để hiểu cấu trúc VN30F. Một buổi với Aang dùng Sóng Elliott và đột nhiên mọi thứ hỗn loạn trở thành lộ trình. Chỉ riêng chỉ báo VolTick đã thay đổi cách tôi vào lệnh — nó loại bỏ hoàn toàn sự phỏng đoán khỏi khối lệnh."',
+    'testi.quote.2':        '"Chỉ báo RSI là công cụ động lượng trung thực nhất tôi từng dùng trên BTC. Không vẽ lại, không độ trễ — chỉ là tín hiệu sạch trên biểu đồ giá đúng nơi chúng thuộc về. Phân tích của Aang hỗ trợ nó bằng bối cảnh mà hầu hết nhà giao dịch không bao giờ bận tâm xây dựng."',
+    'testi.quote.3':        '"Tôi ở Hà Nội và tìm thấy Aang qua giới thiệu. Điều tôi ngạc nhiên nhất là mức giá thực sự phải chăng — nhưng chiều sâu phân tích, sự rõ ràng của các setup, sự thành thật khi giao dịch không thành — tất cả đều phản ánh sự chính trực của người thực sự giao dịch theo lời khuyên của chính mình. Chất lượng quốc tế, trái tim địa phương. Điều đó thật hiếm."',
+    'testi.quote.4':        '"Tôi từng chỉ giao dịch crypto trên khung thời gian cao — vào lệnh chậm, chờ setup hàng ngày. Khung thấp hơn luôn quá nhiều nhiễu. Các công cụ của Aang Bui đã thay đổi điều đó hoàn toàn. VolTick và RSI Divergence cho tôi một khung thực sự để đọc price action trong ngày. Giờ tôi giao dịch LTF với sự tự tin thực sự — nó trang trải chi phí sinh hoạt hàng ngày, và điều đó thực sự có ý nghĩa."',
+    'testi.role.0':         'Prop Trader · TP.HCM',
+    'testi.role.1':         'Nhà Giao Dịch Chứng Khoán · TP.HCM',
+    'testi.role.2':         'Swing Trader Crypto · Hà Nội',
+    'testi.role.3':         'Nhà Giao Dịch Độc Lập · Hà Nội',
+    'testi.role.4':         'Crypto Trader · TP.HCM',
+    'carousel.prev.label':  'Trước',
+    'carousel.next.label':  'Tiếp',
+    'contact.eyebrow':      'Liên Hệ',
+    'contact.h2':           'Thị trường không chờ đợi.<br><em>Tham Gia Ngay.</em>',
+    'contact.sub':          'Dù bạn đến đây vì phân tích, công cụ, hay giao dịch qua quan hệ đối tác IB — mọi cuộc trò chuyện đều được xử lý cá nhân. Cánh cửa luôn mở.',
+    'contact.btn.telegram': '✈\u2005Telegram: @aangbui',
+    'contact.btn.email':    '✉\u2005aangbui@gmail.com',
+    'account.title':        'Giao dịch thông minh hơn. Trả ít spread hơn.',
+    'account.body':         'Mở tài khoản thực qua quan hệ đối tác IB AangBui với Vantage — và giao dịch với spread thấp hơn được đàm phán cho cộng đồng này. Cùng nền tảng. Điều kiện tốt hơn.',
+    'account.btn':          'Mở Tài Khoản & Tham Gia AangBui →',
+    'footer.tag':           'Phân Tích Thực. Vốn Thực. Lợi Thế Thực.',
+    'footer.link.telegram': '✈ Telegram @aangbui',
+    'footer.link.email':    '✉ aangbui@gmail.com',
+    'footer.link.tv':       '◈ TradingView Profile',
+    'footer.copy.rights':   '© 2026 Trading with AangBui. Bảo lưu mọi quyền.',
+    'footer.copy.risk':     'Giao dịch có rủi ro đáng kể. Không phải tư vấn tài chính.',
+    'footer.disclaimer':    'Trading with AangBui là nền tảng phân tích thị trường và giáo dục độc lập. Toàn bộ nội dung được công bố trên website này, kênh Telegram hoặc bất kỳ kênh liên quan nào — bao gồm ý tưởng giao dịch, tín hiệu chỉ báo, bình luận thị trường và phân tích — chỉ được cung cấp cho mục đích thông tin và giáo dục. Không có nội dung nào trên nền tảng này cấu thành tư vấn tài chính, tư vấn đầu tư, tư vấn giao dịch hoặc khuyến nghị mua bán bất kỳ công cụ tài chính nào. Kết quả quá khứ không phải là chỉ báo cho kết quả tương lai. Giao dịch các sản phẩm đòn bẩy như ngoại hối, hàng hóa, chỉ số và hợp đồng tương lai mang rủi ro cao và có thể không phù hợp với tất cả nhà đầu tư. Bạn có thể mất nhiều hơn vốn ban đầu. Hãy cân nhắc kỹ mục tiêu đầu tư, mức độ kinh nghiệm và khả năng chịu rủi ro trước khi đưa ra quyết định giao dịch. AangBui không phải là cố vấn tài chính có phép, môi giới hoặc cố vấn đầu tư đã đăng ký theo bất kỳ thẩm quyền nào. Mọi sự phụ thuộc vào thông tin được cung cấp ở đây hoàn toàn là rủi ro của bạn. Luôn tự nghiên cứu và tham khảo chuyên gia tài chính có chuyên môn trước khi đưa ra quyết định đầu tư.',
+  }
+};
+
+function applyLang(lang) {
+  const t = TRANSLATIONS[lang] || TRANSLATIONS.en;
+  localStorage.setItem('lang', lang);
+  document.documentElement.lang = lang;
+
+  // Text nodes
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const v = t[el.dataset.i18n]; if (v !== undefined) el.textContent = v;
+  });
+  // HTML nodes (contain markup)
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    const v = t[el.dataset.i18nHtml]; if (v !== undefined) el.innerHTML = v;
+  });
+  // Aria-label nodes
+  document.querySelectorAll('[data-i18n-aria]').forEach(el => {
+    const v = t[el.dataset.i18nAria]; if (v !== undefined) el.setAttribute('aria-label', v);
+  });
+
+  // Meta tags
+  document.title = t['meta.title'] || document.title;
+  const metaDesc = document.querySelector('meta[name="description"]');
+  if (metaDesc) metaDesc.setAttribute('content', t['meta.desc'] || '');
+  const ogTitle = document.querySelector('meta[property="og:title"]');
+  if (ogTitle) ogTitle.setAttribute('content', t['meta.og.title'] || '');
+  const ogDesc = document.querySelector('meta[property="og:description"]');
+  if (ogDesc) ogDesc.setAttribute('content', t['meta.og.desc'] || '');
+  const twTitle = document.querySelector('meta[name="twitter:title"]');
+  if (twTitle) twTitle.setAttribute('content', t['meta.twitter.title'] || '');
+  const twDesc = document.querySelector('meta[name="twitter:description"]');
+  if (twDesc) twDesc.setAttribute('content', t['meta.twitter.desc'] || '');
+
+  // Ticker
+  renderTicker(lang);
+
+  // Lang toggle button
+  const btn = document.getElementById('langToggle');
+  if (btn) {
+    btn.textContent = t['switcher.label'] || (lang === 'en' ? 'VI' : 'EN');
+    btn.classList.toggle('lang-vi', lang === 'vi');
+  }
+}
+
+(function () {
+  const btn = document.getElementById('langToggle');
+  if (btn) btn.addEventListener('click', () => {
+    const next = (localStorage.getItem('lang') || 'en') === 'en' ? 'vi' : 'en';
+    applyLang(next);
+  });
+  applyLang(localStorage.getItem('lang') || 'en');
 })();
 
 /* ── Card: 3D tilt + inner spotlight ── */
