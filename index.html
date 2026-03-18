@@ -687,9 +687,10 @@ nav.scrolled {
 }
 .contact-card h2 {
   font-family: var(--ff-display);
-  font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+  font-size: clamp(1.6rem, 4vw, 4.2rem);
   font-weight: 300; line-height: 1.1;
   letter-spacing: -.025em; margin-bottom: 1.25rem;
+  white-space: nowrap;
 }
 .contact-card h2 strong { font-weight: 700; }
 .contact-card h2 em { font-style: italic; color: var(--teal); }
@@ -841,7 +842,7 @@ footer {
         <h2 class="section-h2">The markets tracked.<br><strong>Every session.</strong></h2>
       </div>
       <div class="reveal d1 from-right">
-        <p class="section-lead">Gold, Silver, Bitcoin, Vietnamese indices, and crude oil — broad coverage, surgical analysis. Signals delivered via Telegram and TradingView the moment a setup is confirmed. No recycled calls, no delayed entries. Just the markets where the edge is real.</p>
+        <p class="section-lead">Real-time signals powered by first-party data from broker feeds and TradingView — delivered directly to your inbox or Telegram the moment a setup is confirmed. No middlemen, no delay. Cutting-edge technology working continuously so you never miss a move.</p>
       </div>
     </div>
 
@@ -869,7 +870,7 @@ footer {
     <div class="reveal from-right" style="margin-bottom:3.5rem;">
       <div class="eyebrow">The Framework</div>
       <h2 class="section-h2">Four disciplines.<br><em>One conviction.</em></h2>
-      <p class="section-lead">Each framework is independently powerful. Together, they're decisive. Every trade is filtered through structure, cycle, execution, and momentum confirmation.</p>
+      <p class="section-lead">Each technical analysis framework gives a distinct view of market movement — structure, cycle, execution, momentum. Together they remove ambiguity and produce clarity: a unified read of what the market is doing and a concrete action plan.</p>
     </div>
 
     <div class="method-tabs reveal d1 from-left" role="tablist">
@@ -937,7 +938,7 @@ footer {
     <div class="reveal from-left">
       <div class="eyebrow">Custom Indicators</div>
       <h2 class="section-h2">Precision instruments.<br><strong>Purpose-built.</strong></h2>
-      <p class="section-lead">Built to fill gaps that off-the-shelf tools couldn't. Each indicator was forged in live sessions, refined through real P&L, and published on TradingView.</p>
+      <p class="section-lead">These are the tools that give us the edge — built to fill gaps that off-the-shelf indicators miss, forged in live sessions and refined through real P&amp;L. See the samples below, and if you have a trading need that no existing tool solves, we're open to building it together.</p>
     </div>
 
     <div class="tools-grid">
@@ -1104,7 +1105,7 @@ footer {
     <div class="reveal from-top">
       <div class="glass-card contact-card">
         <div class="eyebrow" style="justify-content:center;display:flex;">Get In Touch</div>
-        <h2>The market doesn't wait.<br><em>Join the Wave.</em></h2>
+        <h2>The market doesn't wait. <em>Join the Wave.</em></h2>
         <p class="sub">Whether you're here for the analysis, the tools, or to trade through the IB partnership — every conversation is handled personally. The door is open.</p>
         <div class="contact-btns">
           <a href="https://t.me/aangbui" class="btn btn-white" target="_blank">✈&ensp;Telegram: @aangbui</a>
@@ -1238,18 +1239,15 @@ document.querySelectorAll('.hero .reveal').forEach(el => setTimeout(() => el.cla
 /* ── Ticker ── */
 (function () {
   const items = [
-    { sym: 'XAUUSD',   label: 'Spot Gold'      },
+    { sym: 'XAUUSD',   label: 'Spot Gold'       },
     { sym: 'XAGUSD',   label: 'Spot Silver'     },
+    { sym: 'XCUUSD',   label: 'Copper'          },
+    { sym: 'RC1!',     label: 'Robusta Coffee'  },
     { sym: 'SP500',    label: 'S&P 500'         },
     { sym: 'USOIL',    label: 'Crude Oil WTI'   },
     { sym: 'BTCUSDT',  label: 'Bitcoin'         },
-    { sym: 'EURUSD',   label: 'Euro / USD'      },
-    { sym: 'COPPER',   label: 'Copper'          },
     { sym: 'VN30F',    label: 'VN30 Futures'    },
     { sym: 'PL1!',     label: 'Platinum'        },
-    { sym: 'ZS1!',     label: 'Soybeans'        },
-    { sym: 'ZW1!',     label: 'Wheat'           },
-    { sym: 'COFFEE',   label: 'Arabica Coffee'  },
     { sym: 'VNINDEX',  label: 'Vietnam Index'   },
   ];
   const track = document.getElementById('tickerTrack');
