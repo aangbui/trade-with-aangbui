@@ -1167,7 +1167,7 @@ document.querySelectorAll('.hero .reveal').forEach(el => setTimeout(() => el.cla
 (function () {
   const canvas = document.getElementById('hero-canvas');
   const ctx    = canvas.getContext('2d');
-  let W, H, pts = [], frame = 0;
+  let W, H, pts = [];
   const TEAL  = 'rgba(43,255,214,';
   const WHITE = 'rgba(255,255,255,';
   const N = 80;
@@ -1182,7 +1182,7 @@ document.querySelectorAll('.hero .reveal').forEach(el => setTimeout(() => el.cla
     for (let i = 0; i < N; i++) {
       y += (Math.random() - .49) * H * .04;
       y = Math.max(H * .2, Math.min(H * .8, y));
-      pts.push({ x: (i / (N-1)) * W, y });
+      pts.push({ x: (i / (N-1)) * W, y, vy: (Math.random() - .5) * .6 });
     }
   }
   function drawCandle(x, o, c, h, l) {
@@ -1195,37 +1195,40 @@ document.querySelectorAll('.hero .reveal').forEach(el => setTimeout(() => el.cla
   }
   function draw() {
     ctx.clearRect(0, 0, W, H);
+
+    // Independent random walk per point
+    pts.forEach(p => {
+      p.vy += (Math.random() - .5) * .55;   // random impulse
+      p.vy *= .88;                            // damping
+      if (p.y < H * .18) p.vy += 1.2;        // bounce off ceiling
+      if (p.y > H * .82) p.vy -= 1.2;        // bounce off floor
+      p.y += p.vy;
+    });
+
     const step = W / 26;
     for (let i = 0; i < 26; i++) {
-      const pI = Math.floor(i/26*(N-1));
-      const pN = Math.min(pI+1, N-1);
+      const pI = Math.floor(i / 26 * (N - 1));
+      const pN = Math.min(pI + 1, N - 1);
       const y1 = pts[pI].y, y2 = pts[pN].y;
-      const cx = i*step + step/2;
-      const osc = Math.sin(frame*.016 + i*.4) * H*.022;
-      drawCandle(cx, y1+osc, y2+osc, Math.min(y1,y2)-H*.032+osc, Math.max(y1,y2)+H*.028+osc);
+      drawCandle(i*step + step/2, y1, y2,
+        Math.min(y1,y2) - H*.034, Math.max(y1,y2) + H*.028);
     }
+
     const grad = ctx.createLinearGradient(0, 0, W, 0);
-    grad.addColorStop(0,   TEAL+'.2)');
-    grad.addColorStop(.5,  TEAL+'1)');
-    grad.addColorStop(1,   TEAL+'.6)');
+    grad.addColorStop(0,  TEAL+'.2)');
+    grad.addColorStop(.5, TEAL+'1)');
+    grad.addColorStop(1,  TEAL+'.6)');
     ctx.beginPath();
-    const shift = Math.sin(frame*.007) * H*.018;
-    ctx.moveTo(pts[0].x, pts[0].y + shift);
-    for (let i = 1; i < N-1; i++) {
-      const mx = (pts[i].x + pts[i+1].x)/2;
-      const my = (pts[i].y + pts[i+1].y)/2 + shift;
-      ctx.quadraticCurveTo(pts[i].x, pts[i].y+shift, mx, my);
+    ctx.moveTo(pts[0].x, pts[0].y);
+    for (let i = 1; i < N - 1; i++) {
+      const mx = (pts[i].x + pts[i+1].x) / 2;
+      const my = (pts[i].y + pts[i+1].y) / 2;
+      ctx.quadraticCurveTo(pts[i].x, pts[i].y, mx, my);
     }
     ctx.strokeStyle = grad; ctx.lineWidth = 2.5;
     ctx.shadowColor = TEAL+'1)'; ctx.shadowBlur = 20;
     ctx.stroke(); ctx.shadowBlur = 0;
-    frame++;
-    if (frame % 280 === 0) {
-      pts.forEach(p => {
-        p.y += (Math.random()-.5)*H*.055;
-        p.y = Math.max(H*.2, Math.min(H*.8, p.y));
-      });
-    }
+
     requestAnimationFrame(draw);
   }
   window.addEventListener('resize', resize);
