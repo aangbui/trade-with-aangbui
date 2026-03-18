@@ -468,6 +468,22 @@ nav.scrolled {
   background: transparent; border: 1px solid var(--border);
   color: var(--dim); cursor: pointer;
   transition: all .3s; white-space: nowrap;
+  position: relative; overflow: hidden;
+}
+.method-tab::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0;
+  height: 2px; width: 100%;
+  background: var(--teal);
+  transform: scaleX(0); transform-origin: left;
+}
+.method-tab.active::after {
+  transform: scaleX(0);
+  animation: tabProgress 4s linear forwards;
+}
+@keyframes tabProgress {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
 }
 .method-tab:hover {
   border-color: rgba(43,255,214,.35);
@@ -480,6 +496,9 @@ nav.scrolled {
   border-color: rgba(43,255,214,.4);
   color: var(--white);
   box-shadow: 0 0 20px rgba(43,255,214,.12);
+}
+@media (max-width: 768px) {
+  .method-tabs { display: none; }
 }
 .method-panel { display: none; }
 .method-panel.active { display: block; }
@@ -1215,17 +1234,33 @@ document.querySelectorAll('.hero .reveal').forEach(el => setTimeout(() => el.cla
   track.innerHTML = html + html;
 })();
 
-/* ── Method tabs ── */
+/* ── Method tabs — auto-advance ── */
 (function () {
-  const tabs   = document.querySelectorAll('.method-tab');
-  const panels = document.querySelectorAll('.method-panel');
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      const idx = +tab.dataset.panel;
-      tabs.forEach((t, i)   => t.classList.toggle('active', i === idx));
-      panels.forEach((p, i) => p.classList.toggle('active', i === idx));
-    });
-  });
+  const tabs     = document.querySelectorAll('.method-tab');
+  const panels   = document.querySelectorAll('.method-panel');
+  const section  = document.getElementById('methodology');
+  const DURATION = 4000;
+  let current = 0, timer;
+
+  function activate(idx) {
+    current = idx;
+    tabs.forEach((t, i) => t.classList.toggle('active', i === idx));
+    panels.forEach((p, i) => p.classList.toggle('active', i === idx));
+  }
+
+  function startTimer() {
+    clearInterval(timer);
+    timer = setInterval(() => activate((current + 1) % tabs.length), DURATION);
+  }
+
+  // Manual click resets the timer
+  tabs.forEach((tab, i) => tab.addEventListener('click', () => { activate(i); startTimer(); }));
+
+  // Pause while hovering (desktop)
+  section.addEventListener('mouseenter', () => clearInterval(timer));
+  section.addEventListener('mouseleave', startTimer);
+
+  startTimer();
 })();
 
 /* ── Testimonial carousel ── */
