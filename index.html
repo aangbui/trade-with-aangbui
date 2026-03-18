@@ -1224,24 +1224,17 @@ document.querySelectorAll('.hero .reveal').forEach(el => setTimeout(() => el.cla
 /* ── Ticker ── */
 (function () {
   const items = [
-    { sym: 'XAUUSD',  label: 'Spot Gold'      },
-    { sym: 'XAGUSD',  label: 'Spot Silver'     },
-    { sym: 'XPTUSD',  label: 'Platinum'        },
-    { sym: 'COPPER',  label: 'Copper Futures'  },
-    { sym: 'SP500',   label: 'S&P 500'         },
-    { sym: 'VNINDEX', label: 'Vietnam Index'   },
-    { sym: 'VN30F',   label: 'VN30 Futures'    },
-    { sym: 'USOIL',   label: 'Crude Oil WTI'   },
-    { sym: 'COFFEE',  label: 'Arabica Futures' },
-    { sym: 'SOYBEAN', label: 'ZS1! Futures'    },
-    { sym: 'BTCUSDT', label: 'Bitcoin'         },
-    { sym: 'ETHUSDT', label: 'Ethereum'        },
+    { sym: 'XAUUSD', label: 'Spot Gold'    },
+    { sym: 'XAGUSD', label: 'Spot Silver'  },
+    { sym: 'XPTUSD', label: 'Platinum'     },
+    { sym: 'XCUUSD', label: 'Copper'       },
+    { sym: 'VN30F',  label: 'VN30 Futures' },
   ];
   const track = document.getElementById('tickerTrack');
   const html = items.map(it =>
     `<div class="ticker-item"><span class="sym">${it.sym}</span><span>${it.label}</span><span class="ticker-dot"></span></div>`
   ).join('');
-  track.innerHTML = html + html;
+  track.innerHTML = html + html + html + html;
 })();
 
 /* ── Method tabs — auto-advance ── */
@@ -1249,7 +1242,7 @@ document.querySelectorAll('.hero .reveal').forEach(el => setTimeout(() => el.cla
   const tabs     = document.querySelectorAll('.method-tab');
   const panels   = document.querySelectorAll('.method-panel');
   const section  = document.getElementById('methodology');
-  const DURATION = 1000;
+  const DURATION = 2000;
   let current = 0, timer;
 
   function activate(idx) {
@@ -1298,7 +1291,7 @@ document.querySelectorAll('.hero .reveal').forEach(el => setTimeout(() => el.cla
     track.style.transform = `translateX(calc(-${current * p}% + ${offset}%))`;
     slides.forEach((s, i) => s.classList.toggle('active', i === current));
     dotsEl.querySelectorAll('.t-dot').forEach((d, i) => d.classList.toggle('active', i === current));
-    clearInterval(timer); timer = setInterval(() => goTo(current+1), 2500);
+    clearInterval(timer); timer = setInterval(() => goTo(current+1), 2000);
   }
 
   document.getElementById('tPrev').addEventListener('click', () => goTo(current-1));
@@ -1310,7 +1303,7 @@ document.querySelectorAll('.hero .reveal').forEach(el => setTimeout(() => el.cla
 
   const wrap = track.closest('.testimonial-wrap');
   wrap.addEventListener('mouseenter', () => clearInterval(timer));
-  wrap.addEventListener('mouseleave', () => { clearInterval(timer); timer = setInterval(()=>goTo(current+1),2500); });
+  wrap.addEventListener('mouseleave', () => { clearInterval(timer); timer = setInterval(()=>goTo(current+1),2000); });
   window.addEventListener('resize', () => goTo(current));
 
   goTo(0);
