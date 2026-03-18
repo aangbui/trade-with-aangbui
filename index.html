@@ -555,6 +555,138 @@ nav {
   border-color: rgba(201,168,76,.6);
 }
 
+/* ─── TESTIMONIALS ───────────────────────────────────────────── */
+#testimonials {
+  padding: 7rem 0;
+  background: linear-gradient(to bottom, var(--bg), var(--bg2));
+  border-top: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.testimonial-carousel {
+  position: relative;
+  margin-top: 3.5rem;
+}
+
+.testimonial-track-wrap {
+  overflow: hidden;
+}
+
+.testimonial-track {
+  display: flex;
+  transition: transform .55s cubic-bezier(.22,1,.36,1);
+  will-change: transform;
+}
+
+.testimonial-card {
+  min-width: 100%;
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
+
+.testimonial-inner {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 3rem 3.5rem;
+  max-width: 760px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.testimonial-inner::before {
+  content: '\201C';
+  position: absolute;
+  top: 1.5rem; left: 2.75rem;
+  font-family: var(--ff-display);
+  font-size: 6rem;
+  line-height: 1;
+  color: var(--gold);
+  opacity: .12;
+  pointer-events: none;
+}
+
+.testimonial-text {
+  font-family: var(--ff-display);
+  font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+  font-style: italic;
+  color: var(--cream);
+  line-height: 1.75;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.testimonial-author {
+  display: flex; align-items: center; gap: 1rem;
+}
+
+.testimonial-avatar {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--gold-glow);
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--ff-mono);
+  font-size: .72rem;
+  font-weight: 500;
+  color: var(--gold);
+  flex-shrink: 0;
+}
+
+.testimonial-name {
+  font-family: var(--ff-body);
+  font-size: .92rem;
+  font-weight: 600;
+  color: var(--cream);
+  display: block;
+  margin-bottom: .15rem;
+}
+
+.testimonial-role {
+  font-family: var(--ff-mono);
+  font-size: .72rem;
+  letter-spacing: .06em;
+  color: var(--gold-dim);
+  text-transform: uppercase;
+}
+
+/* nav controls */
+.testimonial-controls {
+  display: flex; align-items: center; justify-content: center; gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+.testimonial-btn {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--cream-dim);
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: border-color .2s, color .2s, background .2s;
+  flex-shrink: 0;
+}
+.testimonial-btn:hover {
+  border-color: rgba(201,168,76,.5);
+  color: var(--gold);
+  background: var(--gold-glow);
+}
+.testimonial-btn svg { pointer-events: none; }
+
+.testimonial-dots {
+  display: flex; gap: .55rem; align-items: center;
+}
+
+.testimonial-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--border);
+  border: none; cursor: pointer; padding: 0;
+  transition: background .25s, transform .25s;
+}
+.testimonial-dot.active {
+  background: var(--gold);
+  transform: scale(1.35);
+}
+
 /* ─── CTA / CONTACT ─────────────────────────────────────────── */
 #contact {
   padding: 7rem 0;
@@ -700,6 +832,7 @@ footer {
       <li><a href="#services">Markets</a></li>
       <li><a href="#methodology">Method</a></li>
       <li><a href="#tools">Tools</a></li>
+      <li><a href="#testimonials">Reviews</a></li>
       <li><a href="#contact" class="nav-cta">Contact →</a></li>
     </ul>
     <div class="nav-toggle" id="navToggle" aria-label="Menu">
@@ -1022,6 +1155,100 @@ footer {
   </div>
 </section>
 
+<!-- ─── TESTIMONIALS ──────────────────────────────────────────── -->
+<section id="testimonials">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-eyebrow">Testimonials</div>
+      <h2 style="font-family:var(--ff-display);font-size:clamp(2rem,4vw,3rem);font-weight:700;letter-spacing:-.02em;line-height:1.15;max-width:520px;">
+        Traders who trade<br><em style="font-style:italic;color:var(--gold);">with conviction.</em>
+      </h2>
+    </div>
+
+    <div class="testimonial-carousel reveal reveal-delay-1">
+      <div class="testimonial-track-wrap">
+        <div class="testimonial-track" id="testimonialTrack">
+
+          <!-- Card 1 -->
+          <div class="testimonial-card">
+            <div class="testimonial-inner">
+              <p class="testimonial-text">
+                "AangBui's Wyckoff read on XAUUSD was a level above anything I had seen from a retail analyst. He called the accumulation phase before the breakout, gave me a clear invalidation, and the trade ran exactly as mapped. This is what institutional thinking actually looks like."
+              </p>
+              <div class="testimonial-author">
+                <div class="testimonial-avatar">NN</div>
+                <div>
+                  <span class="testimonial-name">Nam Nguyen</span>
+                  <span class="testimonial-role">Prop Trader · Ho Chi Minh City</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="testimonial-card">
+            <div class="testimonial-inner">
+              <p class="testimonial-text">
+                "I had been struggling to make sense of the VN30 structure for months. One session with Aang using Elliott Wave mapping and suddenly the noise became a roadmap. The VolTick indicator alone changed how I time entries — it removed the guesswork from order blocks entirely."
+              </p>
+              <div class="testimonial-author">
+                <div class="testimonial-avatar">DN</div>
+                <div>
+                  <span class="testimonial-name">Dat Nguyen</span>
+                  <span class="testimonial-role">Futures Trader · Hanoi</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="testimonial-card">
+            <div class="testimonial-inner">
+              <p class="testimonial-text">
+                "The RSI Divergence indicator is the most honest momentum tool I have used on BTC. No repainting, no lag — just clean signals on the price chart where they belong. Aang's analysis backs it up with context that most traders never bother to build. Highly recommended."
+              </p>
+              <div class="testimonial-author">
+                <div class="testimonial-avatar">DUY</div>
+                <div>
+                  <span class="testimonial-name">Duy Nguyen</span>
+                  <span class="testimonial-role">Crypto Swing Trader · Da Nang</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="testimonial-card">
+            <div class="testimonial-inner">
+              <p class="testimonial-text">
+                "What sets Aang apart is the discipline. No hype, no moon calls — just structured analysis with a defined edge. His coverage of XAGUSD and commodities gave me an angle I had completely overlooked. If you are serious about trading, this is the kind of insight worth paying for."
+              </p>
+              <div class="testimonial-author">
+                <div class="testimonial-avatar">LN</div>
+                <div>
+                  <span class="testimonial-name">Linh Nguyen</span>
+                  <span class="testimonial-role">Commodities Analyst · Singapore</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="testimonial-controls">
+        <button class="testimonial-btn" id="tPrev" aria-label="Previous">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="testimonial-dots" id="tDots"></div>
+        <button class="testimonial-btn" id="tNext" aria-label="Next">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ─── CONTACT ───────────────────────────────────────────────── -->
 <section id="contact">
   <div class="contact-glow"></div>
@@ -1223,6 +1450,57 @@ document.querySelectorAll('.hero .reveal').forEach(el => {
     ).join('');
   }
   track.innerHTML = makeItems() + makeItems();
+})();
+
+/* ── Testimonial Carousel ── */
+(function () {
+  const track  = document.getElementById('testimonialTrack');
+  const dotsEl = document.getElementById('tDots');
+  const cards  = track.querySelectorAll('.testimonial-card');
+  const total  = cards.length;
+  let current  = 0;
+  let timer;
+
+  // Build dots
+  cards.forEach((_, i) => {
+    const d = document.createElement('button');
+    d.className = 'testimonial-dot' + (i === 0 ? ' active' : '');
+    d.setAttribute('aria-label', 'Slide ' + (i + 1));
+    d.addEventListener('click', () => goTo(i));
+    dotsEl.appendChild(d);
+  });
+
+  function goTo(idx) {
+    current = (idx + total) % total;
+    track.style.transform = `translateX(-${current * 100}%)`;
+    dotsEl.querySelectorAll('.testimonial-dot').forEach((d, i) =>
+      d.classList.toggle('active', i === current)
+    );
+    resetTimer();
+  }
+
+  function resetTimer() {
+    clearInterval(timer);
+    timer = setInterval(() => goTo(current + 1), 6000);
+  }
+
+  document.getElementById('tPrev').addEventListener('click', () => goTo(current - 1));
+  document.getElementById('tNext').addEventListener('click', () => goTo(current + 1));
+
+  // Swipe support
+  let startX = 0;
+  track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
+  track.addEventListener('touchend',   e => {
+    const dx = e.changedTouches[0].clientX - startX;
+    if (Math.abs(dx) > 50) goTo(dx < 0 ? current + 1 : current - 1);
+  });
+
+  // Pause on hover
+  const wrap = track.closest('.testimonial-carousel');
+  wrap.addEventListener('mouseenter', () => clearInterval(timer));
+  wrap.addEventListener('mouseleave', resetTimer);
+
+  resetTimer();
 })();
 </script>
 </body>
