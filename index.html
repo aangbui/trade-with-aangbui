@@ -718,14 +718,17 @@ footer {
   border-top: 1px solid rgba(0,0,0,.08);
   padding: 3rem 0 2.5rem;
 }
-.footer-inner { display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: end; }
 .footer-brand {
   font-family: var(--ff-display);
   font-size: clamp(3rem, 10vw, 8rem);
   font-weight: 300; line-height: 1; letter-spacing: -.03em;
-  margin-bottom: .5rem; color: #0a0a0a;
+  margin-bottom: 1.5rem; color: #0a0a0a;
 }
 .footer-brand span { color: var(--teal); font-weight: 700; }
+.footer-inner {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  gap: 2rem; margin-bottom: .5rem;
+}
 .footer-tag {
   font-family: var(--ff-mono); font-size: .68rem;
   letter-spacing: .12em; text-transform: uppercase; color: #777;
@@ -1127,11 +1130,9 @@ footer {
 <!-- ─── FOOTER ────────────────────────────────────────────────── -->
 <footer>
   <div class="container">
+    <div class="footer-brand">Trading with <span>AangBui</span></div>
     <div class="footer-inner">
-      <div>
-        <div class="footer-brand">Trading with <span>AangBui</span></div>
-        <div class="footer-tag">Real Analysis. Real Capital. Real Edge.</div>
-      </div>
+      <div class="footer-tag">Real Analysis. Real Capital. Real Edge.</div>
       <div class="footer-links">
         <a href="https://t.me/aangbui" target="_blank">✈ Telegram @aangbui</a>
         <a href="mailto:aangbui@gmail.com">✉ aangbui@gmail.com</a>
