@@ -14,16 +14,23 @@
 html { scroll-behavior: smooth; font-size: 16px; }
 
 :root {
-  --bg:        #0A0A08;
-  --bg2:       #0F0F0B;
-  --bg3:       #141410;
-  --gold:      #C9A84C;
-  --gold-dim:  #9A7A30;
-  --gold-glow: rgba(201,168,76,.18);
-  --cream:     #F2EDE4;
-  --cream-dim: #A89E8E;
-  --border:    rgba(201,168,76,.14);
-  --border2:   rgba(242,237,228,.07);
+  --bg:         #07090F;
+  --bg2:        #0C1118;
+  --bg3:        #111926;
+  --bg-teal:    #081A18;
+  --teal:       #00BFA5;
+  --teal-mid:   #009982;
+  --teal-dim:   #006B5E;
+  --teal-glow:  rgba(0,191,165,.16);
+  --teal-block: rgba(0,191,165,.07);
+  --cream:      #E8EDF5;
+  --cream-dim:  #5A7896;
+  --border:     rgba(0,191,165,.18);
+  --border2:    rgba(232,237,245,.07);
+  --radius-xl:  24px;
+  --radius-lg:  18px;
+  --radius-md:  12px;
+  --radius-sm:  8px;
   --ff-display: 'Playfair Display', Georgia, serif;
   --ff-body:    'DM Sans', system-ui, sans-serif;
   --ff-mono:    'DM Mono', 'Courier New', monospace;
@@ -39,75 +46,67 @@ body {
   overflow-x: hidden;
 }
 
-/* ─── SCROLLBAR ─────────────────────────────────────────────── */
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
-::-webkit-scrollbar-thumb { background: var(--gold-dim); border-radius: 2px; }
+::-webkit-scrollbar-thumb { background: var(--teal-dim); border-radius: 2px; }
 
 /* ─── UTILITY ───────────────────────────────────────────────── */
-.container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
-
-.gold  { color: var(--gold); }
-.dim   { color: var(--cream-dim); }
+.container { max-width: 1120px; margin: 0 auto; padding: 0 2rem; }
 
 .section-eyebrow {
   font-family: var(--ff-mono);
   font-size: .72rem;
   letter-spacing: .18em;
   text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 1.1rem;
+  color: var(--teal);
+  margin-bottom: 1rem;
   display: flex; align-items: center; gap: .75rem;
 }
 .section-eyebrow::after {
   content: '';
-  flex: 1; max-width: 60px;
+  flex: 1; max-width: 48px;
   height: 1px;
-  background: var(--gold-dim);
+  background: var(--teal-dim);
   opacity: .5;
 }
 
-/* ─── FADE-IN ANIMATION ─────────────────────────────────────── */
+/* ─── FADE-IN ────────────────────────────────────────────────── */
 .reveal {
   opacity: 0;
-  transform: translateY(28px);
-  transition: opacity .75s cubic-bezier(.22,1,.36,1), transform .75s cubic-bezier(.22,1,.36,1);
+  transform: translateY(24px);
+  transition: opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1);
 }
-.reveal.visible {
-  opacity: 1;
-  transform: none;
-}
+.reveal.visible { opacity: 1; transform: none; }
 .reveal-delay-1 { transition-delay: .1s; }
 .reveal-delay-2 { transition-delay: .2s; }
 .reveal-delay-3 { transition-delay: .3s; }
 .reveal-delay-4 { transition-delay: .4s; }
 
-/* ─── STICKY NAV ────────────────────────────────────────────── */
+/* ─── NAV ───────────────────────────────────────────────────── */
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 999;
   height: 64px;
   display: flex; align-items: center;
-  background: rgba(10,10,8,.82);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background: rgba(7,9,15,.88);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
   border-bottom: 1px solid var(--border);
-  transition: border-color .3s;
 }
 
 .nav-inner {
-  width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 2rem;
+  width: 100%; max-width: 1120px; margin: 0 auto; padding: 0 2rem;
   display: flex; align-items: center; justify-content: space-between;
 }
 
 .nav-logo {
   font-family: var(--ff-display);
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   font-weight: 600;
   color: var(--cream);
-  letter-spacing: .02em;
   text-decoration: none;
+  letter-spacing: .01em;
 }
-.nav-logo span { color: var(--gold); }
+.nav-logo span { color: var(--teal); }
 
 .nav-links {
   list-style: none;
@@ -123,21 +122,20 @@ nav {
   text-decoration: none;
   transition: color .2s;
 }
-.nav-links a:hover { color: var(--gold); }
+.nav-links a:hover { color: var(--teal); }
 
 .nav-cta {
   font-family: var(--ff-mono);
   font-size: .75rem;
   letter-spacing: .06em;
-  color: var(--gold) !important;
+  color: var(--teal) !important;
   border: 1px solid var(--border);
-  padding: .45rem 1rem;
-  border-radius: 4px;
-  transition: background .2s, color .2s !important;
+  padding: .45rem 1.1rem;
+  border-radius: var(--radius-sm);
+  transition: background .2s !important;
 }
-.nav-cta:hover { background: var(--gold-glow); color: var(--gold) !important; }
+.nav-cta:hover { background: var(--teal-glow) !important; }
 
-/* hamburger */
 .nav-toggle {
   display: none;
   flex-direction: column; gap: 5px; cursor: pointer; padding: 4px;
@@ -148,6 +146,62 @@ nav {
   transition: transform .25s, opacity .25s;
 }
 
+/* ─── BUTTONS ───────────────────────────────────────────────── */
+.btn {
+  display: inline-flex; align-items: center; gap: .5rem;
+  font-family: var(--ff-body);
+  font-size: .9rem;
+  font-weight: 600;
+  text-decoration: none;
+  padding: .9rem 1.9rem;
+  border-radius: var(--radius-md);
+  transition: all .25s;
+  white-space: nowrap;
+  border: none; cursor: pointer;
+}
+
+.btn-teal {
+  background: var(--teal);
+  color: var(--bg);
+}
+.btn-teal:hover {
+  background: #00D4B8;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(0,191,165,.3);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--cream);
+  border: 1.5px solid var(--border2);
+}
+.btn-outline:hover {
+  border-color: rgba(0,191,165,.5);
+  color: var(--teal);
+  transform: translateY(-2px);
+}
+
+.btn-dark {
+  background: var(--bg);
+  color: var(--teal);
+  font-weight: 600;
+}
+.btn-dark:hover {
+  background: #0a1420;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(0,0,0,.35);
+}
+
+.btn-dark-outline {
+  background: transparent;
+  color: var(--bg);
+  border: 1.5px solid rgba(7,9,15,.35);
+}
+.btn-dark-outline:hover {
+  background: rgba(7,9,15,.12);
+  transform: translateY(-2px);
+}
+
 /* ─── HERO ──────────────────────────────────────────────────── */
 .hero {
   position: relative;
@@ -155,25 +209,26 @@ nav {
   display: flex; align-items: center;
   padding-top: 64px;
   overflow: hidden;
+  background: var(--bg);
 }
 
 #hero-canvas {
   position: absolute; inset: 0;
   width: 100%; height: 100%;
-  opacity: .28;
+  opacity: .3;
 }
 
 .hero-vignette {
   position: absolute; inset: 0;
   background:
-    radial-gradient(ellipse 70% 60% at 50% 50%, transparent 20%, var(--bg) 80%),
+    radial-gradient(ellipse 80% 70% at 50% 50%, transparent 25%, var(--bg) 80%),
     linear-gradient(to bottom, transparent 55%, var(--bg) 100%);
   pointer-events: none;
 }
 
 .hero-content {
   position: relative; z-index: 2;
-  max-width: 820px;
+  max-width: 860px;
   padding: 5rem 2rem 6rem;
   margin: 0 auto;
   text-align: center;
@@ -182,103 +237,66 @@ nav {
 .hero-label {
   font-family: var(--ff-mono);
   font-size: .72rem;
-  letter-spacing: .2em;
+  letter-spacing: .22em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--teal);
   margin-bottom: 2rem;
-  opacity: .85;
+  opacity: .9;
   display: inline-block;
 }
 
 .hero h1 {
   font-family: var(--ff-display);
-  font-size: clamp(2.8rem, 7vw, 5.2rem);
+  font-size: clamp(2.8rem, 7.5vw, 5.5rem);
   font-weight: 700;
-  line-height: 1.08;
-  letter-spacing: -.02em;
+  line-height: 1.07;
+  letter-spacing: -.025em;
   color: var(--cream);
-  margin-bottom: 1.6rem;
+  margin-bottom: 1.75rem;
 }
-
 .hero h1 em {
   font-style: italic;
-  color: var(--gold);
+  color: var(--teal);
 }
 
 .hero-sub {
   font-size: clamp(.95rem, 2vw, 1.1rem);
   color: var(--cream-dim);
-  max-width: 600px;
+  max-width: 620px;
   margin: 0 auto 3rem;
-  line-height: 1.75;
+  line-height: 1.8;
 }
 
 .hero-ctas {
   display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
 }
 
-.btn {
-  display: inline-flex; align-items: center; gap: .5rem;
-  font-family: var(--ff-body);
-  font-size: .88rem;
-  font-weight: 500;
-  text-decoration: none;
-  padding: .85rem 1.8rem;
-  border-radius: 5px;
-  transition: all .25s;
-  white-space: nowrap;
-}
-
-.btn-gold {
-  background: var(--gold);
-  color: var(--bg);
-  font-weight: 600;
-}
-.btn-gold:hover {
-  background: #dbb85a;
-  transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(201,168,76,.28);
-}
-
-.btn-outline {
-  background: transparent;
-  color: var(--cream);
-  border: 1px solid var(--border2);
-}
-.btn-outline:hover {
-  border-color: rgba(201,168,76,.45);
-  color: var(--gold);
-  transform: translateY(-2px);
-}
-
-/* scroll hint */
 .scroll-hint {
   position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
   display: flex; flex-direction: column; align-items: center; gap: .5rem;
   font-family: var(--ff-mono); font-size: .65rem;
   letter-spacing: .12em; text-transform: uppercase;
-  color: var(--cream-dim); opacity: .45;
-  animation: fadeUp 2s ease-in-out infinite;
+  color: var(--cream-dim); opacity: .4;
+  animation: fadeUpHint 2s ease-in-out infinite;
 }
-.scroll-hint svg { opacity: .6; }
-@keyframes fadeUp {
-  0%,100% { opacity: .45; transform: translateX(-50%) translateY(0); }
-  50%      { opacity: .7;  transform: translateX(-50%) translateY(-4px); }
+@keyframes fadeUpHint {
+  0%,100% { opacity: .4; transform: translateX(-50%) translateY(0); }
+  50%      { opacity: .65; transform: translateX(-50%) translateY(-4px); }
 }
 
 /* ─── TICKER ────────────────────────────────────────────────── */
 .ticker-section {
+  background: var(--bg2);
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
-  background: var(--bg2);
-  padding: .9rem 0;
+  padding: .85rem 0;
   overflow: hidden;
 }
 
 .ticker-track {
   display: flex;
   width: max-content;
-  animation: tickerScroll 30s linear infinite;
+  animation: tickerScroll 32s linear infinite;
 }
 .ticker-track:hover { animation-play-state: paused; }
 
@@ -289,28 +307,23 @@ nav {
 
 .ticker-item {
   display: flex; align-items: center; gap: .65rem;
-  padding: 0 2.5rem;
+  padding: 0 2.25rem;
   font-family: var(--ff-mono);
   font-size: .8rem;
   letter-spacing: .04em;
   color: var(--cream-dim);
   white-space: nowrap;
 }
-
-.ticker-item .sym {
-  color: var(--gold);
-  font-weight: 500;
-}
-
+.ticker-item .sym { color: var(--teal); font-weight: 500; }
 .ticker-dot {
-  width: 4px; height: 4px; border-radius: 50%;
-  background: var(--border);
-  flex-shrink: 0;
+  width: 3px; height: 3px; border-radius: 50%;
+  background: var(--teal-dim); opacity: .5; flex-shrink: 0;
 }
 
 /* ─── SERVICES ──────────────────────────────────────────────── */
 #services {
   padding: 7rem 0;
+  background: var(--bg);
 }
 
 .services-intro {
@@ -320,510 +333,473 @@ nav {
 
 .services-intro h2 {
   font-family: var(--ff-display);
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(2rem, 4vw, 3.2rem);
   font-weight: 700;
-  line-height: 1.15;
-  letter-spacing: -.02em;
+  line-height: 1.12;
+  letter-spacing: -.025em;
 }
 
 .services-intro p {
   color: var(--cream-dim);
   font-size: 1rem;
-  line-height: 1.75;
+  line-height: 1.8;
 }
 
-.asset-categories {
-  display: flex;
-  flex-direction: column;
-  gap: 2.5rem;
-}
+/* Category groups */
+.asset-categories { display: flex; flex-direction: column; gap: 2.75rem; }
 
 .asset-category-label {
   font-family: var(--ff-mono);
   font-size: .68rem;
   letter-spacing: .16em;
   text-transform: uppercase;
-  color: var(--cream-dim);
-  opacity: .55;
-  margin-bottom: .9rem;
-  padding-bottom: .6rem;
-  border-bottom: 1px solid var(--border2);
+  color: var(--teal);
+  margin-bottom: 1rem;
+  padding-bottom: .65rem;
+  border-bottom: 1px solid var(--border);
+  opacity: .8;
 }
 
 .asset-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
   gap: .75rem;
 }
 
 .asset-card {
   background: var(--bg3);
   border: 1px solid var(--border2);
-  border-radius: 8px;
-  padding: 1.1rem 1.2rem;
-  display: flex; align-items: center; gap: .85rem;
-  transition: border-color .25s, transform .25s;
+  border-radius: var(--radius-lg);
+  padding: 1.25rem 1.3rem;
+  display: flex; align-items: center; gap: 1rem;
+  transition: border-color .25s, transform .25s, box-shadow .25s;
   cursor: default;
 }
 .asset-card:hover {
-  border-color: rgba(201,168,76,.35);
+  border-color: var(--border);
   transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(0,0,0,.25);
 }
 
 .asset-icon {
-  width: 36px; height: 36px; border-radius: 50%;
+  width: 40px; height: 40px; border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
   font-family: var(--ff-mono);
-  font-size: .62rem;
-  font-weight: 500;
-  letter-spacing: -.01em;
-  color: var(--gold);
+  font-size: .62rem; font-weight: 500;
+  color: var(--teal);
   flex-shrink: 0;
-  background: var(--gold-glow);
+  background: var(--teal-block);
   border: 1px solid var(--border);
 }
 
 .asset-name {
   font-family: var(--ff-mono);
-  font-size: .8rem;
-  color: var(--gold);
+  font-size: .82rem;
+  color: var(--cream);
   font-weight: 500;
   display: block;
-  margin-bottom: .12rem;
+  margin-bottom: .1rem;
   letter-spacing: .02em;
 }
 .asset-desc {
-  font-size: .74rem;
+  font-size: .73rem;
   color: var(--cream-dim);
 }
 
-/* ─── SIGNAL BANNER ─────────────────────────────────────────── */
+/* Signal banner */
+.signal-banner { margin-top: 2.75rem; }
 .signal-banner-inner {
   display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;
-  background: var(--bg3);
-  border: 1px solid rgba(201,168,76,.22);
-  border-radius: 10px;
-  padding: 1.5rem 2rem;
+  background: var(--bg-teal);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: 1.75rem 2.25rem;
 }
 
 .signal-pulse {
   width: 10px; height: 10px; border-radius: 50%;
-  background: var(--gold);
-  flex-shrink: 0;
-  box-shadow: 0 0 0 0 rgba(201,168,76,.6);
-  animation: pulse 2s ease-in-out infinite;
+  background: var(--teal); flex-shrink: 0;
+  animation: pulseTeal 2s ease-in-out infinite;
 }
-@keyframes pulse {
-  0%,100% { box-shadow: 0 0 0 0 rgba(201,168,76,.55); }
-  50%      { box-shadow: 0 0 0 8px rgba(201,168,76,0); }
+@keyframes pulseTeal {
+  0%,100% { box-shadow: 0 0 0 0 rgba(0,191,165,.55); }
+  50%      { box-shadow: 0 0 0 8px rgba(0,191,165,0); }
 }
 
 .signal-text { flex: 1; min-width: 200px; }
-
 .signal-banner-title {
-  display: block;
-  font-family: var(--ff-body);
-  font-size: .92rem;
-  font-weight: 600;
-  color: var(--gold);
-  margin-bottom: .25rem;
+  display: block; font-size: .95rem; font-weight: 600;
+  color: var(--teal); margin-bottom: .25rem;
 }
-
 .signal-banner-sub {
-  display: block;
-  font-size: .84rem;
-  color: var(--cream-dim);
-  line-height: 1.6;
+  display: block; font-size: .85rem; color: var(--cream-dim); line-height: 1.65;
 }
 
-.signal-channels {
-  display: flex; gap: .65rem; flex-shrink: 0; flex-wrap: wrap;
-}
-
+.signal-channels { display: flex; gap: .65rem; flex-shrink: 0; flex-wrap: wrap; }
 .signal-chip {
-  font-family: var(--ff-mono);
-  font-size: .72rem;
-  letter-spacing: .05em;
-  color: var(--gold);
-  border: 1px solid rgba(201,168,76,.3);
-  border-radius: 4px;
-  padding: .4rem .9rem;
+  font-family: var(--ff-mono); font-size: .72rem; letter-spacing: .05em;
+  color: var(--teal);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: .45rem 1rem;
   text-decoration: none;
   transition: background .2s, border-color .2s;
   white-space: nowrap;
+  background: var(--teal-block);
 }
-.signal-chip:hover {
-  background: var(--gold-glow);
-  border-color: rgba(201,168,76,.6);
-}
+.signal-chip:hover { background: var(--teal-glow); border-color: rgba(0,191,165,.45); }
 
 /* ─── METHODOLOGY ───────────────────────────────────────────── */
 #methodology {
   padding: 7rem 0;
-  background: linear-gradient(to bottom, var(--bg2), var(--bg));
+  background: var(--bg-teal);
   border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
 }
 
+.method-header {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+  align-items: end; margin-bottom: 3.5rem;
+}
+.method-header h2 {
+  font-family: var(--ff-display);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 700; letter-spacing: -.025em; line-height: 1.12;
+}
+.method-header h2 em { font-style: italic; color: var(--teal); }
+.method-header p { color: var(--cream-dim); font-size: 1rem; line-height: 1.8; }
+
+/* Bento grid */
 .method-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 1.25rem;
-  margin-top: 3.5rem;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 1rem;
 }
 
 .method-card {
-  background: var(--bg);
+  background: var(--bg3);
   border: 1px solid var(--border2);
-  border-radius: 10px;
-  padding: 2.25rem 2rem;
-  position: relative;
-  overflow: hidden;
-  transition: border-color .3s, transform .3s;
+  border-radius: var(--radius-xl);
+  padding: 2.5rem 2.25rem;
+  position: relative; overflow: hidden;
+  transition: border-color .3s, transform .3s, box-shadow .3s;
 }
-.method-card::before {
+.method-card::after {
   content: '';
   position: absolute; top: 0; left: 0; right: 0; height: 2px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
-  opacity: 0;
-  transition: opacity .3s;
+  background: linear-gradient(90deg, transparent, var(--teal), transparent);
+  opacity: 0; transition: opacity .3s;
 }
 .method-card:hover {
-  border-color: rgba(201,168,76,.3);
-  transform: translateY(-5px);
+  border-color: var(--border);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 48px rgba(0,0,0,.35);
 }
-.method-card:hover::before { opacity: 1; }
+.method-card:hover::after { opacity: 1; }
+
+/* First card: hero card spanning full width with horizontal layout */
+.method-card--hero {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 2.5rem;
+  align-items: center;
+  background: var(--bg2);
+}
 
 .method-num {
   font-family: var(--ff-display);
-  font-size: 4rem;
-  font-weight: 700;
-  color: rgba(201,168,76,.08);
-  line-height: 1;
-  margin-bottom: 1.25rem;
-  letter-spacing: -.04em;
+  font-size: 5rem; font-weight: 700;
+  color: var(--teal); opacity: .12;
+  line-height: 1; letter-spacing: -.04em;
+  flex-shrink: 0;
+}
+.method-card--hero .method-num {
+  font-size: 8rem; opacity: .1;
 }
 
 .method-card h3 {
   font-family: var(--ff-display);
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: var(--cream);
-  margin-bottom: .75rem;
-  line-height: 1.2;
+  font-size: 1.35rem; font-weight: 600;
+  color: var(--cream); margin-bottom: .75rem; line-height: 1.2;
 }
+.method-card--hero h3 { font-size: 1.7rem; }
 
 .method-card p {
-  font-size: .9rem;
-  color: var(--cream-dim);
-  line-height: 1.7;
+  font-size: .92rem; color: var(--cream-dim); line-height: 1.75;
 }
 
 .method-tag {
-  display: inline-block;
-  margin-top: 1.25rem;
-  font-family: var(--ff-mono);
-  font-size: .68rem;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color: var(--gold-dim);
-  border: 1px solid rgba(201,168,76,.2);
-  padding: .25rem .65rem;
-  border-radius: 3px;
+  display: inline-block; margin-top: 1.25rem;
+  font-family: var(--ff-mono); font-size: .68rem;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: var(--teal); border: 1px solid var(--border);
+  padding: .25rem .75rem; border-radius: 100px;
+  background: var(--teal-block);
 }
 
 /* ─── TOOLS ─────────────────────────────────────────────────── */
 #tools {
   padding: 7rem 0;
-  border-top: 1px solid var(--border);
+  background: var(--bg2);
+  border-bottom: 1px solid var(--border);
 }
+
+.tools-header { margin-bottom: 3.5rem; }
+.tools-header h2 {
+  font-family: var(--ff-display);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 700; letter-spacing: -.025em; line-height: 1.12;
+  margin-bottom: .75rem;
+}
+.tools-header p { color: var(--cream-dim); font-size: 1rem; max-width: 540px; line-height: 1.8; }
 
 .tools-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 1.5rem;
-  margin-top: 3.5rem;
+  gap: 1.25rem;
 }
 
 .tool-card {
-  background: var(--bg2);
-  border: 1px solid var(--border);
-  border-radius: 12px;
+  background: var(--bg3);
+  border: 1px solid var(--border2);
+  border-radius: var(--radius-xl);
   padding: 2.5rem 2.25rem;
   display: flex; flex-direction: column; gap: 1.25rem;
   transition: border-color .3s, box-shadow .3s, transform .3s;
-  text-decoration: none;
-  color: inherit;
+  text-decoration: none; color: inherit;
 }
 .tool-card:hover {
-  border-color: rgba(201,168,76,.45);
-  box-shadow: 0 20px 60px rgba(0,0,0,.4);
+  border-color: var(--border);
+  box-shadow: 0 24px 64px rgba(0,0,0,.4);
   transform: translateY(-6px);
 }
 
 .tool-visual {
-  height: 80px;
-  border-radius: 6px;
-  background: var(--bg3);
-  border: 1px solid var(--border2);
-  overflow: hidden;
-  position: relative;
+  height: 88px; border-radius: var(--radius-md);
+  background: var(--bg2); border: 1px solid var(--border2);
+  overflow: hidden; position: relative;
 }
-
-/* mini SVG chart inside tool cards */
-.tool-svg {
-  width: 100%; height: 100%;
-}
+.tool-svg { width: 100%; height: 100%; }
 
 .tool-label {
-  font-family: var(--ff-mono);
-  font-size: .68rem;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  color: var(--gold-dim);
+  font-family: var(--ff-mono); font-size: .68rem;
+  letter-spacing: .12em; text-transform: uppercase; color: var(--teal-dim);
 }
 
 .tool-card h3 {
   font-family: var(--ff-display);
-  font-size: 1.35rem;
-  font-weight: 600;
-  color: var(--cream);
-  line-height: 1.2;
+  font-size: 1.4rem; font-weight: 600; color: var(--cream); line-height: 1.2;
 }
 
 .tool-card p {
-  font-size: .9rem;
-  color: var(--cream-dim);
-  line-height: 1.7;
-  flex: 1;
+  font-size: .9rem; color: var(--cream-dim); line-height: 1.75; flex: 1;
 }
 
 .tool-btn {
   display: inline-flex; align-items: center; gap: .5rem;
-  font-family: var(--ff-mono);
-  font-size: .78rem;
-  letter-spacing: .05em;
-  color: var(--gold);
-  text-decoration: none;
-  border: 1px solid rgba(201,168,76,.3);
-  padding: .6rem 1.2rem;
-  border-radius: 4px;
+  font-family: var(--ff-mono); font-size: .78rem; letter-spacing: .05em;
+  color: var(--teal); text-decoration: none;
+  border: 1px solid var(--border);
+  padding: .65rem 1.25rem; border-radius: var(--radius-md);
   align-self: flex-start;
   transition: background .2s, border-color .2s;
+  background: var(--teal-block);
 }
-.tool-card:hover .tool-btn {
-  background: var(--gold-glow);
-  border-color: rgba(201,168,76,.6);
-}
+.tool-card:hover .tool-btn { background: var(--teal-glow); border-color: rgba(0,191,165,.4); }
 
 /* ─── TESTIMONIALS ───────────────────────────────────────────── */
 #testimonials {
   padding: 7rem 0;
-  background: linear-gradient(to bottom, var(--bg), var(--bg2));
-  border-top: 1px solid var(--border);
+  background: var(--bg);
   overflow: hidden;
 }
 
-.testimonial-carousel {
-  position: relative;
-  margin-top: 3.5rem;
-}
+.testimonial-carousel { position: relative; margin-top: 3.5rem; }
 
 .testimonial-track-wrap {
   overflow: hidden;
-  /* reveal ~10% of adjacent cards on each side */
-  margin: 0 -1rem;
-  padding: 0 1rem;
+  position: relative;
+}
+/* Fade-edge masks on sides */
+.testimonial-track-wrap::before,
+.testimonial-track-wrap::after {
+  content: '';
+  position: absolute; top: 0; bottom: 0; width: 120px; z-index: 2;
+  pointer-events: none;
+}
+.testimonial-track-wrap::before {
+  left: 0;
+  background: linear-gradient(to right, var(--bg) 0%, transparent 100%);
+}
+.testimonial-track-wrap::after {
+  right: 0;
+  background: linear-gradient(to left, var(--bg) 0%, transparent 100%);
 }
 
 .testimonial-track {
   display: flex;
-  transition: transform .6s cubic-bezier(.22,1,.36,1);
+  transition: transform .65s cubic-bezier(.22,1,.36,1);
   will-change: transform;
 }
 
 .testimonial-card {
-  min-width: 80%;
+  min-width: 78%;
   padding: 0 .75rem;
   box-sizing: border-box;
-  transition: opacity .5s ease;
-  opacity: .35;
+  transition: opacity .5s ease, filter .5s ease;
+  opacity: .25;
+  filter: blur(1px);
 }
-.testimonial-card.active {
-  opacity: 1;
-}
+.testimonial-card.active { opacity: 1; filter: none; }
 
 @media (max-width: 700px) {
-  .testimonial-card { min-width: 90%; }
+  .testimonial-card { min-width: 92%; }
+  .testimonial-track-wrap::before,
+  .testimonial-track-wrap::after { width: 48px; }
 }
 
 .testimonial-inner {
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: 14px;
+  background: var(--bg3);
+  border: 1px solid var(--border2);
+  border-radius: var(--radius-xl);
   padding: 3rem 3.5rem;
-  max-width: 760px;
+  max-width: 780px;
   margin: 0 auto;
   position: relative;
 }
-
 .testimonial-inner::before {
   content: '\201C';
-  position: absolute;
-  top: 1.5rem; left: 2.75rem;
+  position: absolute; top: 1.5rem; left: 2.75rem;
   font-family: var(--ff-display);
-  font-size: 6rem;
-  line-height: 1;
-  color: var(--gold);
-  opacity: .12;
+  font-size: 6rem; line-height: 1;
+  color: var(--teal); opacity: .1;
   pointer-events: none;
 }
 
 .testimonial-text {
   font-family: var(--ff-display);
-  font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+  font-size: clamp(1.05rem, 2.2vw, 1.22rem);
   font-style: italic;
   color: var(--cream);
-  line-height: 1.75;
+  line-height: 1.78;
   margin-bottom: 2rem;
-  position: relative;
 }
 
-.testimonial-author {
-  display: flex; align-items: center; gap: 1rem;
-}
+.testimonial-author { display: flex; align-items: center; gap: 1rem; }
 
 .testimonial-avatar {
-  width: 44px; height: 44px; border-radius: 50%;
-  background: var(--gold-glow);
+  width: 46px; height: 46px; border-radius: 50%;
+  background: var(--teal-block);
   border: 1px solid var(--border);
   display: flex; align-items: center; justify-content: center;
-  font-family: var(--ff-mono);
-  font-size: .72rem;
-  font-weight: 500;
-  color: var(--gold);
-  flex-shrink: 0;
+  font-family: var(--ff-mono); font-size: .72rem; font-weight: 500;
+  color: var(--teal); flex-shrink: 0;
 }
 
 .testimonial-name {
-  font-family: var(--ff-body);
-  font-size: .92rem;
-  font-weight: 600;
-  color: var(--cream);
-  display: block;
-  margin-bottom: .15rem;
+  font-size: .92rem; font-weight: 600; color: var(--cream);
+  display: block; margin-bottom: .15rem;
 }
-
 .testimonial-role {
-  font-family: var(--ff-mono);
-  font-size: .72rem;
-  letter-spacing: .06em;
-  color: var(--gold-dim);
-  text-transform: uppercase;
+  font-family: var(--ff-mono); font-size: .72rem;
+  letter-spacing: .06em; color: var(--teal-dim); text-transform: uppercase;
 }
 
-/* nav controls */
 .testimonial-controls {
   display: flex; align-items: center; justify-content: center; gap: 1.5rem;
   margin-top: 2.5rem;
 }
 
 .testimonial-btn {
-  width: 40px; height: 40px; border-radius: 50%;
-  background: transparent;
-  border: 1px solid var(--border);
-  color: var(--cream-dim);
-  cursor: pointer;
+  width: 42px; height: 42px; border-radius: 50%;
+  background: var(--bg3); border: 1px solid var(--border2);
+  color: var(--cream-dim); cursor: pointer;
   display: flex; align-items: center; justify-content: center;
   transition: border-color .2s, color .2s, background .2s;
   flex-shrink: 0;
 }
 .testimonial-btn:hover {
-  border-color: rgba(201,168,76,.5);
-  color: var(--gold);
-  background: var(--gold-glow);
-}
-.testimonial-btn svg { pointer-events: none; }
-
-.testimonial-dots {
-  display: flex; gap: .55rem; align-items: center;
+  border-color: var(--border);
+  color: var(--teal);
+  background: var(--teal-block);
 }
 
+.testimonial-dots { display: flex; gap: .55rem; align-items: center; }
 .testimonial-dot {
   width: 6px; height: 6px; border-radius: 50%;
-  background: var(--border);
-  border: none; cursor: pointer; padding: 0;
+  background: var(--border2); border: none; cursor: pointer; padding: 0;
   transition: background .25s, transform .25s;
 }
-.testimonial-dot.active {
-  background: var(--gold);
-  transform: scale(1.35);
-}
+.testimonial-dot.active { background: var(--teal); transform: scale(1.4); }
 
-/* ─── CTA / CONTACT ─────────────────────────────────────────── */
+/* ─── CONTACT ───────────────────────────────────────────────── */
 #contact {
+  background: var(--teal);
   padding: 7rem 0;
   text-align: center;
   position: relative;
-  border-top: 1px solid var(--border);
   overflow: hidden;
 }
 
-.contact-glow {
-  position: absolute;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  width: 600px; height: 400px;
-  background: radial-gradient(ellipse, rgba(201,168,76,.07) 0%, transparent 70%);
+/* subtle teal grid overlay */
+#contact::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(7,9,15,.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(7,9,15,.06) 1px, transparent 1px);
+  background-size: 64px 64px;
   pointer-events: none;
 }
 
+#contact .container { position: relative; z-index: 1; }
+
 #contact h2 {
   font-family: var(--ff-display);
-  font-size: clamp(2.2rem, 5vw, 3.8rem);
-  font-weight: 700;
-  letter-spacing: -.02em;
-  line-height: 1.1;
+  font-size: clamp(2.4rem, 5.5vw, 4rem);
+  font-weight: 700; letter-spacing: -.025em; line-height: 1.1;
+  color: var(--bg);
   margin-bottom: 1.25rem;
 }
-
-#contact h2 em {
-  font-style: italic;
-  color: var(--gold);
-}
+#contact h2 em { font-style: italic; color: var(--bg); opacity: .7; }
 
 #contact .sub {
-  font-size: 1.05rem;
-  color: var(--cream-dim);
-  max-width: 520px;
-  margin: 0 auto 3rem;
-  line-height: 1.75;
+  font-size: 1.08rem;
+  color: rgba(7,9,15,.65);
+  max-width: 540px;
+  margin: 0 auto 2.75rem;
+  line-height: 1.78;
 }
 
 .contact-btns {
   display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+  margin-bottom: 2.5rem;
 }
 
-.btn-vigco {
-  background: transparent;
-  color: var(--gold);
-  border: 1px solid rgba(201,168,76,.45);
-  font-size: .9rem;
-  letter-spacing: .03em;
-}
-.btn-vigco:hover {
-  background: var(--gold-glow);
-  border-color: rgba(201,168,76,.8);
-  color: var(--gold);
-  transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(201,168,76,.12);
-}
-
-/* divider */
 .divider {
   width: 60px; height: 1px;
-  background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+  background: rgba(7,9,15,.2);
   margin: 2.5rem auto;
-  opacity: .5;
+}
+
+.contact-account {
+  background: rgba(7,9,15,.1);
+  border: 1.5px solid rgba(7,9,15,.18);
+  border-radius: var(--radius-xl);
+  padding: 2.5rem 2.25rem;
+  max-width: 560px;
+  margin: 0 auto;
+}
+.contact-account-title {
+  font-family: var(--ff-display);
+  font-size: 1.4rem; font-weight: 700;
+  color: var(--bg); margin-bottom: .65rem; line-height: 1.2;
+}
+.contact-account-sub {
+  font-size: .95rem; color: rgba(7,9,15,.6);
+  line-height: 1.7; margin-bottom: 1.75rem;
 }
 
 /* ─── FOOTER ────────────────────────────────────────────────── */
@@ -834,78 +810,71 @@ footer {
 }
 
 .footer-inner {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 2rem;
-  align-items: start;
+  display: grid; grid-template-columns: 1fr auto;
+  gap: 2rem; align-items: start;
 }
 
 .footer-brand {
   font-family: var(--ff-display);
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--cream);
-  margin-bottom: .5rem;
+  font-size: 1.1rem; font-weight: 600; color: var(--cream); margin-bottom: .5rem;
 }
-.footer-brand span { color: var(--gold); }
+.footer-brand span { color: var(--teal); }
 
 .footer-tagline {
-  font-family: var(--ff-mono);
-  font-size: .72rem;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color: var(--cream-dim);
-  opacity: .6;
+  font-family: var(--ff-mono); font-size: .72rem;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: var(--cream-dim); opacity: .55;
 }
 
 .footer-links {
   display: flex; flex-direction: column; gap: .6rem; align-items: flex-end;
 }
-
 .footer-links a {
-  font-family: var(--ff-mono);
-  font-size: .78rem;
-  letter-spacing: .04em;
-  color: var(--cream-dim);
-  text-decoration: none;
+  font-family: var(--ff-mono); font-size: .78rem; letter-spacing: .04em;
+  color: var(--cream-dim); text-decoration: none;
   transition: color .2s;
   display: flex; align-items: center; gap: .5rem;
 }
-.footer-links a:hover { color: var(--gold); }
+.footer-links a:hover { color: var(--teal); }
 
 .footer-bottom {
-  margin-top: 2.5rem;
-  padding-top: 1.5rem;
+  margin-top: 2.5rem; padding-top: 1.5rem;
   border-top: 1px solid var(--border2);
   display: flex; align-items: center; justify-content: space-between;
   flex-wrap: wrap; gap: 1rem;
 }
-
 .footer-copy {
-  font-size: .75rem;
-  color: var(--cream-dim);
-  opacity: .45;
-  font-family: var(--ff-mono);
-  letter-spacing: .04em;
+  font-size: .75rem; color: var(--cream-dim); opacity: .45;
+  font-family: var(--ff-mono); letter-spacing: .04em;
 }
 
 /* ─── RESPONSIVE ────────────────────────────────────────────── */
 @media (max-width: 768px) {
-  .nav-links { display: none; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0; background: var(--bg2); border-bottom: 1px solid var(--border); padding: 1.5rem 2rem; gap: 1.5rem; }
+  .nav-links {
+    display: none; flex-direction: column;
+    position: absolute; top: 64px; left: 0; right: 0;
+    background: var(--bg2); border-bottom: 1px solid var(--border);
+    padding: 1.5rem 2rem; gap: 1.5rem;
+  }
   .nav-links.open { display: flex; }
   .nav-toggle { display: flex; }
   nav { position: fixed; }
 
   .services-intro { grid-template-columns: 1fr; gap: 1.5rem; }
+  .method-header { grid-template-columns: 1fr; gap: 1.5rem; }
+  .method-grid { grid-template-columns: 1fr; }
+  .method-card--hero { grid-template-columns: 1fr; gap: 1rem; }
+  .method-card--hero .method-num { font-size: 4rem; }
   .footer-inner { grid-template-columns: 1fr; }
   .footer-links { align-items: flex-start; }
   .footer-bottom { flex-direction: column; align-items: flex-start; }
+  .testimonial-inner { padding: 2rem 1.75rem; }
 }
 
 @media (max-width: 480px) {
-  .hero h1 { font-size: 2.4rem; }
-  .method-grid { grid-template-columns: 1fr; }
+  .hero h1 { font-size: 2.5rem; }
   .tools-grid { grid-template-columns: 1fr; }
+  .asset-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
 }
 </style>
 </head>
@@ -942,7 +911,7 @@ footer {
       Most traders chase price. The edge belongs to those who read it first. I deliver institutional-grade multi-asset analysis — where Wyckoff structure, Elliott Wave timing, and purpose-built tools converge into setups worth acting on.
     </p>
     <div class="hero-ctas reveal reveal-delay-3">
-      <a href="https://t.me/aangbui" class="btn btn-gold" target="_blank">
+      <a href="https://t.me/aangbui" class="btn btn-teal" target="_blank">
         ✈&ensp;Connect on Telegram
       </a>
       <a href="mailto:aangbui@gmail.com" class="btn btn-outline">
@@ -954,16 +923,14 @@ footer {
   <div class="scroll-hint">
     <span>Scroll</span>
     <svg width="12" height="18" viewBox="0 0 12 18" fill="none">
-      <path d="M6 1v10M2 8l4 5 4-5" stroke="#F2EDE4" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M6 1v10M2 8l4 5 4-5" stroke="#E8EDF5" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
   </div>
 </section>
 
 <!-- ─── TICKER ────────────────────────────────────────────────── -->
 <div class="ticker-section" aria-hidden="true">
-  <div class="ticker-track" id="tickerTrack">
-    <!-- items duplicated in JS -->
-  </div>
+  <div class="ticker-track" id="tickerTrack"></div>
 </div>
 
 <!-- ─── SERVICES ──────────────────────────────────────────────── -->
@@ -975,9 +942,7 @@ footer {
         <h2>Where the Smart<br>Money Moves</h2>
       </div>
       <div class="reveal reveal-delay-1">
-        <p>
-          Precious metals, global indices, energy, commodities, and crypto — tracked with the same ruthless discipline across every session. Real-time signals delivered directly via Telegram and TradingView alerts, so you enter with precision and exit with purpose. From XAUUSD to VNINDEX to USOIL, the coverage is broad; the analysis stays surgical. No noise, no late calls — only the markets where asymmetric opportunity lives, timed to the candle.
-        </p>
+        <p>Precious metals, global indices, energy, commodities, and crypto — tracked with the same ruthless discipline across every session. Real-time signals delivered directly via Telegram and TradingView alerts, so you enter with precision and exit with purpose. No noise, no late calls — only the markets where asymmetric opportunity lives, timed to the candle.</p>
       </div>
     </div>
 
@@ -989,31 +954,19 @@ footer {
         <div class="asset-grid">
           <div class="asset-card">
             <div class="asset-icon">Au</div>
-            <div>
-              <span class="asset-name">XAUUSD</span>
-              <span class="asset-desc">Spot Gold</span>
-            </div>
+            <div><span class="asset-name">XAUUSD</span><span class="asset-desc">Spot Gold</span></div>
           </div>
           <div class="asset-card">
             <div class="asset-icon">Ag</div>
-            <div>
-              <span class="asset-name">XAGUSD</span>
-              <span class="asset-desc">Spot Silver</span>
-            </div>
+            <div><span class="asset-name">XAGUSD</span><span class="asset-desc">Spot Silver</span></div>
           </div>
           <div class="asset-card">
             <div class="asset-icon">Pt</div>
-            <div>
-              <span class="asset-name">XPTUSD</span>
-              <span class="asset-desc">Platinum</span>
-            </div>
+            <div><span class="asset-name">XPTUSD</span><span class="asset-desc">Platinum</span></div>
           </div>
           <div class="asset-card">
             <div class="asset-icon">Cu</div>
-            <div>
-              <span class="asset-name">COPPER</span>
-              <span class="asset-desc">Copper Futures</span>
-            </div>
+            <div><span class="asset-name">COPPER</span><span class="asset-desc">Copper Futures</span></div>
           </div>
         </div>
       </div>
@@ -1023,25 +976,16 @@ footer {
         <div class="asset-category-label">Indices</div>
         <div class="asset-grid">
           <div class="asset-card">
-            <div class="asset-icon">S&P</div>
-            <div>
-              <span class="asset-name">SP500</span>
-              <span class="asset-desc">S&amp;P 500</span>
-            </div>
+            <div class="asset-icon">S&amp;P</div>
+            <div><span class="asset-name">SP500</span><span class="asset-desc">S&amp;P 500</span></div>
           </div>
           <div class="asset-card">
             <div class="asset-icon">VN</div>
-            <div>
-              <span class="asset-name">VNINDEX</span>
-              <span class="asset-desc">Vietnam Index</span>
-            </div>
+            <div><span class="asset-name">VNINDEX</span><span class="asset-desc">Vietnam Index</span></div>
           </div>
           <div class="asset-card">
             <div class="asset-icon">F</div>
-            <div>
-              <span class="asset-name">VN30F</span>
-              <span class="asset-desc">VN30 Futures</span>
-            </div>
+            <div><span class="asset-name">VN30F</span><span class="asset-desc">VN30 Futures</span></div>
           </div>
         </div>
       </div>
@@ -1052,24 +996,15 @@ footer {
         <div class="asset-grid">
           <div class="asset-card">
             <div class="asset-icon">⛽</div>
-            <div>
-              <span class="asset-name">USOIL</span>
-              <span class="asset-desc">Crude Oil (WTI)</span>
-            </div>
+            <div><span class="asset-name">USOIL</span><span class="asset-desc">Crude Oil (WTI)</span></div>
           </div>
           <div class="asset-card">
             <div class="asset-icon">☕</div>
-            <div>
-              <span class="asset-name">COFFEE</span>
-              <span class="asset-desc">Arabica Futures</span>
-            </div>
+            <div><span class="asset-name">COFFEE</span><span class="asset-desc">Arabica Futures</span></div>
           </div>
           <div class="asset-card">
             <div class="asset-icon">🌾</div>
-            <div>
-              <span class="asset-name">SOYBEAN</span>
-              <span class="asset-desc">ZS1! Futures</span>
-            </div>
+            <div><span class="asset-name">SOYBEAN</span><span class="asset-desc">ZS1! Futures</span></div>
           </div>
         </div>
       </div>
@@ -1080,17 +1015,11 @@ footer {
         <div class="asset-grid">
           <div class="asset-card">
             <div class="asset-icon">₿</div>
-            <div>
-              <span class="asset-name">BTCUSDT</span>
-              <span class="asset-desc">Bitcoin</span>
-            </div>
+            <div><span class="asset-name">BTCUSDT</span><span class="asset-desc">Bitcoin</span></div>
           </div>
           <div class="asset-card">
             <div class="asset-icon">Ξ</div>
-            <div>
-              <span class="asset-name">ETHUSDT</span>
-              <span class="asset-desc">Ethereum</span>
-            </div>
+            <div><span class="asset-name">ETHUSDT</span><span class="asset-desc">Ethereum</span></div>
           </div>
         </div>
       </div>
@@ -1098,7 +1027,7 @@ footer {
     </div>
 
     <!-- Signal delivery banner -->
-    <div class="signal-banner reveal" style="margin-top:2.5rem;">
+    <div class="signal-banner reveal" style="margin-top:2.75rem;">
       <div class="signal-banner-inner">
         <div class="signal-pulse"></div>
         <div class="signal-text">
@@ -1118,40 +1047,46 @@ footer {
 <!-- ─── METHODOLOGY ───────────────────────────────────────────── -->
 <section id="methodology">
   <div class="container">
-    <div class="reveal">
-      <div class="section-eyebrow">The Framework</div>
-      <h2 style="font-family:var(--ff-display);font-size:clamp(2rem,4vw,3rem);font-weight:700;letter-spacing:-.02em;line-height:1.15;max-width:520px;">
-        Not one method.<br><em style="font-style:italic;color:var(--gold);">One conviction.</em>
-      </h2>
+    <div class="method-header reveal">
+      <div>
+        <div class="section-eyebrow">The Framework</div>
+        <h2>Not one method.<br><em>One conviction.</em></h2>
+      </div>
+      <div>
+        <p>Four disciplines — each independently powerful, together decisive. Every trade is filtered through structure, cycle, execution, and confirmation. Nothing gets through on one signal alone.</p>
+      </div>
     </div>
 
     <div class="method-grid">
 
-      <div class="method-card reveal">
+      <!-- Hero card -->
+      <div class="method-card method-card--hero reveal">
         <div class="method-num">01</div>
-        <h3>Wyckoff Method</h3>
-        <p>Before price moves, institutions leave a trail. Wyckoff decodes it — mapping accumulation and distribution campaigns through volume behavior, price spread, and the geometry of structural phases that retail traders walk right past.</p>
-        <span class="method-tag">Structure</span>
+        <div>
+          <h3>Wyckoff Method</h3>
+          <p>Before price moves, institutions leave a trail. Wyckoff decodes it — mapping accumulation and distribution campaigns through volume behavior, price spread, and the geometry of structural phases that retail traders walk right past.</p>
+          <span class="method-tag">Structure</span>
+        </div>
       </div>
 
       <div class="method-card reveal reveal-delay-1">
         <div class="method-num">02</div>
         <h3>Elliott Wave Analysis</h3>
-        <p>Markets don't move randomly — they breathe in patterns. Elliott Wave maps those cycles with precision, identifying where price stands in the larger structure and projecting high-probability targets before the move fully unfolds.</p>
+        <p>Markets don't move randomly — they breathe in patterns. Elliott Wave maps those cycles, identifying where price stands in the larger structure and projecting high-probability targets before the move fully unfolds.</p>
         <span class="method-tag">Cycles</span>
       </div>
 
       <div class="method-card reveal reveal-delay-2">
         <div class="method-num">03</div>
         <h3>Price Action</h3>
-        <p>Strip away the noise. The cleanest signal is the chart itself — raw candlestick behavior, key level reactions, and the fingerprints of institutional order flow. No lag, no distortion. Just price doing exactly what it always has.</p>
+        <p>Strip away the noise. The cleanest signal is the chart itself — raw candlestick behavior, key level reactions, and the fingerprints of institutional order flow. No lag, no distortion. Just price doing what it always has.</p>
         <span class="method-tag">Execution</span>
       </div>
 
       <div class="method-card reveal reveal-delay-3">
         <div class="method-num">04</div>
         <h3>Advanced RSI Divergence</h3>
-        <p>Momentum shifts before price does. Advanced divergence signals plotted directly on the candle chart — not buried below it — capture hidden exhaustion and reversal cues that conventional setups miss entirely.</p>
+        <p>Momentum shifts before price does. Divergence signals plotted directly on the candle chart capture hidden exhaustion and reversal cues that conventional setups miss entirely.</p>
         <span class="method-tag">Confirmation</span>
       </div>
 
@@ -1162,47 +1097,38 @@ footer {
 <!-- ─── TOOLS ─────────────────────────────────────────────────── -->
 <section id="tools">
   <div class="container">
-    <div class="reveal">
+    <div class="tools-header reveal">
       <div class="section-eyebrow">Custom Indicators</div>
-      <h2 style="font-family:var(--ff-display);font-size:clamp(2rem,4vw,3rem);font-weight:700;letter-spacing:-.02em;line-height:1.15;max-width:520px;margin-bottom:.75rem;">
-        Precision instruments.<br>Purpose-built.
-      </h2>
-      <p style="color:var(--cream-dim);font-size:1rem;max-width:500px;margin-bottom:3.5rem;line-height:1.75;">
-        Not downloaded from a forum. Not reverse-engineered from YouTube. Every indicator was forged in live markets, refined through real P&amp;L, and built to do exactly one thing: give you a verifiable edge.
-      </p>
+      <h2>Precision instruments.<br>Purpose-built.</h2>
+      <p>Not downloaded from a forum. Not reverse-engineered from YouTube. Every indicator was forged in live markets, refined through real P&amp;L, and built to do exactly one thing: give you a verifiable edge.</p>
     </div>
 
     <div class="tools-grid">
 
-      <!-- VolTick Orderblock -->
       <div class="tool-card reveal">
         <div class="tool-visual">
-          <svg class="tool-svg" viewBox="0 0 400 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-            <!-- volume bars -->
-            <rect x="10"  y="55" width="14" height="20" fill="rgba(201,168,76,.15)" rx="1"/>
-            <rect x="30"  y="45" width="14" height="30" fill="rgba(201,168,76,.2)" rx="1"/>
-            <rect x="50"  y="50" width="14" height="25" fill="rgba(201,168,76,.15)" rx="1"/>
-            <rect x="70"  y="35" width="14" height="40" fill="rgba(201,168,76,.3)" rx="1"/>
-            <rect x="90"  y="48" width="14" height="27" fill="rgba(201,168,76,.18)" rx="1"/>
-            <rect x="110" y="40" width="14" height="35" fill="rgba(201,168,76,.25)" rx="1"/>
-            <rect x="130" y="52" width="14" height="23" fill="rgba(201,168,76,.15)" rx="1"/>
-            <rect x="150" y="30" width="14" height="45" fill="rgba(201,168,76,.4)" rx="1"/>
-            <rect x="170" y="44" width="14" height="31" fill="rgba(201,168,76,.2)" rx="1"/>
-            <rect x="190" y="38" width="14" height="37" fill="rgba(201,168,76,.28)" rx="1"/>
-            <!-- orderblock zone -->
-            <rect x="60" y="10" width="160" height="28" fill="rgba(201,168,76,.08)" rx="2"/>
-            <line x1="60" y1="10" x2="220" y2="10" stroke="rgba(201,168,76,.5)" stroke-width=".8" stroke-dasharray="4,3"/>
-            <line x1="60" y1="38" x2="220" y2="38" stroke="rgba(201,168,76,.3)" stroke-width=".6" stroke-dasharray="4,3"/>
-            <text x="64" y="20" font-family="monospace" font-size="7" fill="rgba(201,168,76,.7)">OB Zone</text>
-            <!-- candles -->
-            <line x1="220" y1="5"  x2="220" y2="60" stroke="rgba(242,237,228,.15)" stroke-width="1"/>
-            <rect x="216" y="15" width="8" height="28" fill="rgba(201,168,76,.6)" rx="1"/>
-            <line x1="235" y1="8"  x2="235" y2="62" stroke="rgba(242,237,228,.15)" stroke-width="1"/>
-            <rect x="231" y="18" width="8" height="25" fill="rgba(242,237,228,.35)" rx="1"/>
-            <line x1="250" y1="6"  x2="250" y2="55" stroke="rgba(242,237,228,.15)" stroke-width="1"/>
-            <rect x="246" y="8"  width="8" height="22" fill="rgba(201,168,76,.7)" rx="1"/>
-            <!-- price line -->
-            <polyline points="265,45 280,38 295,42 310,30 325,34 340,22 355,26 370,18 385,20" stroke="rgba(201,168,76,.7)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <svg class="tool-svg" viewBox="0 0 400 88" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="10"  y="58" width="14" height="24" fill="rgba(0,191,165,.15)" rx="2"/>
+            <rect x="30"  y="48" width="14" height="34" fill="rgba(0,191,165,.22)" rx="2"/>
+            <rect x="50"  y="53" width="14" height="29" fill="rgba(0,191,165,.15)" rx="2"/>
+            <rect x="70"  y="36" width="14" height="46" fill="rgba(0,191,165,.35)" rx="2"/>
+            <rect x="90"  y="50" width="14" height="32" fill="rgba(0,191,165,.2)" rx="2"/>
+            <rect x="110" y="42" width="14" height="40" fill="rgba(0,191,165,.28)" rx="2"/>
+            <rect x="130" y="55" width="14" height="27" fill="rgba(0,191,165,.15)" rx="2"/>
+            <rect x="150" y="30" width="14" height="52" fill="rgba(0,191,165,.45)" rx="2"/>
+            <rect x="170" y="46" width="14" height="36" fill="rgba(0,191,165,.22)" rx="2"/>
+            <rect x="190" y="40" width="14" height="42" fill="rgba(0,191,165,.3)" rx="2"/>
+            <rect x="60" y="8" width="160" height="30" fill="rgba(0,191,165,.08)" rx="3"/>
+            <line x1="60" y1="8" x2="220" y2="8" stroke="rgba(0,191,165,.55)" stroke-width=".9" stroke-dasharray="4,3"/>
+            <line x1="60" y1="38" x2="220" y2="38" stroke="rgba(0,191,165,.3)" stroke-width=".7" stroke-dasharray="4,3"/>
+            <text x="66" y="20" font-family="monospace" font-size="7" fill="rgba(0,191,165,.75)">OB Zone</text>
+            <line x1="220" y1="5"  x2="220" y2="66" stroke="rgba(232,237,245,.15)" stroke-width="1"/>
+            <rect x="216" y="14" width="8" height="30" fill="rgba(0,191,165,.6)" rx="1"/>
+            <line x1="236" y1="8"  x2="236" y2="68" stroke="rgba(232,237,245,.15)" stroke-width="1"/>
+            <rect x="232" y="18" width="8" height="28" fill="rgba(232,237,245,.3)" rx="1"/>
+            <line x1="252" y1="6"  x2="252" y2="60" stroke="rgba(232,237,245,.15)" stroke-width="1"/>
+            <rect x="248" y="8"  width="8" height="24" fill="rgba(0,191,165,.7)" rx="1"/>
+            <polyline points="268,50 284,40 300,44 316,30 332,35 348,20 364,25 380,14 396,16" stroke="rgba(0,191,165,.75)" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </div>
         <span class="tool-label">Volume + Order Blocks</span>
@@ -1213,37 +1139,30 @@ footer {
         </a>
       </div>
 
-      <!-- RSI Divergence -->
       <div class="tool-card reveal reveal-delay-2">
         <div class="tool-visual">
-          <svg class="tool-svg" viewBox="0 0 400 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-            <!-- price candles -->
-            <line x1="20"  y1="25" x2="20"  y2="65" stroke="rgba(242,237,228,.2)" stroke-width="1"/>
-            <rect x="16"  y="32" width="8" height="22" fill="rgba(242,237,228,.4)" rx="1"/>
-            <line x1="38"  y1="20" x2="38"  y2="60" stroke="rgba(242,237,228,.2)" stroke-width="1"/>
-            <rect x="34"  y="25" width="8" height="25" fill="rgba(201,168,76,.6)" rx="1"/>
-            <line x1="56"  y1="28" x2="56"  y2="68" stroke="rgba(242,237,228,.2)" stroke-width="1"/>
-            <rect x="52"  y="35" width="8" height="22" fill="rgba(242,237,228,.4)" rx="1"/>
-            <line x1="74"  y1="18" x2="74"  y2="58" stroke="rgba(242,237,228,.2)" stroke-width="1"/>
-            <rect x="70"  y="22" width="8" height="28" fill="rgba(201,168,76,.6)" rx="1"/>
-            <line x1="92"  y1="30" x2="92"  y2="70" stroke="rgba(242,237,228,.2)" stroke-width="1"/>
-            <rect x="88"  y="38" width="8" height="24" fill="rgba(242,237,228,.4)" rx="1"/>
-            <line x1="110" y1="22" x2="110" y2="62" stroke="rgba(242,237,228,.2)" stroke-width="1"/>
-            <rect x="106" y="28" width="8" height="26" fill="rgba(201,168,76,.6)" rx="1"/>
-            <line x1="128" y1="35" x2="128" y2="72" stroke="rgba(242,237,228,.2)" stroke-width="1"/>
-            <rect x="124" y="42" width="8" height="24" fill="rgba(242,237,228,.4)" rx="1"/>
-            <line x1="146" y1="18" x2="146" y2="58" stroke="rgba(242,237,228,.2)" stroke-width="1"/>
-            <rect x="142" y="22" width="8" height="28" fill="rgba(201,168,76,.6)" rx="1"/>
-            <line x1="164" y1="32" x2="164" y2="72" stroke="rgba(242,237,228,.2)" stroke-width="1"/>
-            <rect x="160" y="40" width="8" height="26" fill="rgba(242,237,228,.4)" rx="1"/>
-            <!-- divergence lines on price -->
-            <line x1="38" y1="23" x2="146" y2="19" stroke="rgba(201,168,76,.8)" stroke-width="1.2" stroke-dasharray="3,2"/>
-            <!-- RSI wave on price -->
-            <polyline points="180,60 200,45 220,52 240,35 260,42 280,28 300,34 320,20 340,26 360,15 380,18" stroke="rgba(201,168,76,.6)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-            <!-- divergence markers -->
-            <circle cx="38"  cy="23" r="3.5" fill="none" stroke="rgba(201,168,76,.9)" stroke-width="1.2"/>
-            <circle cx="146" cy="19" r="3.5" fill="none" stroke="rgba(201,168,76,.9)" stroke-width="1.2"/>
-            <text x="70" y="13" font-family="monospace" font-size="6.5" fill="rgba(201,168,76,.75)">Bearish Div</text>
+          <svg class="tool-svg" viewBox="0 0 400 88" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <line x1="20"  y1="26" x2="20"  y2="70" stroke="rgba(232,237,245,.18)" stroke-width="1"/>
+            <rect x="16"  y="34" width="8" height="24" fill="rgba(232,237,245,.35)" rx="1"/>
+            <line x1="38"  y1="20" x2="38"  y2="64" stroke="rgba(232,237,245,.18)" stroke-width="1"/>
+            <rect x="34"  y="25" width="8" height="28" fill="rgba(0,191,165,.6)" rx="1"/>
+            <line x1="56"  y1="29" x2="56"  y2="72" stroke="rgba(232,237,245,.18)" stroke-width="1"/>
+            <rect x="52"  y="37" width="8" height="24" fill="rgba(232,237,245,.35)" rx="1"/>
+            <line x1="74"  y1="18" x2="74"  y2="62" stroke="rgba(232,237,245,.18)" stroke-width="1"/>
+            <rect x="70"  y="22" width="8" height="30" fill="rgba(0,191,165,.6)" rx="1"/>
+            <line x1="92"  y1="31" x2="92"  y2="74" stroke="rgba(232,237,245,.18)" stroke-width="1"/>
+            <rect x="88"  y="40" width="8" height="26" fill="rgba(232,237,245,.35)" rx="1"/>
+            <line x1="110" y1="22" x2="110" y2="66" stroke="rgba(232,237,245,.18)" stroke-width="1"/>
+            <rect x="106" y="28" width="8" height="28" fill="rgba(0,191,165,.6)" rx="1"/>
+            <line x1="128" y1="36" x2="128" y2="76" stroke="rgba(232,237,245,.18)" stroke-width="1"/>
+            <rect x="124" y="44" width="8" height="26" fill="rgba(232,237,245,.35)" rx="1"/>
+            <line x1="146" y1="18" x2="146" y2="62" stroke="rgba(232,237,245,.18)" stroke-width="1"/>
+            <rect x="142" y="22" width="8" height="30" fill="rgba(0,191,165,.6)" rx="1"/>
+            <line x1="38" y1="23" x2="146" y2="19" stroke="rgba(0,191,165,.85)" stroke-width="1.3" stroke-dasharray="3,2"/>
+            <circle cx="38"  cy="23" r="3.5" fill="none" stroke="rgba(0,191,165,.9)" stroke-width="1.3"/>
+            <circle cx="146" cy="19" r="3.5" fill="none" stroke="rgba(0,191,165,.9)" stroke-width="1.3"/>
+            <text x="65" y="13" font-family="monospace" font-size="6.5" fill="rgba(0,191,165,.8)">Bearish Div</text>
+            <polyline points="182,64 202,48 222,56 242,38 262,46 282,28 302,36 322,18 342,24 362,12 382,16" stroke="rgba(0,191,165,.65)" stroke-width="1.8" fill="none" stroke-linecap="round"/>
           </svg>
         </div>
         <span class="tool-label">Momentum · Price Chart</span>
@@ -1263,8 +1182,8 @@ footer {
   <div class="container">
     <div class="reveal">
       <div class="section-eyebrow">Testimonials</div>
-      <h2 style="font-family:var(--ff-display);font-size:clamp(2rem,4vw,3rem);font-weight:700;letter-spacing:-.02em;line-height:1.15;max-width:520px;">
-        Traders who trade<br><em style="font-style:italic;color:var(--gold);">with conviction.</em>
+      <h2 style="font-family:var(--ff-display);font-size:clamp(2rem,4vw,3.2rem);font-weight:700;letter-spacing:-.025em;line-height:1.12;max-width:520px;">
+        Traders who trade<br><em style="font-style:italic;color:var(--teal);">with conviction.</em>
       </h2>
     </div>
 
@@ -1272,12 +1191,9 @@ footer {
       <div class="testimonial-track-wrap">
         <div class="testimonial-track" id="testimonialTrack">
 
-          <!-- Card 1 -->
           <div class="testimonial-card">
             <div class="testimonial-inner">
-              <p class="testimonial-text">
-                "AangBui's Wyckoff read on XAUUSD was a level above anything I had seen from a retail analyst. He called the accumulation phase before the breakout, gave me a clear invalidation, and the trade ran exactly as mapped. This is what institutional thinking actually looks like."
-              </p>
+              <p class="testimonial-text">"AangBui's Wyckoff read on XAUUSD was a level above anything I had seen from a retail analyst. He called the accumulation phase before the breakout, gave me a clear invalidation, and the trade ran exactly as mapped. This is what institutional thinking actually looks like."</p>
               <div class="testimonial-author">
                 <div class="testimonial-avatar">NN</div>
                 <div>
@@ -1288,12 +1204,9 @@ footer {
             </div>
           </div>
 
-          <!-- Card 2 -->
           <div class="testimonial-card">
             <div class="testimonial-inner">
-              <p class="testimonial-text">
-                "I had been struggling to make sense of the VN30 structure for months. One session with Aang using Elliott Wave mapping and suddenly the noise became a roadmap. The VolTick indicator alone changed how I time entries — it removed the guesswork from order blocks entirely."
-              </p>
+              <p class="testimonial-text">"I had been struggling to make sense of the VN30 structure for months. One session with Aang using Elliott Wave mapping and suddenly the noise became a roadmap. The VolTick indicator alone changed how I time entries — it removed the guesswork from order blocks entirely."</p>
               <div class="testimonial-author">
                 <div class="testimonial-avatar">DN</div>
                 <div>
@@ -1304,12 +1217,9 @@ footer {
             </div>
           </div>
 
-          <!-- Card 3 -->
           <div class="testimonial-card">
             <div class="testimonial-inner">
-              <p class="testimonial-text">
-                "The RSI Divergence indicator is the most honest momentum tool I have used on BTC. No repainting, no lag — just clean signals on the price chart where they belong. Aang's analysis backs it up with context that most traders never bother to build. Highly recommended."
-              </p>
+              <p class="testimonial-text">"The RSI Divergence indicator is the most honest momentum tool I have used on BTC. No repainting, no lag — just clean signals on the price chart where they belong. Aang's analysis backs it up with context that most traders never bother to build. Highly recommended."</p>
               <div class="testimonial-author">
                 <div class="testimonial-avatar">DUY</div>
                 <div>
@@ -1320,12 +1230,9 @@ footer {
             </div>
           </div>
 
-          <!-- Card 4 -->
           <div class="testimonial-card">
             <div class="testimonial-inner">
-              <p class="testimonial-text">
-                "I'm based in Singapore and found Aang through a referral. What surprised me was that the pricing was genuinely accessible — this isn't a service priced for hedge funds. Yet the depth of analysis, the clarity of the setups, the honesty when a trade doesn't work out — it all reflects the integrity of someone who actually trades his own calls. International quality, local heart. That's rare."
-              </p>
+              <p class="testimonial-text">"I'm based in Singapore and found Aang through a referral. What surprised me most was that the pricing was genuinely accessible — this isn't a service priced for hedge funds. Yet the depth of analysis, the clarity of the setups, the honesty when a trade doesn't work out — it all reflects the integrity of someone who actually trades his own calls. International quality, local heart. That's rare."</p>
               <div class="testimonial-author">
                 <div class="testimonial-avatar">LN</div>
                 <div>
@@ -1336,12 +1243,9 @@ footer {
             </div>
           </div>
 
-          <!-- Card 5 -->
           <div class="testimonial-card">
             <div class="testimonial-inner">
-              <p class="testimonial-text">
-                "I came from trading crypto on the higher timeframes — big picture stuff, slow entries, waiting days for a setup. I always avoided lower timeframes because the noise was too much. An Bui's indicators changed that. The VolTick and RSI Divergence tools gave me a framework to read LTF price action without second-guessing every candle. Now I can take trades intraday with confidence. It genuinely covers my daily expenses — and that means a lot."
-              </p>
+              <p class="testimonial-text">"I used to trade crypto only on the higher timeframes — slow, patient entries, sometimes waiting days for a setup. Lower timeframes always felt like too much noise. An Bui's tools changed that completely. VolTick and the RSI Divergence indicator gave me a real framework to read intraday price action without second-guessing every candle. Now I trade LTF with actual confidence. It covers my daily expenses — and that genuinely matters."</p>
               <div class="testimonial-author">
                 <div class="testimonial-avatar">KV</div>
                 <div>
@@ -1357,11 +1261,11 @@ footer {
 
       <div class="testimonial-controls">
         <button class="testimonial-btn" id="tPrev" aria-label="Previous">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
         <div class="testimonial-dots" id="tDots"></div>
         <button class="testimonial-btn" id="tNext" aria-label="Next">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
       </div>
     </div>
@@ -1370,26 +1274,29 @@ footer {
 
 <!-- ─── CONTACT ───────────────────────────────────────────────── -->
 <section id="contact">
-  <div class="contact-glow"></div>
   <div class="container">
     <div class="reveal">
-      <div class="section-eyebrow" style="justify-content:center;">Get In Touch</div>
+      <div class="section-eyebrow" style="justify-content:center;color:var(--bg);opacity:.6;">Get In Touch</div>
       <h2>The market<br>doesn't wait. <em>Neither should you.</em></h2>
-      <div class="divider"></div>
       <p class="sub">Analysis that sharpens your thesis. Indicators that sharpen your timing. A partnership that expands your reach. Whatever the conversation — it starts with a single message.</p>
       <div class="contact-btns">
-        <a href="https://t.me/aangbui" class="btn btn-gold" target="_blank">
+        <a href="https://t.me/aangbui" class="btn btn-dark" target="_blank">
           ✈&ensp;Telegram: @aangbui
         </a>
-        <a href="mailto:aangbui@gmail.com" class="btn btn-outline">
-          ✉&ensp;Email: aangbui@gmail.com
+        <a href="mailto:aangbui@gmail.com" class="btn btn-dark-outline">
+          ✉&ensp;aangbui@gmail.com
         </a>
       </div>
+
       <div class="divider"></div>
-      <p class="sub" style="margin-bottom:1.5rem;">Ready to open a live account and trade under my IB partnership? Get access to competitive spreads, dedicated support, and join a community of traders who trade with an edge.</p>
-      <a href="https://vigco.co/la-com-inv/vi/aangbui" class="btn btn-vigco" target="_blank">
-        Open a Live Account &rarr; Join via AangBui
-      </a>
+
+      <div class="contact-account">
+        <div class="contact-account-title">Open a Live Trading Account</div>
+        <div class="contact-account-sub">Ready to trade with a real edge? Join under my IB partnership — competitive spreads, dedicated support, and a community that trades with conviction, not emotion.</div>
+        <a href="https://vigco.co/la-com-inv/vi/aangbui" class="btn btn-dark" target="_blank" style="margin:0 auto;">
+          Open Account &amp; Join AangBui →
+        </a>
+      </div>
     </div>
   </div>
 </section>
@@ -1424,156 +1331,132 @@ toggle.addEventListener('click', () => links.classList.toggle('open'));
 links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
 
 /* ── Scroll reveal ── */
-const revealEls = document.querySelectorAll('.reveal');
 const io = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
-}, { threshold: .12 });
-revealEls.forEach(el => io.observe(el));
+}, { threshold: .1 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+document.querySelectorAll('.hero .reveal').forEach(el => setTimeout(() => el.classList.add('visible'), 80));
 
-// Immediately reveal hero items
-document.querySelectorAll('.hero .reveal').forEach(el => {
-  setTimeout(() => el.classList.add('visible'), 80);
-});
-
-/* ── Hero canvas — animated price line + candles ── */
+/* ── Hero canvas — teal price line ── */
 (function () {
   const canvas = document.getElementById('hero-canvas');
   const ctx = canvas.getContext('2d');
   let W, H, points = [], frame = 0;
-  const GOLD = 'rgba(201,168,76,';
-  const CREAM = 'rgba(242,237,228,';
-  const NUM_POINTS = 80;
+  const TEAL  = 'rgba(0,191,165,';
+  const CREAM = 'rgba(232,237,245,';
+  const N = 80;
 
   function resize() {
     W = canvas.width  = canvas.offsetWidth;
     H = canvas.height = canvas.offsetHeight;
-    generatePoints();
+    buildPoints();
   }
 
-  function generatePoints() {
+  function buildPoints() {
     points = [];
     let y = H * .5;
-    for (let i = 0; i < NUM_POINTS; i++) {
+    for (let i = 0; i < N; i++) {
       y += (Math.random() - .49) * H * .045;
       y = Math.max(H * .2, Math.min(H * .8, y));
-      points.push({ x: (i / (NUM_POINTS - 1)) * W, y });
+      points.push({ x: (i / (N - 1)) * W, y });
     }
   }
 
   function drawCandle(x, open, close, high, low) {
-    const bullish = close < open;
-    const body = Math.abs(close - open);
-    const bY   = Math.min(open, close);
-    ctx.beginPath();
-    ctx.moveTo(x, high); ctx.lineTo(x, low);
-    ctx.strokeStyle = bullish ? GOLD + '.5)' : CREAM + '.25)';
-    ctx.lineWidth = 1;
-    ctx.stroke();
-    ctx.fillStyle = bullish ? GOLD + '.35)' : CREAM + '.15)';
-    ctx.fillRect(x - 4, bY, 8, Math.max(body, 2));
+    const bull = close < open;
+    ctx.beginPath(); ctx.moveTo(x, high); ctx.lineTo(x, low);
+    ctx.strokeStyle = bull ? TEAL + '.45)' : CREAM + '.2)';
+    ctx.lineWidth = 1; ctx.stroke();
+    ctx.fillStyle = bull ? TEAL + '.3)' : CREAM + '.12)';
+    ctx.fillRect(x - 4, Math.min(open, close), 8, Math.max(Math.abs(close - open), 2));
   }
 
   function draw() {
     ctx.clearRect(0, 0, W, H);
 
-    // subtle grid
-    ctx.strokeStyle = CREAM + '.025)';
+    ctx.strokeStyle = CREAM + '.02)';
     ctx.lineWidth = 1;
-    const gridStep = 80;
-    for (let gx = 0; gx < W; gx += gridStep) { ctx.beginPath(); ctx.moveTo(gx, 0); ctx.lineTo(gx, H); ctx.stroke(); }
-    for (let gy = 0; gy < H; gy += gridStep) { ctx.beginPath(); ctx.moveTo(0, gy); ctx.lineTo(W, gy); ctx.stroke(); }
+    for (let gx = 0; gx < W; gx += 80) { ctx.beginPath(); ctx.moveTo(gx,0); ctx.lineTo(gx,H); ctx.stroke(); }
+    for (let gy = 0; gy < H; gy += 80) { ctx.beginPath(); ctx.moveTo(0,gy); ctx.lineTo(W,gy); ctx.stroke(); }
 
-    // candles
     const step = W / 28;
     for (let i = 0; i < 28; i++) {
-      const pI  = Math.floor(i / 28 * (NUM_POINTS - 1));
-      const pN  = Math.min(pI + 1, NUM_POINTS - 1);
-      const y1  = points[pI].y, y2 = points[pN].y;
-      const cx  = i * step + step / 2;
+      const pI = Math.floor(i / 28 * (N - 1));
+      const pN = Math.min(pI + 1, N - 1);
+      const y1 = points[pI].y, y2 = points[pN].y;
+      const cx = i * step + step / 2;
       const osc = Math.sin(frame * .018 + i * .4) * H * .025;
-      drawCandle(cx, y1 + osc, y2 + osc, Math.min(y1, y2) - H * .035 + osc, Math.max(y1, y2) + H * .03 + osc);
+      drawCandle(cx, y1 + osc, y2 + osc, Math.min(y1,y2) - H*.035 + osc, Math.max(y1,y2) + H*.03 + osc);
     }
 
-    // smooth price line
     const grad = ctx.createLinearGradient(0, 0, W, 0);
-    grad.addColorStop(0,   GOLD + '.05)');
-    grad.addColorStop(.5,  GOLD + '.8)');
-    grad.addColorStop(1,   GOLD + '.3)');
+    grad.addColorStop(0,   TEAL + '.04)');
+    grad.addColorStop(.5,  TEAL + '.85)');
+    grad.addColorStop(1,   TEAL + '.35)');
     ctx.beginPath();
     const shift = Math.sin(frame * .008) * H * .02;
     ctx.moveTo(points[0].x, points[0].y + shift);
-    for (let i = 1; i < NUM_POINTS - 1; i++) {
-      const mx = (points[i].x + points[i + 1].x) / 2;
-      const my = (points[i].y + points[i + 1].y) / 2 + shift;
+    for (let i = 1; i < N - 1; i++) {
+      const mx = (points[i].x + points[i+1].x) / 2;
+      const my = (points[i].y + points[i+1].y) / 2 + shift;
       ctx.quadraticCurveTo(points[i].x, points[i].y + shift, mx, my);
     }
     ctx.strokeStyle = grad;
     ctx.lineWidth = 1.8;
-    ctx.shadowColor = GOLD + '.5)';
-    ctx.shadowBlur  = 8;
+    ctx.shadowColor = TEAL + '.5)';
+    ctx.shadowBlur  = 10;
     ctx.stroke();
     ctx.shadowBlur = 0;
 
-    // glow fill beneath line
     ctx.beginPath();
     ctx.moveTo(points[0].x, points[0].y + shift);
-    for (let i = 1; i < NUM_POINTS - 1; i++) {
-      const mx = (points[i].x + points[i + 1].x) / 2;
-      const my = (points[i].y + points[i + 1].y) / 2 + shift;
+    for (let i = 1; i < N - 1; i++) {
+      const mx = (points[i].x + points[i+1].x) / 2;
+      const my = (points[i].y + points[i+1].y) / 2 + shift;
       ctx.quadraticCurveTo(points[i].x, points[i].y + shift, mx, my);
     }
     ctx.lineTo(W, H); ctx.lineTo(0, H); ctx.closePath();
-    const fillGrad = ctx.createLinearGradient(0, 0, 0, H);
-    fillGrad.addColorStop(0, GOLD + '.06)');
-    fillGrad.addColorStop(1, GOLD + '0)');
-    ctx.fillStyle = fillGrad;
+    const fill = ctx.createLinearGradient(0, 0, 0, H);
+    fill.addColorStop(0, TEAL + '.06)');
+    fill.addColorStop(1, TEAL + '0)');
+    ctx.fillStyle = fill;
     ctx.fill();
 
     frame++;
-    // Slow drift — regenerate subtly every ~300 frames
     if (frame % 300 === 0) {
-      points.forEach((p, i) => {
+      points.forEach(p => {
         p.y += (Math.random() - .5) * H * .06;
-        p.y  = Math.max(H * .2, Math.min(H * .8, p.y));
+        p.y = Math.max(H * .2, Math.min(H * .8, p.y));
       });
     }
-
     requestAnimationFrame(draw);
   }
 
   window.addEventListener('resize', resize);
-  resize();
-  draw();
+  resize(); draw();
 })();
 
 /* ── Ticker ── */
 (function () {
   const items = [
-    { sym: 'XAUUSD',  label: 'Spot Gold'        },
-    { sym: 'XAGUSD',  label: 'Spot Silver'       },
-    { sym: 'XPTUSD',  label: 'Platinum'          },
-    { sym: 'COPPER',  label: 'Copper Futures'    },
-    { sym: 'SP500',   label: 'S&P 500'           },
-    { sym: 'VNINDEX', label: 'Vietnam Index'     },
-    { sym: 'VN30F',   label: 'VN30 Futures'      },
-    { sym: 'USOIL',   label: 'Crude Oil WTI'     },
-    { sym: 'COFFEE',  label: 'Arabica Futures'   },
-    { sym: 'SOYBEAN', label: 'ZS1! Futures'      },
-    { sym: 'BTCUSDT', label: 'Bitcoin'           },
-    { sym: 'ETHUSDT', label: 'Ethereum'          },
+    { sym: 'XAUUSD',  label: 'Spot Gold'       },
+    { sym: 'XAGUSD',  label: 'Spot Silver'      },
+    { sym: 'XPTUSD',  label: 'Platinum'         },
+    { sym: 'COPPER',  label: 'Copper Futures'   },
+    { sym: 'SP500',   label: 'S&P 500'          },
+    { sym: 'VNINDEX', label: 'Vietnam Index'    },
+    { sym: 'VN30F',   label: 'VN30 Futures'     },
+    { sym: 'USOIL',   label: 'Crude Oil WTI'    },
+    { sym: 'COFFEE',  label: 'Arabica Futures'  },
+    { sym: 'SOYBEAN', label: 'ZS1! Futures'     },
+    { sym: 'BTCUSDT', label: 'Bitcoin'          },
+    { sym: 'ETHUSDT', label: 'Ethereum'         },
   ];
   const track = document.getElementById('tickerTrack');
-  // build two copies for seamless loop
-  function makeItems() {
-    return items.map(it =>
-      `<div class="ticker-item">
-        <span class="sym">${it.sym}</span>
-        <span>${it.label}</span>
-        <span class="ticker-dot"></span>
-      </div>`
-    ).join('');
-  }
-  track.innerHTML = makeItems() + makeItems();
+  const html = items.map(it =>
+    `<div class="ticker-item"><span class="sym">${it.sym}</span><span>${it.label}</span><span class="ticker-dot"></span></div>`
+  ).join('');
+  track.innerHTML = html + html;
 })();
 
 /* ── Testimonial Carousel ── */
@@ -1582,15 +1465,10 @@ document.querySelectorAll('.hero .reveal').forEach(el => {
   const dotsEl = document.getElementById('tDots');
   const cards  = Array.from(track.querySelectorAll('.testimonial-card'));
   const total  = cards.length;
-  let current  = 0;
-  let timer;
+  let current  = 0, timer;
 
-  // Card width as % of track — must match CSS min-width
-  function cardPct() {
-    return window.innerWidth <= 700 ? 90 : 80;
-  }
+  function cardPct() { return window.innerWidth <= 700 ? 92 : 78; }
 
-  // Build dots
   cards.forEach((_, i) => {
     const d = document.createElement('button');
     d.className = 'testimonial-dot' + (i === 0 ? ' active' : '');
@@ -1602,14 +1480,10 @@ document.querySelectorAll('.hero .reveal').forEach(el => {
   function goTo(idx) {
     current = (idx + total) % total;
     const pct = cardPct();
-    // Offset so active card is centred: shift by (100-pct)/2 to align first card, then advance by pct per step
     const offset = (100 - pct) / 2;
     track.style.transform = `translateX(calc(-${current * pct}% + ${offset}%))`;
-
     cards.forEach((c, i) => c.classList.toggle('active', i === current));
-    dotsEl.querySelectorAll('.testimonial-dot').forEach((d, i) =>
-      d.classList.toggle('active', i === current)
-    );
+    dotsEl.querySelectorAll('.testimonial-dot').forEach((d, i) => d.classList.toggle('active', i === current));
     resetTimer();
   }
 
@@ -1621,7 +1495,6 @@ document.querySelectorAll('.hero .reveal').forEach(el => {
   document.getElementById('tPrev').addEventListener('click', () => goTo(current - 1));
   document.getElementById('tNext').addEventListener('click', () => goTo(current + 1));
 
-  // Swipe
   let startX = 0;
   track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
   track.addEventListener('touchend',   e => {
@@ -1629,15 +1502,12 @@ document.querySelectorAll('.hero .reveal').forEach(el => {
     if (Math.abs(dx) > 45) goTo(dx < 0 ? current + 1 : current - 1);
   });
 
-  // Pause on hover
   const wrap = track.closest('.testimonial-carousel');
   wrap.addEventListener('mouseenter', () => clearInterval(timer));
   wrap.addEventListener('mouseleave', resetTimer);
-
-  // Recalculate on resize
   window.addEventListener('resize', () => goTo(current));
 
-  goTo(0); // init with centering
+  goTo(0);
   resetTimer();
 })();
 </script>
