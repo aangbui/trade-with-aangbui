@@ -559,12 +559,6 @@ nav.scrolled {
 .testimonial-fade-wrap {
   overflow: hidden; position: relative;
 }
-.testimonial-fade-wrap::before,
-.testimonial-fade-wrap::after {
-  content: ''; position: absolute; top: 0; bottom: 0; width: 140px; z-index: 2; pointer-events: none;
-}
-.testimonial-fade-wrap::before { left: 0; background: linear-gradient(to right, #000 0%, transparent 100%); }
-.testimonial-fade-wrap::after  { right: 0; background: linear-gradient(to left, #000 0%, transparent 100%); }
 .testimonial-track {
   display: flex; transition: transform .7s cubic-bezier(.22,1,.36,1);
   will-change: transform;
@@ -572,12 +566,12 @@ nav.scrolled {
 .testimonial-slide {
   min-width: 76%; padding: 0 .65rem; box-sizing: border-box;
   transition: opacity .5s, filter .5s;
-  opacity: .2; filter: blur(2px);
+  opacity: 0; filter: blur(4px);
+  pointer-events: none;
 }
-.testimonial-slide.active { opacity: 1; filter: none; }
+.testimonial-slide.active { opacity: 1; filter: none; pointer-events: auto; }
 @media (max-width: 700px) {
   .testimonial-slide { min-width: 92%; }
-  .testimonial-fade-wrap::before, .testimonial-fade-wrap::after { width: 48px; }
 }
 .t-inner {
   padding: 3rem 3.5rem; max-width: 800px; margin: 0 auto;
