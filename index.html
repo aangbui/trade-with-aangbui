@@ -8,75 +8,59 @@
 <meta name="keywords" content="AangBui, trading analysis, market intelligence, Wyckoff method, Elliott Wave, RSI divergence, XAUUSD analysis, Bitcoin analysis, VN30, TradingView indicators, VolTick, order block, IB partnership, Vantage" />
 <meta name="author" content="AangBui" />
 <meta name="robots" content="index, follow" />
-<link rel="canonical" href="https://aangbui.github.io/trade-with-aangbui/" />
-
-<!-- Open Graph -->
+<link rel="canonical" href="https://aangbui.github.io/trade-with-aangbui-v2/" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://aangbui.github.io/trade-with-aangbui/" />
+<meta property="og:url" content="https://aangbui.github.io/trade-with-aangbui-v2/" />
 <meta property="og:title" content="Trading with AangBui — Precision Market Intelligence" />
 <meta property="og:description" content="Institutional-grade multi-asset analysis — Wyckoff, Elliott Wave, and purpose-built TradingView indicators. Real-time signals across Gold, Bitcoin, VN30, SP500, and more." />
-<meta property="og:image" content="https://aangbui.github.io/trade-with-aangbui/og-image.png" />
-
-<!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Trading with AangBui — Precision Market Intelligence" />
-<meta name="twitter:description" content="Institutional-grade multi-asset analysis — Wyckoff, Elliott Wave, and purpose-built TradingView indicators. Real-time signals across Gold, Bitcoin, VN30, SP500, and more." />
-<meta name="twitter:image" content="https://aangbui.github.io/trade-with-aangbui/og-image.png" />
-
-<!-- Schema.org structured data -->
+<meta name="twitter:description" content="Institutional-grade multi-asset analysis — Wyckoff, Elliott Wave, and purpose-built TradingView indicators." />
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   "name": "Trading with AangBui",
-  "description": "Institutional-grade multi-asset market analysis covering XAUUSD, Bitcoin, VN30, SP500, and more. Services include Wyckoff analysis, Elliott Wave, custom TradingView indicators, and real-time trading signals.",
-  "url": "https://aangbui.github.io/trade-with-aangbui/",
+  "description": "Institutional-grade multi-asset market analysis covering XAUUSD, Bitcoin, VN30, SP500, and more.",
+  "url": "https://aangbui.github.io/trade-with-aangbui-v2/",
   "contactPoint": [
     { "@type": "ContactPoint", "contactType": "customer service", "url": "https://t.me/aangbui" },
     { "@type": "ContactPoint", "contactType": "customer service", "email": "aangbui@gmail.com" }
-  ],
-  "sameAs": [
-    "https://t.me/aangbui",
-    "https://in.tradingview.com/u/aangbui/"
   ]
 }
 </script>
-
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
 <style>
-/* ─── RESET & BASE ─────────────────────────────────────────── */
+/* ─── RESET ──────────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; font-size: 16px; }
 
 :root {
-  --bg:         #07090F;
-  --bg2:        #0C1118;
-  --bg3:        #111926;
-  --bg-teal:    #081A18;
-  --teal:       #00BFA5;
-  --teal-mid:   #009982;
-  --teal-dim:   #006B5E;
-  --teal-glow:  rgba(0,191,165,.16);
-  --teal-block: rgba(0,191,165,.07);
-  --cream:      #E8EDF5;
-  --cream-dim:  #5A7896;
-  --border:     rgba(0,191,165,.18);
-  --border2:    rgba(232,237,245,.07);
-  --radius-xl:  24px;
-  --radius-lg:  18px;
-  --radius-md:  12px;
-  --radius-sm:  8px;
-  --ff-display: 'Playfair Display', Georgia, serif;
-  --ff-body:    'DM Sans', system-ui, sans-serif;
-  --ff-mono:    'DM Mono', 'Courier New', monospace;
+  --bg:          #000000;
+  --teal:        #00C2A8;
+  --teal-glass:  rgba(0,194,168,.12);
+  --teal-border: rgba(0,194,168,.28);
+  --white:       #FFFFFF;
+  --dim:         rgba(255,255,255,.45);
+  --muted:       rgba(255,255,255,.22);
+  --glass:       rgba(255,255,255,.04);
+  --glass-2:     rgba(255,255,255,.07);
+  --border:      rgba(255,255,255,.07);
+  --border-2:    rgba(255,255,255,.13);
+  --pill:        100px;
+  --radius:      20px;
+  --radius-sm:   12px;
+  --ff-display:  'Playfair Display', Georgia, serif;
+  --ff-body:     'DM Sans', system-ui, sans-serif;
+  --ff-mono:     'DM Mono', 'Courier New', monospace;
 }
 
 body {
   background: var(--bg);
-  color: var(--cream);
+  color: var(--white);
   font-family: var(--ff-body);
   font-weight: 400;
   line-height: 1.65;
@@ -84,793 +68,581 @@ body {
   overflow-x: hidden;
 }
 
-::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: var(--bg); }
-::-webkit-scrollbar-thumb { background: var(--teal-dim); border-radius: 2px; }
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: #000; }
+::-webkit-scrollbar-thumb { background: rgba(0,194,168,.3); border-radius: 2px; }
 
-/* ─── SHARED BORDER GLOW (used on all hoverable cards) ─────── */
-.border-glow {
-  position: relative;
-  overflow: hidden;
+/* ─── AMBIENT BLOBS ─────────────────────────────────────────── */
+.ambient {
+  position: fixed; inset: 0; z-index: 0;
+  pointer-events: none; overflow: hidden;
 }
-.border-glow::after {
-  content: '';
-  position: absolute; top: 0; left: 0; right: 0; height: 2px;
-  background: linear-gradient(90deg, transparent, var(--teal), transparent);
-  opacity: 0;
-  transition: opacity .35s ease;
-  pointer-events: none;
+.blob {
+  position: absolute; border-radius: 50%;
+  filter: blur(110px); will-change: transform;
 }
-.border-glow:hover::after { opacity: 1; }
+.blob-1 {
+  width: 800px; height: 600px;
+  top: -150px; left: -200px;
+  background: radial-gradient(ellipse, rgba(0,180,160,.16) 0%, transparent 68%);
+  animation: blobDrift1 18s ease-in-out infinite;
+}
+.blob-2 {
+  width: 650px; height: 550px;
+  bottom: 15%; right: -180px;
+  background: radial-gradient(ellipse, rgba(160,105,30,.13) 0%, transparent 68%);
+  animation: blobDrift2 22s ease-in-out infinite;
+}
+.blob-3 {
+  width: 500px; height: 420px;
+  top: 45%; left: 35%;
+  background: radial-gradient(ellipse, rgba(0,150,140,.07) 0%, transparent 68%);
+  animation: blobDrift3 28s ease-in-out infinite;
+}
+@keyframes blobDrift1 {
+  0%,100% { transform: translate(0,0) scale(1); }
+  50% { transform: translate(80px, 60px) scale(1.08); }
+}
+@keyframes blobDrift2 {
+  0%,100% { transform: translate(0,0) scale(1); }
+  50% { transform: translate(-70px,-50px) scale(1.06); }
+}
+@keyframes blobDrift3 {
+  0%,100% { transform: translate(0,0) scale(1); }
+  50% { transform: translate(50px, 80px) scale(1.04); }
+}
 
-/* ─── UTILITY ───────────────────────────────────────────────── */
-.container { max-width: 1120px; margin: 0 auto; padding: 0 2rem; }
-
-.section-eyebrow {
-  font-family: var(--ff-mono);
-  font-size: .72rem;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  color: var(--teal);
-  margin-bottom: 1rem;
-  display: flex; align-items: center; gap: .75rem;
-}
-.section-eyebrow::after {
-  content: '';
-  flex: 1; max-width: 48px;
-  height: 1px;
-  background: var(--teal-dim);
-  opacity: .5;
+/* ─── LAYOUT ─────────────────────────────────────────────────── */
+.container {
+  max-width: 1120px; margin: 0 auto; padding: 0 2rem;
+  position: relative; z-index: 1;
 }
 
-/* ─── FADE-IN ────────────────────────────────────────────────── */
+/* ─── REVEAL ANIMATIONS ─────────────────────────────────────── */
 .reveal {
   opacity: 0;
-  transform: translateY(24px);
-  transition: opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1);
+  transform: translateY(28px);
+  filter: blur(6px);
+  transition: opacity .8s cubic-bezier(.22,1,.36,1),
+              transform .8s cubic-bezier(.22,1,.36,1),
+              filter .8s cubic-bezier(.22,1,.36,1);
 }
-.reveal.visible { opacity: 1; transform: none; }
-.reveal-delay-1 { transition-delay: .1s; }
-.reveal-delay-2 { transition-delay: .2s; }
-.reveal-delay-3 { transition-delay: .3s; }
-.reveal-delay-4 { transition-delay: .4s; }
+.reveal.visible { opacity: 1; transform: none; filter: blur(0); }
+.d1 { transition-delay: .1s; }
+.d2 { transition-delay: .2s; }
+.d3 { transition-delay: .3s; }
+.d4 { transition-delay: .4s; }
+.d5 { transition-delay: .5s; }
 
-/* ─── NAV ───────────────────────────────────────────────────── */
+/* ─── NAV ────────────────────────────────────────────────────── */
 nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 999;
-  height: 64px;
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 999; height: 64px;
   display: flex; align-items: center;
-  background: rgba(7,9,15,.88);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  border-bottom: 1px solid var(--border);
 }
-
 .nav-inner {
   width: 100%; max-width: 1120px; margin: 0 auto; padding: 0 2rem;
   display: flex; align-items: center; justify-content: space-between;
 }
-
 .nav-logo {
   font-family: var(--ff-display);
-  font-size: 1.1rem; font-weight: 600;
-  color: var(--cream); text-decoration: none; letter-spacing: .01em;
+  font-size: 1.05rem; font-weight: 600;
+  color: var(--white); text-decoration: none; letter-spacing: .01em;
 }
 .nav-logo span { color: var(--teal); }
-
 .nav-links {
-  list-style: none;
-  display: flex; gap: 2.25rem; align-items: center;
+  list-style: none; display: flex; gap: 2rem; align-items: center;
 }
 .nav-links a {
-  font-family: var(--ff-body);
-  font-size: .82rem; font-weight: 500;
-  letter-spacing: .06em; text-transform: uppercase;
-  color: var(--cream-dim); text-decoration: none;
+  font-family: var(--ff-body); font-size: .82rem; font-weight: 400;
+  letter-spacing: .05em; text-transform: uppercase;
+  color: var(--dim); text-decoration: none;
   transition: color .2s;
 }
-.nav-links a:hover { color: var(--teal); }
-
+.nav-links a:hover { color: var(--white); }
 .nav-cta {
-  font-family: var(--ff-mono);
-  font-size: .75rem; letter-spacing: .06em;
-  color: var(--teal) !important;
-  border: 1px solid var(--border);
-  padding: .45rem 1.1rem;
-  border-radius: var(--radius-sm);
+  font-size: .78rem !important;
+  background: var(--glass-2) !important;
+  border: 1px solid var(--border-2) !important;
+  padding: .4rem 1.1rem !important;
+  border-radius: var(--pill) !important;
+  color: var(--white) !important;
   transition: background .2s !important;
 }
-.nav-cta:hover { background: var(--teal-glow) !important; }
-
+.nav-cta:hover { background: rgba(255,255,255,.12) !important; }
 .nav-toggle {
-  display: none;
-  flex-direction: column; gap: 5px; cursor: pointer; padding: 4px;
+  display: none; flex-direction: column; gap: 5px;
+  cursor: pointer; padding: 4px;
 }
 .nav-toggle span {
-  display: block; width: 22px; height: 1.5px;
-  background: var(--cream); border-radius: 2px;
+  display: block; width: 20px; height: 1px;
+  background: rgba(255,255,255,.6); border-radius: 2px;
   transition: transform .25s, opacity .25s;
 }
 
-/* ─── BUTTONS ───────────────────────────────────────────────── */
+/* ─── BUTTONS ────────────────────────────────────────────────── */
 .btn {
   display: inline-flex; align-items: center; gap: .5rem;
-  font-family: var(--ff-body);
-  font-size: .9rem; font-weight: 600;
-  text-decoration: none;
-  padding: .9rem 1.9rem;
-  border-radius: var(--radius-md);
-  transition: all .25s;
-  white-space: nowrap;
-  border: none; cursor: pointer;
+  font-family: var(--ff-body); font-size: .9rem; font-weight: 500;
+  text-decoration: none; white-space: nowrap;
+  padding: .85rem 2rem; border-radius: var(--pill);
+  transition: all .25s; border: none; cursor: pointer;
 }
+.btn-white {
+  background: var(--white); color: #000; font-weight: 600;
+}
+.btn-white:hover { background: rgba(255,255,255,.88); transform: translateY(-1px); }
+
+.btn-glass {
+  background: var(--glass-2);
+  border: 1px solid var(--border-2);
+  color: var(--white);
+}
+.btn-glass:hover { background: rgba(255,255,255,.1); transform: translateY(-1px); }
 
 .btn-teal {
-  background: var(--teal);
-  color: var(--bg);
+  background: var(--teal-glass);
+  border: 1px solid var(--teal-border);
+  color: var(--teal);
 }
-.btn-teal:hover {
-  background: #00D4B8;
-  transform: translateY(-2px);
-  box-shadow: 0 12px 32px rgba(0,191,165,.3);
-}
+.btn-teal:hover { background: rgba(0,194,168,.2); transform: translateY(-1px); }
 
-.btn-outline {
+.btn-outline-dark {
   background: transparent;
-  color: var(--cream);
-  border: 1.5px solid var(--border2);
+  border: 1px solid rgba(0,0,0,.25);
+  color: #000;
 }
-.btn-outline:hover {
-  border-color: rgba(0,191,165,.5);
-  color: var(--teal);
-  transform: translateY(-2px);
-}
+.btn-outline-dark:hover { background: rgba(0,0,0,.08); transform: translateY(-1px); }
 
-.btn-ghost {
-  background: var(--teal-block);
-  color: var(--teal);
-  border: 1.5px solid var(--border);
-  font-size: .85rem;
-}
-.btn-ghost:hover {
-  background: var(--teal-glow);
-  border-color: rgba(0,191,165,.45);
-  transform: translateY(-2px);
-}
-
-.btn-dark {
-  background: var(--bg);
-  color: var(--teal);
-  font-weight: 600;
-}
-.btn-dark:hover {
-  background: #0a1420;
-  transform: translateY(-2px);
-  box-shadow: 0 12px 32px rgba(0,0,0,.35);
-}
-
-.btn-dark-outline {
-  background: transparent;
-  color: var(--bg);
-  border: 1.5px solid rgba(7,9,15,.3);
-}
-.btn-dark-outline:hover {
-  background: rgba(7,9,15,.12);
-  transform: translateY(-2px);
-}
-
-/* ─── HERO ──────────────────────────────────────────────────── */
+/* ─── HERO ───────────────────────────────────────────────────── */
 .hero {
-  position: relative;
-  min-height: 100vh;
+  position: relative; min-height: 100vh;
   display: flex; align-items: center;
-  padding-top: 64px;
-  overflow: hidden;
-  background: var(--teal);
+  padding-top: 64px; overflow: hidden;
 }
-
-.hero::before {
-  content: '';
-  position: absolute; inset: 0; z-index: 1;
-  background-image:
-    linear-gradient(rgba(7,9,15,.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(7,9,15,.06) 1px, transparent 1px);
-  background-size: 64px 64px;
-  pointer-events: none;
-}
-
 #hero-canvas {
   position: absolute; inset: 0;
-  width: 100%; height: 100%;
-  opacity: .12;
+  width: 100%; height: 100%; opacity: .09;
 }
-
-.hero-vignette {
-  position: absolute; inset: 0;
-  background:
-    radial-gradient(ellipse 80% 70% at 50% 50%, transparent 25%, var(--teal) 80%),
-    linear-gradient(to bottom, transparent 55%, var(--teal) 100%);
-  pointer-events: none;
-}
-
 .hero-content {
   position: relative; z-index: 2;
-  max-width: 860px;
-  padding: 5rem 2rem 6rem;
-  margin: 0 auto;
-  text-align: center;
+  max-width: 900px; margin: 0 auto;
+  padding: 5rem 2rem 7rem; text-align: center;
 }
-
-.hero-label {
-  font-family: var(--ff-mono);
-  font-size: .72rem; letter-spacing: .22em; text-transform: uppercase;
-  color: rgba(7,9,15,.65); margin-bottom: 2rem; opacity: 1; display: inline-block;
+.hero-eyebrow {
+  font-family: var(--ff-mono); font-size: .7rem;
+  letter-spacing: .22em; text-transform: uppercase;
+  color: var(--teal); margin-bottom: 2.25rem;
+  display: inline-flex; align-items: center; gap: .75rem;
+  opacity: .9;
 }
-
+.hero-eyebrow::before, .hero-eyebrow::after {
+  content: ''; width: 32px; height: 1px;
+  background: rgba(0,194,168,.4);
+}
 .hero h1 {
   font-family: var(--ff-display);
-  font-size: clamp(2.8rem, 7.5vw, 5.5rem);
-  font-weight: 700; line-height: 1.07; letter-spacing: -.025em;
-  color: var(--bg); margin-bottom: 1.75rem;
+  font-size: clamp(3.2rem, 8.5vw, 7rem);
+  font-weight: 300; line-height: 1.04;
+  letter-spacing: -.03em; color: var(--white);
+  margin-bottom: 1.75rem;
 }
-.hero h1 em { font-style: italic; color: rgba(7,9,15,.7); }
-
+.hero h1 strong { font-weight: 700; }
+.hero h1 em { font-style: italic; color: var(--teal); }
 .hero-sub {
   font-size: clamp(.95rem, 2vw, 1.1rem);
-  color: rgba(7,9,15,.6);
-  max-width: 640px; margin: 0 auto 3rem; line-height: 1.82;
+  color: var(--dim); max-width: 580px;
+  margin: 0 auto 3rem; line-height: 1.85;
 }
-
 .hero-ctas {
-  display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+  display: flex; gap: .85rem; justify-content: center; flex-wrap: wrap;
 }
-
 .scroll-hint {
-  position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+  position: absolute; bottom: 2.5rem; left: 50%;
+  transform: translateX(-50%);
   display: flex; flex-direction: column; align-items: center; gap: .5rem;
-  font-family: var(--ff-mono); font-size: .65rem;
-  letter-spacing: .12em; text-transform: uppercase;
-  color: rgba(7,9,15,.45); opacity: 1;
-  animation: fadeUpHint 2s ease-in-out infinite;
+  font-family: var(--ff-mono); font-size: .62rem;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: var(--muted);
+  animation: hintFloat 2.5s ease-in-out infinite;
 }
-@keyframes fadeUpHint {
-  0%,100% { opacity: .45; transform: translateX(-50%) translateY(0); }
-  50%      { opacity: .7; transform: translateX(-50%) translateY(-4px); }
+@keyframes hintFloat {
+  0%,100% { opacity: .4; transform: translateX(-50%) translateY(0); }
+  50% { opacity: .7; transform: translateX(-50%) translateY(-5px); }
 }
 
-/* ─── TICKER ────────────────────────────────────────────────── */
+/* ─── TICKER ─────────────────────────────────────────────────── */
 .ticker-section {
-  background: var(--bg2);
+  position: relative; z-index: 1;
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
-  padding: .85rem 0; overflow: hidden;
+  background: rgba(255,255,255,.02);
+  padding: .9rem 0; overflow: hidden;
+  backdrop-filter: blur(8px);
 }
-
 .ticker-track {
   display: flex; width: max-content;
-  animation: tickerScroll 32s linear infinite;
+  animation: tickerScroll 36s linear infinite;
 }
 .ticker-track:hover { animation-play-state: paused; }
-
 @keyframes tickerScroll {
-  0%   { transform: translateX(0); }
+  0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
-
 .ticker-item {
-  display: flex; align-items: center; gap: .65rem;
-  padding: 0 2.25rem;
-  font-family: var(--ff-mono); font-size: .8rem; letter-spacing: .04em;
-  color: var(--cream-dim); white-space: nowrap;
+  display: flex; align-items: center; gap: .6rem;
+  padding: 0 2.5rem;
+  font-family: var(--ff-mono); font-size: .78rem;
+  letter-spacing: .04em; color: var(--dim); white-space: nowrap;
 }
 .ticker-item .sym { color: var(--teal); font-weight: 500; }
-.ticker-dot {
-  width: 3px; height: 3px; border-radius: 50%;
-  background: var(--teal-dim); opacity: .5; flex-shrink: 0;
+.ticker-dot { width: 3px; height: 3px; border-radius: 50%; background: rgba(0,194,168,.3); flex-shrink: 0; }
+
+/* ─── SECTION BASE ───────────────────────────────────────────── */
+.section {
+  position: relative; z-index: 1;
+  padding: 8rem 0;
 }
-
-/* ─── SERVICES ──────────────────────────────────────────────── */
-#services { padding: 7rem 0; background: var(--bg); }
-
-.services-intro {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: end;
-  margin-bottom: 4rem;
+.section-rule {
+  border: none; border-top: 1px solid var(--border);
+  margin: 0;
 }
-
-.services-intro h2 {
+.eyebrow {
+  font-family: var(--ff-mono); font-size: .68rem;
+  letter-spacing: .2em; text-transform: uppercase;
+  color: var(--teal); margin-bottom: 1.25rem; opacity: .85;
+}
+.section-h2 {
   font-family: var(--ff-display);
-  font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 700;
-  line-height: 1.12; letter-spacing: -.025em;
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 300; line-height: 1.1;
+  letter-spacing: -.025em; margin-bottom: 1.25rem;
+}
+.section-h2 strong { font-weight: 700; }
+.section-h2 em { font-style: italic; color: var(--teal); }
+.section-lead {
+  font-size: 1rem; color: var(--dim); line-height: 1.85;
+  max-width: 520px;
 }
 
-.services-intro p { color: var(--cream-dim); font-size: 1rem; line-height: 1.82; }
-
-.asset-categories { display: flex; flex-direction: column; gap: 2.75rem; }
-
-.asset-category-label {
-  font-family: var(--ff-mono);
-  font-size: .68rem; letter-spacing: .16em; text-transform: uppercase;
-  color: var(--teal); margin-bottom: 1rem;
-  padding-bottom: .65rem; border-bottom: 1px solid var(--border); opacity: .8;
-}
-
-.asset-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
-  gap: .75rem;
-}
-
-.asset-card {
-  background: var(--bg3);
-  border: 1px solid var(--border2);
-  border-radius: var(--radius-lg);
-  padding: 1.25rem 1.3rem;
-  display: flex; align-items: center; gap: 1rem;
-  transition: border-color .25s, transform .25s, box-shadow .25s;
-  cursor: default;
-}
-.asset-card:hover {
-  border-color: var(--border);
-  transform: translateY(-3px);
-  box-shadow: 0 12px 32px rgba(0,0,0,.25);
-}
-
-.asset-icon {
-  width: 40px; height: 40px; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-family: var(--ff-mono); font-size: .62rem; font-weight: 500;
-  color: var(--teal); flex-shrink: 0;
-  background: var(--teal-block); border: 1px solid var(--border);
-}
-
-.asset-name {
-  font-family: var(--ff-mono); font-size: .82rem;
-  color: var(--cream); font-weight: 500;
-  display: block; margin-bottom: .1rem; letter-spacing: .02em;
-}
-.asset-desc { font-size: .73rem; color: var(--cream-dim); }
-
-/* Signal banner */
-.signal-banner { margin-top: 2.75rem; }
-.signal-banner-inner {
-  display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;
-  background: var(--bg-teal);
+/* ─── GLASS CARD ─────────────────────────────────────────────── */
+.glass-card {
+  background: var(--glass);
   border: 1px solid var(--border);
-  border-radius: var(--radius-xl);
-  padding: 1.75rem 2.25rem;
-  position: relative; overflow: hidden;
-  transition: border-color .3s;
-}
-.signal-banner-inner::after {
-  content: '';
-  position: absolute; top: 0; left: 0; right: 0; height: 2px;
-  background: linear-gradient(90deg, transparent, var(--teal), transparent);
-  opacity: 0; transition: opacity .35s;
-}
-.signal-banner-inner:hover::after { opacity: 1; }
-
-.signal-pulse {
-  width: 10px; height: 10px; border-radius: 50%;
-  background: var(--teal); flex-shrink: 0;
-  animation: pulseTeal 2s ease-in-out infinite;
-}
-@keyframes pulseTeal {
-  0%,100% { box-shadow: 0 0 0 0 rgba(0,191,165,.55); }
-  50%      { box-shadow: 0 0 0 8px rgba(0,191,165,0); }
-}
-
-.signal-text { flex: 1; min-width: 200px; }
-.signal-banner-title {
-  display: block; font-size: .95rem; font-weight: 600;
-  color: var(--teal); margin-bottom: .25rem;
-}
-.signal-banner-sub { display: block; font-size: .85rem; color: var(--cream-dim); line-height: 1.65; }
-
-.signal-channels { display: flex; gap: .65rem; flex-shrink: 0; flex-wrap: wrap; }
-.signal-chip {
-  font-family: var(--ff-mono); font-size: .72rem; letter-spacing: .05em;
-  color: var(--teal); border: 1px solid var(--border);
-  border-radius: var(--radius-sm); padding: .45rem 1rem;
-  text-decoration: none; transition: background .2s, border-color .2s;
-  white-space: nowrap; background: var(--teal-block);
-}
-.signal-chip:hover { background: var(--teal-glow); border-color: rgba(0,191,165,.45); }
-
-/* ─── METHODOLOGY ───────────────────────────────────────────── */
-#methodology {
-  padding: 7rem 0;
-  background: var(--bg-teal);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-}
-
-.method-header {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
-  align-items: end; margin-bottom: 3.5rem;
-}
-.method-header h2 {
-  font-family: var(--ff-display);
-  font-size: clamp(2rem, 4vw, 3.2rem);
-  font-weight: 700; letter-spacing: -.025em; line-height: 1.12;
-}
-.method-header h2 em { font-style: italic; color: var(--teal); }
-.method-header p { color: var(--cream-dim); font-size: 1rem; line-height: 1.82; }
-
-.method-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-}
-
-.method-card {
-  background: var(--bg3);
-  border: 1px solid var(--border2);
-  border-radius: var(--radius-xl);
-  padding: 2.5rem 2.25rem;
+  border-radius: var(--radius);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
   position: relative; overflow: hidden;
   transition: border-color .3s, transform .3s, box-shadow .3s;
 }
-.method-card::after {
+.glass-card::before {
   content: '';
-  position: absolute; top: 0; left: 0; right: 0; height: 2px;
-  background: linear-gradient(90deg, transparent, var(--teal), transparent);
-  opacity: 0; transition: opacity .35s;
-}
-.method-card:hover {
-  border-color: var(--border);
-  transform: translateY(-4px);
-  box-shadow: 0 20px 48px rgba(0,0,0,.35);
-}
-.method-card:hover::after { opacity: 1; }
-
-.method-card--hero {
-  grid-column: 1 / -1;
-  display: grid; grid-template-columns: auto 1fr;
-  gap: 2.5rem; align-items: center;
-  background: var(--bg2);
-}
-
-.method-num {
-  font-family: var(--ff-display);
-  font-size: 5rem; font-weight: 700;
-  color: var(--teal); opacity: .12;
-  line-height: 1; letter-spacing: -.04em; flex-shrink: 0;
-}
-.method-card--hero .method-num { font-size: 8rem; opacity: .1; }
-
-.method-card h3 {
-  font-family: var(--ff-display);
-  font-size: 1.35rem; font-weight: 600;
-  color: var(--cream); margin-bottom: .75rem; line-height: 1.2;
-}
-.method-card--hero h3 { font-size: 1.7rem; }
-
-.method-card p { font-size: .92rem; color: var(--cream-dim); line-height: 1.78; }
-
-.method-tag {
-  display: inline-block; margin-top: 1.25rem;
-  font-family: var(--ff-mono); font-size: .68rem;
-  letter-spacing: .1em; text-transform: uppercase;
-  color: var(--teal); border: 1px solid var(--border);
-  padding: .25rem .75rem; border-radius: 100px;
-  background: var(--teal-block);
-}
-
-/* ─── TOOLS ─────────────────────────────────────────────────── */
-#tools { padding: 7rem 0; background: var(--bg2); border-bottom: 1px solid var(--border); }
-
-.tools-header { margin-bottom: 3.5rem; }
-.tools-header h2 {
-  font-family: var(--ff-display);
-  font-size: clamp(2rem, 4vw, 3.2rem);
-  font-weight: 700; letter-spacing: -.025em; line-height: 1.12; margin-bottom: .75rem;
-}
-.tools-header p { color: var(--cream-dim); font-size: 1rem; max-width: 540px; line-height: 1.82; }
-
-.tools-grid {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.25rem;
-}
-
-.tool-card {
-  background: var(--bg3);
-  border: 1px solid var(--border2);
-  border-radius: var(--radius-xl);
-  padding: 2.5rem 2.25rem;
-  display: flex; flex-direction: column; gap: 1.25rem;
-  position: relative; overflow: hidden;
-  transition: border-color .3s, box-shadow .3s, transform .3s;
-  text-decoration: none; color: inherit;
-}
-.tool-card::after {
-  content: '';
-  position: absolute; top: 0; left: 0; right: 0; height: 2px;
-  background: linear-gradient(90deg, transparent, var(--teal), transparent);
-  opacity: 0; transition: opacity .35s;
-}
-.tool-card:hover {
-  border-color: var(--border);
-  box-shadow: 0 24px 64px rgba(0,0,0,.4);
-  transform: translateY(-6px);
-}
-.tool-card:hover::after { opacity: 1; }
-
-.tool-visual {
-  height: 88px; border-radius: var(--radius-md);
-  background: var(--bg2); border: 1px solid var(--border2);
-  overflow: hidden;
-}
-.tool-svg { width: 100%; height: 100%; }
-
-.tool-label {
-  font-family: var(--ff-mono); font-size: .68rem;
-  letter-spacing: .12em; text-transform: uppercase; color: var(--teal-dim);
-}
-
-.tool-card h3 {
-  font-family: var(--ff-display);
-  font-size: 1.4rem; font-weight: 600; color: var(--cream); line-height: 1.2;
-}
-
-.tool-card p { font-size: .9rem; color: var(--cream-dim); line-height: 1.78; flex: 1; }
-
-.tool-btn {
-  display: inline-flex; align-items: center; gap: .5rem;
-  font-family: var(--ff-mono); font-size: .78rem; letter-spacing: .05em;
-  color: var(--teal); text-decoration: none;
-  border: 1px solid var(--border);
-  padding: .65rem 1.25rem; border-radius: var(--radius-md);
-  align-self: flex-start;
-  transition: background .2s, border-color .2s;
-  background: var(--teal-block);
-}
-.tool-card:hover .tool-btn { background: var(--teal-glow); border-color: rgba(0,191,165,.4); }
-
-/* ─── TESTIMONIALS ───────────────────────────────────────────── */
-#testimonials { padding: 7rem 0; background: var(--bg); overflow: hidden; }
-
-.testimonial-carousel { position: relative; margin-top: 3.5rem; }
-
-.testimonial-track-wrap {
-  overflow: hidden; position: relative;
-}
-.testimonial-track-wrap::before,
-.testimonial-track-wrap::after {
-  content: ''; position: absolute; top: 0; bottom: 0; width: 120px; z-index: 2;
-  pointer-events: none;
-}
-.testimonial-track-wrap::before {
-  left: 0;
-  background: linear-gradient(to right, var(--bg) 0%, transparent 100%);
-}
-.testimonial-track-wrap::after {
-  right: 0;
-  background: linear-gradient(to left, var(--bg) 0%, transparent 100%);
-}
-
-.testimonial-track {
-  display: flex;
-  transition: transform .65s cubic-bezier(.22,1,.36,1);
-  will-change: transform;
-}
-
-.testimonial-card {
-  min-width: 78%; padding: 0 .75rem; box-sizing: border-box;
-  transition: opacity .5s ease, filter .5s ease;
-  opacity: .25; filter: blur(1px);
-}
-.testimonial-card.active { opacity: 1; filter: none; }
-
-@media (max-width: 700px) {
-  .testimonial-card { min-width: 92%; }
-  .testimonial-track-wrap::before,
-  .testimonial-track-wrap::after { width: 48px; }
-}
-
-.testimonial-inner {
-  background: var(--bg3);
-  border: 1px solid var(--border2);
-  border-radius: var(--radius-xl);
-  padding: 3rem 3.5rem;
-  max-width: 780px; margin: 0 auto;
-  position: relative; overflow: hidden;
-}
-.testimonial-inner::before {
-  content: '\201C';
-  position: absolute; top: 1.5rem; left: 2.75rem;
-  font-family: var(--ff-display);
-  font-size: 6rem; line-height: 1;
-  color: var(--teal); opacity: .1; pointer-events: none;
-}
-.testimonial-inner::after {
-  content: '';
-  position: absolute; top: 0; left: 0; right: 0; height: 2px;
-  background: linear-gradient(90deg, transparent, var(--teal), transparent);
-  opacity: 0; transition: opacity .35s;
-}
-.testimonial-card.active .testimonial-inner::after { opacity: .7; }
-
-.testimonial-text {
-  font-family: var(--ff-display);
-  font-size: clamp(1.05rem, 2.2vw, 1.22rem);
-  font-style: italic; color: var(--cream); line-height: 1.78; margin-bottom: 2rem;
-}
-
-.testimonial-author { display: flex; align-items: center; gap: 1rem; }
-
-.testimonial-avatar {
-  width: 46px; height: 46px; border-radius: 50%;
-  background: var(--teal-block); border: 1px solid var(--border);
-  display: flex; align-items: center; justify-content: center;
-  font-family: var(--ff-mono); font-size: .72rem; font-weight: 500;
-  color: var(--teal); flex-shrink: 0;
-}
-
-.testimonial-name { font-size: .92rem; font-weight: 600; color: var(--cream); display: block; margin-bottom: .15rem; }
-.testimonial-role {
-  font-family: var(--ff-mono); font-size: .72rem;
-  letter-spacing: .06em; color: var(--teal-dim); text-transform: uppercase;
-}
-
-.testimonial-controls {
-  display: flex; align-items: center; justify-content: center; gap: 1.5rem; margin-top: 2.5rem;
-}
-
-.testimonial-btn {
-  width: 42px; height: 42px; border-radius: 50%;
-  background: var(--bg3); border: 1px solid var(--border2);
-  color: var(--cream-dim); cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
-  transition: border-color .2s, color .2s, background .2s; flex-shrink: 0;
-  position: relative; overflow: hidden;
-}
-.testimonial-btn::after {
-  content: '';
-  position: absolute; top: 0; left: 0; right: 0; height: 2px;
-  background: linear-gradient(90deg, transparent, var(--teal), transparent);
+  position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.12), transparent);
   opacity: 0; transition: opacity .3s;
 }
-.testimonial-btn:hover {
-  border-color: var(--border); color: var(--teal); background: var(--teal-block);
+.glass-card:hover {
+  border-color: rgba(255,255,255,.13);
+  transform: translateY(-4px);
+  box-shadow: 0 24px 64px rgba(0,0,0,.5);
 }
-.testimonial-btn:hover::after { opacity: 1; }
+.glass-card:hover::before { opacity: 1; }
 
-.testimonial-dots { display: flex; gap: .55rem; align-items: center; }
-.testimonial-dot {
-  width: 6px; height: 6px; border-radius: 50%;
-  background: var(--border2); border: none; cursor: pointer; padding: 0;
-  transition: background .25s, transform .25s;
+/* ─── SERVICES ───────────────────────────────────────────────── */
+.services-layout {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 4rem; align-items: start; margin-bottom: 4rem;
 }
-.testimonial-dot.active { background: var(--teal); transform: scale(1.4); }
-
-/* ─── CONTACT ───────────────────────────────────────────────── */
-#contact {
-  background: var(--teal);
-  padding: 7rem 0; text-align: center;
-  position: relative; overflow: hidden;
+.signal-card {
+  padding: 2rem 2.25rem;
+  display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;
 }
-#contact::before {
-  content: '';
-  position: absolute; inset: 0;
-  background-image:
-    linear-gradient(rgba(7,9,15,.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(7,9,15,.06) 1px, transparent 1px);
-  background-size: 64px 64px;
-  pointer-events: none;
+.signal-pulse {
+  width: 9px; height: 9px; border-radius: 50%;
+  background: var(--teal); flex-shrink: 0;
+  animation: pulseGlow 2s ease-in-out infinite;
 }
+@keyframes pulseGlow {
+  0%,100% { box-shadow: 0 0 0 0 rgba(0,194,168,.5); }
+  50% { box-shadow: 0 0 0 8px rgba(0,194,168,0); }
+}
+.signal-text { flex: 1; min-width: 200px; }
+.signal-title { display: block; font-size: .92rem; font-weight: 600; color: var(--teal); margin-bottom: .2rem; }
+.signal-sub { display: block; font-size: .84rem; color: var(--dim); line-height: 1.65; }
+.signal-chips { display: flex; gap: .55rem; flex-shrink: 0; flex-wrap: wrap; }
+.chip {
+  font-family: var(--ff-mono); font-size: .7rem; letter-spacing: .05em;
+  color: var(--teal); border: 1px solid rgba(0,194,168,.25);
+  border-radius: var(--pill); padding: .4rem .9rem;
+  background: var(--teal-glass); text-decoration: none;
+  transition: background .2s, border-color .2s;
+  white-space: nowrap;
+}
+.chip:hover { background: rgba(0,194,168,.2); border-color: rgba(0,194,168,.45); }
 
-#contact .container { position: relative; z-index: 1; }
-
-#contact h2 {
+/* ─── METHODOLOGY TABS ───────────────────────────────────────── */
+.method-tabs {
+  display: flex; gap: .5rem; flex-wrap: wrap;
+  margin-bottom: 3rem;
+}
+.method-tab {
+  font-family: var(--ff-body); font-size: .85rem; font-weight: 500;
+  padding: .65rem 1.5rem; border-radius: var(--pill);
+  background: transparent; border: 1px solid var(--border);
+  color: var(--dim); cursor: pointer;
+  transition: all .3s; white-space: nowrap;
+}
+.method-tab:hover { border-color: var(--border-2); color: rgba(255,255,255,.7); }
+.method-tab.active {
+  background: var(--glass-2); border-color: var(--border-2);
+  color: var(--white);
+}
+.method-panel { display: none; }
+.method-panel.active { display: block; }
+.method-panel-inner {
+  display: grid; grid-template-columns: auto 1fr;
+  gap: 3rem; align-items: start;
+  padding: 3.5rem;
+}
+.method-number {
   font-family: var(--ff-display);
-  font-size: clamp(2.4rem, 5.5vw, 4rem);
-  font-weight: 700; letter-spacing: -.025em; line-height: 1.1;
-  color: var(--bg); margin-bottom: 1.25rem;
+  font-size: 8rem; font-weight: 700; line-height: 1;
+  color: rgba(255,255,255,.05); letter-spacing: -.06em;
+  flex-shrink: 0; user-select: none;
 }
-#contact h2 em { font-style: italic; color: var(--bg); opacity: .7; }
-
-#contact .sub {
-  font-size: 1.08rem; color: rgba(7,9,15,.65);
-  max-width: 540px; margin: 0 auto 2.75rem; line-height: 1.8;
+.method-content h3 {
+  font-family: var(--ff-display);
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  font-weight: 600; line-height: 1.15;
+  margin-bottom: 1rem;
+}
+.method-content p {
+  font-size: 1rem; color: var(--dim); line-height: 1.85; margin-bottom: 1.5rem;
+  max-width: 520px;
+}
+.method-badge {
+  display: inline-block;
+  font-family: var(--ff-mono); font-size: .68rem;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: var(--teal); border: 1px solid rgba(0,194,168,.25);
+  border-radius: var(--pill); padding: .25rem .85rem;
+  background: var(--teal-glass);
 }
 
-.contact-btns {
-  display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
-  margin-bottom: 2.5rem;
+/* ─── TOOLS ──────────────────────────────────────────────────── */
+.tools-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem;
+  margin-top: 3.5rem;
 }
-
-.divider { width: 60px; height: 1px; background: rgba(7,9,15,.2); margin: 2.5rem auto; }
-
-.contact-account {
-  background: rgba(7,9,15,.1);
-  border: 1.5px solid rgba(7,9,15,.18);
-  border-radius: var(--radius-xl);
+.tool-card {
   padding: 2.5rem 2.25rem;
-  max-width: 560px; margin: 0 auto;
-  position: relative; overflow: hidden;
-  transition: border-color .3s;
+  display: flex; flex-direction: column; gap: 1.25rem;
+  text-decoration: none; color: inherit;
 }
-.contact-account::after {
-  content: '';
-  position: absolute; top: 0; left: 0; right: 0; height: 2px;
-  background: linear-gradient(90deg, transparent, rgba(7,9,15,.5), transparent);
-  opacity: 0; transition: opacity .35s;
+.tool-visual {
+  height: 90px; border-radius: var(--radius-sm);
+  background: rgba(255,255,255,.03);
+  border: 1px solid var(--border); overflow: hidden;
 }
-.contact-account:hover::after { opacity: 1; }
-.contact-account-title {
+.tool-svg { width: 100%; height: 100%; }
+.tool-label {
+  font-family: var(--ff-mono); font-size: .65rem;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: var(--muted);
+}
+.tool-card h3 {
   font-family: var(--ff-display);
-  font-size: 1.4rem; font-weight: 700;
-  color: var(--bg); margin-bottom: .65rem; line-height: 1.2;
+  font-size: 1.4rem; font-weight: 600; line-height: 1.2;
 }
-.contact-account-sub {
-  font-size: .95rem; color: rgba(7,9,15,.6); line-height: 1.72; margin-bottom: 1.75rem;
+.tool-card p { font-size: .9rem; color: var(--dim); line-height: 1.8; flex: 1; }
+.tool-link {
+  display: inline-flex; align-items: center; gap: .45rem;
+  font-family: var(--ff-mono); font-size: .75rem; letter-spacing: .05em;
+  color: var(--teal); text-decoration: none;
+  border: 1px solid rgba(0,194,168,.25);
+  border-radius: var(--pill); padding: .55rem 1.2rem;
+  background: var(--teal-glass); align-self: flex-start;
+  transition: background .2s, border-color .2s;
 }
+.tool-link:hover { background: rgba(0,194,168,.2); border-color: rgba(0,194,168,.45); }
 
-/* ─── FOOTER ────────────────────────────────────────────────── */
-footer { border-top: 1px solid var(--border); background: var(--bg2); padding: 3rem 0 2.5rem; }
+/* ─── TESTIMONIALS ───────────────────────────────────────────── */
+.testimonial-wrap { position: relative; margin-top: 3.5rem; }
+.testimonial-fade-wrap {
+  overflow: hidden; position: relative;
+}
+.testimonial-fade-wrap::before,
+.testimonial-fade-wrap::after {
+  content: ''; position: absolute; top: 0; bottom: 0; width: 140px; z-index: 2; pointer-events: none;
+}
+.testimonial-fade-wrap::before { left: 0; background: linear-gradient(to right, #000 0%, transparent 100%); }
+.testimonial-fade-wrap::after  { right: 0; background: linear-gradient(to left, #000 0%, transparent 100%); }
+.testimonial-track {
+  display: flex; transition: transform .7s cubic-bezier(.22,1,.36,1);
+  will-change: transform;
+}
+.testimonial-slide {
+  min-width: 76%; padding: 0 .65rem; box-sizing: border-box;
+  transition: opacity .5s, filter .5s;
+  opacity: .2; filter: blur(2px);
+}
+.testimonial-slide.active { opacity: 1; filter: none; }
+@media (max-width: 700px) {
+  .testimonial-slide { min-width: 92%; }
+  .testimonial-fade-wrap::before, .testimonial-fade-wrap::after { width: 48px; }
+}
+.t-inner {
+  padding: 3rem 3.5rem; max-width: 800px; margin: 0 auto;
+}
+.t-inner::before {
+  content: '\201C';
+  position: absolute; top: 1.25rem; left: 2.5rem;
+  font-family: var(--ff-display); font-size: 5rem; line-height: 1;
+  color: var(--teal); opacity: .1; pointer-events: none;
+}
+.t-quote {
+  font-family: var(--ff-display);
+  font-size: clamp(1rem, 2.2vw, 1.2rem);
+  font-style: italic; color: rgba(255,255,255,.85);
+  line-height: 1.82; margin-bottom: 2rem;
+}
+.t-author { display: flex; align-items: center; gap: 1rem; }
+.t-avatar {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--teal-glass); border: 1px solid rgba(0,194,168,.2);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--ff-mono); font-size: .7rem; color: var(--teal); flex-shrink: 0;
+}
+.t-name { font-size: .9rem; font-weight: 600; display: block; margin-bottom: .1rem; }
+.t-role { font-family: var(--ff-mono); font-size: .68rem; letter-spacing: .06em; color: var(--muted); text-transform: uppercase; }
+.t-controls {
+  display: flex; align-items: center; justify-content: center;
+  gap: 1.5rem; margin-top: 2.5rem;
+}
+.t-btn {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: var(--glass); border: 1px solid var(--border);
+  color: var(--dim); cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: border-color .2s, color .2s, background .2s;
+}
+.t-btn:hover { border-color: var(--border-2); color: var(--white); background: var(--glass-2); }
+.t-dots { display: flex; gap: .5rem; align-items: center; }
+.t-dot {
+  width: 5px; height: 5px; border-radius: 50%;
+  background: rgba(255,255,255,.15); border: none;
+  cursor: pointer; padding: 0; transition: background .25s, transform .25s;
+}
+.t-dot.active { background: var(--teal); transform: scale(1.5); }
 
+/* ─── CONTACT ────────────────────────────────────────────────── */
+.contact-section {
+  position: relative; z-index: 1;
+  padding: 9rem 0; text-align: center;
+}
+.contact-glow {
+  position: absolute; inset: 0; z-index: 0; pointer-events: none; overflow: hidden;
+}
+.contact-glow::before {
+  content: '';
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px; height: 400px;
+  background: radial-gradient(ellipse, rgba(0,194,168,.14) 0%, transparent 70%);
+  filter: blur(60px); border-radius: 50%;
+}
+.contact-section .container { position: relative; z-index: 1; }
+.contact-card {
+  max-width: 680px; margin: 0 auto;
+  padding: 4.5rem 4rem;
+}
+.contact-card h2 {
+  font-family: var(--ff-display);
+  font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+  font-weight: 300; line-height: 1.1;
+  letter-spacing: -.025em; margin-bottom: 1.25rem;
+}
+.contact-card h2 strong { font-weight: 700; }
+.contact-card h2 em { font-style: italic; color: var(--teal); }
+.contact-card .sub {
+  font-size: 1rem; color: var(--dim); max-width: 460px;
+  margin: 0 auto 2.75rem; line-height: 1.85;
+}
+.contact-btns { display: flex; gap: .85rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2.5rem; }
+.contact-divider { width: 1px; height: 40px; background: var(--border); margin: 2.5rem auto; display: block; }
+.account-block {
+  background: rgba(0,194,168,.06);
+  border: 1px solid rgba(0,194,168,.18);
+  border-radius: var(--radius);
+  padding: 2.25rem 2rem; max-width: 500px; margin: 0 auto;
+}
+.account-block h3 {
+  font-family: var(--ff-display); font-size: 1.3rem; font-weight: 600;
+  margin-bottom: .65rem;
+}
+.account-block p { font-size: .9rem; color: var(--dim); margin-bottom: 1.75rem; line-height: 1.75; }
+
+/* ─── FOOTER ─────────────────────────────────────────────────── */
+footer {
+  position: relative; z-index: 1;
+  border-top: 1px solid var(--border);
+  padding: 3rem 0 2.5rem;
+}
 .footer-inner { display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: start; }
-
 .footer-brand {
   font-family: var(--ff-display);
-  font-size: 1.1rem; font-weight: 600; color: var(--cream); margin-bottom: .5rem;
+  font-size: 1.05rem; font-weight: 600; margin-bottom: .45rem;
 }
 .footer-brand span { color: var(--teal); }
-
-.footer-tagline {
-  font-family: var(--ff-mono); font-size: .72rem;
-  letter-spacing: .1em; text-transform: uppercase; color: var(--cream-dim); opacity: .55;
+.footer-tag {
+  font-family: var(--ff-mono); font-size: .68rem;
+  letter-spacing: .1em; text-transform: uppercase; color: var(--muted);
 }
-
-.footer-links { display: flex; flex-direction: column; gap: .6rem; align-items: flex-end; }
+.footer-links { display: flex; flex-direction: column; gap: .55rem; align-items: flex-end; }
 .footer-links a {
-  font-family: var(--ff-mono); font-size: .78rem; letter-spacing: .04em;
-  color: var(--cream-dim); text-decoration: none; transition: color .2s;
-  display: flex; align-items: center; gap: .5rem;
+  font-family: var(--ff-mono); font-size: .75rem; letter-spacing: .04em;
+  color: var(--muted); text-decoration: none; transition: color .2s;
+  display: flex; align-items: center; gap: .45rem;
 }
 .footer-links a:hover { color: var(--teal); }
-
 .footer-bottom {
   margin-top: 2.5rem; padding-top: 1.5rem;
-  border-top: 1px solid var(--border2);
-  display: flex; align-items: center; justify-content: space-between;
+  border-top: 1px solid rgba(255,255,255,.04);
+  display: flex; justify-content: space-between;
   flex-wrap: wrap; gap: 1rem;
 }
-.footer-copy {
-  font-size: .75rem; color: var(--cream-dim); opacity: .45;
-  font-family: var(--ff-mono); letter-spacing: .04em;
-}
+.footer-copy { font-size: .72rem; color: var(--muted); font-family: var(--ff-mono); letter-spacing: .04em; }
 
-/* ─── RESPONSIVE ────────────────────────────────────────────── */
+/* ─── RESPONSIVE ─────────────────────────────────────────────── */
 @media (max-width: 768px) {
-  .nav-links {
-    display: none; flex-direction: column;
-    position: absolute; top: 64px; left: 0; right: 0;
-    background: var(--bg2); border-bottom: 1px solid var(--border);
-    padding: 1.5rem 2rem; gap: 1.5rem;
-  }
+  .nav-links { display: none; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0; background: rgba(0,0,0,.92); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); padding: 1.5rem 2rem; gap: 1.5rem; }
   .nav-links.open { display: flex; }
   .nav-toggle { display: flex; }
-  nav { position: fixed; }
-
-  .services-intro { grid-template-columns: 1fr; gap: 1.5rem; }
-  .method-header { grid-template-columns: 1fr; gap: 1.5rem; }
-  .method-grid { grid-template-columns: 1fr; }
-  .method-card--hero { grid-template-columns: 1fr; gap: 1rem; }
-  .method-card--hero .method-num { font-size: 4rem; }
+  .services-layout { grid-template-columns: 1fr; gap: 2rem; }
+  .tools-grid { grid-template-columns: 1fr; }
+  .method-panel-inner { grid-template-columns: 1fr; gap: 1.5rem; padding: 2rem 1.75rem; }
+  .method-number { font-size: 5rem; }
   .footer-inner { grid-template-columns: 1fr; }
   .footer-links { align-items: flex-start; }
-  .footer-bottom { flex-direction: column; align-items: flex-start; }
-  .testimonial-inner { padding: 2rem 1.75rem; }
+  .footer-bottom { flex-direction: column; }
+  .contact-card { padding: 3rem 2rem; }
+  .t-inner { padding: 2rem 1.75rem; }
 }
-
 @media (max-width: 480px) {
-  .hero h1 { font-size: 2.5rem; }
-  .tools-grid { grid-template-columns: 1fr; }
-  .asset-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+  .hero h1 { font-size: 3rem; }
+  .method-tabs { flex-direction: column; }
+  .method-tab { text-align: left; }
 }
 </style>
 </head>
 <body>
+
+<!-- ─── AMBIENT BLOBS ─────────────────────────────────────────── -->
+<div class="ambient" aria-hidden="true">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+</div>
 
 <!-- ─── NAV ──────────────────────────────────────────────────── -->
 <nav id="navbar">
@@ -892,33 +664,24 @@ footer { border-top: 1px solid var(--border); background: var(--bg2); padding: 3
 <!-- ─── HERO ──────────────────────────────────────────────────── -->
 <section class="hero" id="home">
   <canvas id="hero-canvas"></canvas>
-  <div class="hero-vignette"></div>
-
   <div class="hero-content">
-    <span class="hero-label reveal">Trading with AangBui — Market Intelligence</span>
-    <h1 class="reveal reveal-delay-1">
-      Markets reward<br><em>precision.</em><br>Not guesses.
+    <div class="hero-eyebrow reveal">Market Intelligence · AangBui</div>
+    <h1 class="reveal d1">
+      Markets reward<br><strong><em>precision.</em></strong><br>Not guesses.
     </h1>
-    <p class="hero-sub reveal reveal-delay-2">
+    <p class="hero-sub reveal d2">
       Institutional-grade multi-asset analysis — where Wyckoff structure, Elliott Wave timing, and purpose-built tools converge into setups worth acting on. Every call published is one traded with real capital.
     </p>
-    <div class="hero-ctas reveal reveal-delay-3">
-      <a href="https://t.me/aangbui" class="btn btn-dark" target="_blank">
-        ✈&ensp;Connect on Telegram
-      </a>
-      <a href="mailto:aangbui@gmail.com" class="btn btn-dark-outline">
-        ✉&ensp;Send an Email
-      </a>
-      <a href="https://vigco.co/la-com-inv/vi/aangbui" class="btn btn-dark" target="_blank">
-        Open a Live Account →
-      </a>
+    <div class="hero-ctas reveal d3">
+      <a href="https://t.me/aangbui" class="btn btn-white" target="_blank">✈&ensp;Connect on Telegram</a>
+      <a href="mailto:aangbui@gmail.com" class="btn btn-glass">✉&ensp;Send an Email</a>
+      <a href="https://vigco.co/la-com-inv/vi/aangbui" class="btn btn-teal" target="_blank">Open a Live Account →</a>
     </div>
   </div>
-
   <div class="scroll-hint">
     <span>Scroll</span>
-    <svg width="12" height="18" viewBox="0 0 12 18" fill="none">
-      <path d="M6 1v10M2 8l4 5 4-5" stroke="rgba(7,9,15,.5)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+    <svg width="10" height="16" viewBox="0 0 10 16" fill="none">
+      <path d="M5 1v9M1 7l4 5 4-5" stroke="rgba(255,255,255,.35)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
   </div>
 </section>
@@ -928,242 +691,252 @@ footer { border-top: 1px solid var(--border); background: var(--bg2); padding: 3
   <div class="ticker-track" id="tickerTrack"></div>
 </div>
 
-<!-- ─── SERVICES ──────────────────────────────────────────────── -->
-<section id="services">
+<hr class="section-rule" />
+
+<!-- ─── SERVICES ─────────────────────────────────────────────── -->
+<section class="section" id="services">
   <div class="container">
-    <div class="services-intro">
+    <div class="services-layout">
       <div class="reveal">
-        <div class="section-eyebrow">Coverage</div>
-        <h2>The markets tracked.<br>Every session.</h2>
+        <div class="eyebrow">Coverage</div>
+        <h2 class="section-h2">The markets tracked.<br><strong>Every session.</strong></h2>
       </div>
-      <div class="reveal reveal-delay-1">
-        <p>From Gold and Silver to Bitcoin, Vietnamese indices, and crude oil — coverage is broad, analysis stays surgical. Real-time signals delivered via Telegram and TradingView the moment a setup is confirmed. No recycled calls, no delayed entries. Just the markets where asymmetric opportunity lives, timed to the candle.</p>
+      <div class="reveal d1">
+        <p class="section-lead">From Gold and Silver to Bitcoin, Vietnamese indices, and crude oil — coverage is broad, analysis stays surgical. Real-time signals delivered via Telegram and TradingView the moment a setup is confirmed. No recycled calls, no delayed entries. Just the markets where asymmetric opportunity lives, timed to the candle.</p>
       </div>
     </div>
 
-    <div class="signal-banner reveal" style="margin-top:0;">
-      <div class="signal-banner-inner">
+    <div class="reveal d2">
+      <div class="glass-card signal-card">
         <div class="signal-pulse"></div>
         <div class="signal-text">
-          <span class="signal-banner-title">Real-time signals. Every session.</span>
-          <span class="signal-banner-sub">Entry, stop, and target delivered live — via Telegram and TradingView alerts — before the move develops, not after. Every signal published is traded with real capital.</span>
+          <span class="signal-title">Real-time signals. Every session.</span>
+          <span class="signal-sub">Entry, stop, and target delivered live — via Telegram and TradingView alerts — before the move develops, not after. Every signal is traded with real capital.</span>
         </div>
-        <div class="signal-channels">
-          <a href="https://t.me/+ZzebhIGF_vJlNzFl" target="_blank" class="signal-chip">✈ Telegram</a>
-          <a href="https://in.tradingview.com/u/aangbui/" target="_blank" class="signal-chip">◈ TradingView</a>
+        <div class="signal-chips">
+          <a href="https://t.me/+ZzebhIGF_vJlNzFl" target="_blank" class="chip">✈ Telegram</a>
+          <a href="https://in.tradingview.com/u/aangbui/" target="_blank" class="chip">◈ TradingView</a>
         </div>
       </div>
     </div>
-
   </div>
 </section>
+
+<hr class="section-rule" />
 
 <!-- ─── METHODOLOGY ───────────────────────────────────────────── -->
-<section id="methodology">
+<section class="section" id="methodology">
   <div class="container">
-    <div class="method-header reveal">
-      <div>
-        <div class="section-eyebrow">The Framework</div>
-        <h2>Four disciplines.<br><em>One conviction.</em></h2>
-      </div>
-      <div>
-        <p>Each framework is independently powerful. Together, they're decisive. Every trade is filtered through structure, cycle, execution, and momentum confirmation — built on years of live-market refinement, not theory. Nothing gets through on a single signal alone.</p>
-      </div>
+    <div class="reveal" style="margin-bottom:3.5rem;">
+      <div class="eyebrow">The Framework</div>
+      <h2 class="section-h2">Four disciplines.<br><em>One conviction.</em></h2>
+      <p class="section-lead">Each framework is independently powerful. Together, they're decisive. Every trade is filtered through structure, cycle, execution, and momentum confirmation.</p>
     </div>
 
-    <div class="method-grid">
+    <div class="method-tabs reveal d1" role="tablist">
+      <button class="method-tab active" data-panel="0" role="tab">Wyckoff</button>
+      <button class="method-tab" data-panel="1" role="tab">Elliott Wave</button>
+      <button class="method-tab" data-panel="2" role="tab">Price Action</button>
+      <button class="method-tab" data-panel="3" role="tab">RSI Divergence</button>
+    </div>
 
-      <div class="method-card method-card--hero reveal">
-        <div class="method-num">01</div>
-        <div>
-          <h3>Wyckoff Method</h3>
-          <p>Institutional accumulation and distribution leave a footprint in volume and price spread. Wyckoff decodes that footprint — mapping the structural phases that precede major moves long before they reach the breakout bar. It separates reading price from understanding what's actually driving it.</p>
-          <span class="method-tag">Structure</span>
+    <div class="reveal d2">
+
+      <div class="glass-card method-panel active" id="panel-0" role="tabpanel">
+        <div class="method-panel-inner">
+          <div class="method-number">01</div>
+          <div class="method-content">
+            <h3>Wyckoff Method</h3>
+            <p>Institutional accumulation and distribution leave a footprint in volume and price spread. Wyckoff decodes that footprint — mapping the structural phases that precede major moves long before they reach the breakout bar. It separates reading price from understanding what's actually driving it.</p>
+            <span class="method-badge">Structure</span>
+          </div>
         </div>
       </div>
 
-      <div class="method-card reveal reveal-delay-1">
-        <div class="method-num">02</div>
-        <h3>Elliott Wave Analysis</h3>
-        <p>Markets move in identifiable cycles. Elliott Wave provides the structural roadmap — locating where price stands in the larger pattern and projecting high-probability targets before the move fully develops. Every trade has a thesis, not just a trigger.</p>
-        <span class="method-tag">Cycles</span>
+      <div class="glass-card method-panel" id="panel-1" role="tabpanel">
+        <div class="method-panel-inner">
+          <div class="method-number">02</div>
+          <div class="method-content">
+            <h3>Elliott Wave Analysis</h3>
+            <p>Markets move in identifiable cycles. Elliott Wave provides the structural roadmap — locating where price stands in the larger pattern and projecting high-probability targets before the move fully develops. Every trade has a thesis, not just a trigger.</p>
+            <span class="method-badge">Cycles</span>
+          </div>
+        </div>
       </div>
 
-      <div class="method-card reveal reveal-delay-2">
-        <div class="method-num">03</div>
-        <h3>Price Action</h3>
-        <p>The cleanest signal is still the chart. Candlestick behavior at key levels, institutional order flow fingerprints, structural reactions — read without lag or distortion. Fewer tools, sharper reads. Clarity itself is an edge.</p>
-        <span class="method-tag">Execution</span>
+      <div class="glass-card method-panel" id="panel-2" role="tabpanel">
+        <div class="method-panel-inner">
+          <div class="method-number">03</div>
+          <div class="method-content">
+            <h3>Price Action</h3>
+            <p>The cleanest signal is still the chart. Candlestick behavior at key levels, institutional order flow fingerprints, structural reactions — read without lag or distortion. Fewer tools, sharper reads. Clarity itself is an edge.</p>
+            <span class="method-badge">Execution</span>
+          </div>
+        </div>
       </div>
 
-      <div class="method-card reveal reveal-delay-3">
-        <div class="method-num">04</div>
-        <h3>Advanced RSI Divergence</h3>
-        <p>Momentum shifts before price confirms. Advanced divergence signals plotted directly on the candle chart — not buried in a secondary pane — surface exhaustion and reversal cues that conventional setups consistently miss. No repainting. No chasing.</p>
-        <span class="method-tag">Confirmation</span>
+      <div class="glass-card method-panel" id="panel-3" role="tabpanel">
+        <div class="method-panel-inner">
+          <div class="method-number">04</div>
+          <div class="method-content">
+            <h3>Advanced RSI Divergence</h3>
+            <p>Momentum shifts before price confirms. Advanced divergence signals plotted directly on the candle chart — not buried in a secondary pane — surface exhaustion and reversal cues that conventional setups consistently miss. No repainting. No chasing.</p>
+            <span class="method-badge">Confirmation</span>
+          </div>
+        </div>
       </div>
 
     </div>
   </div>
 </section>
 
+<hr class="section-rule" />
+
 <!-- ─── TOOLS ─────────────────────────────────────────────────── -->
-<section id="tools">
+<section class="section" id="tools">
   <div class="container">
-    <div class="tools-header reveal">
-      <div class="section-eyebrow">Custom Indicators</div>
-      <h2>Precision instruments.<br>Purpose-built.</h2>
-      <p>Built to fill gaps that off-the-shelf tools couldn't. Each indicator was forged in live sessions, refined through real P&L, and published on TradingView to give any serious trader a verifiable edge in timing and confluence.</p>
+    <div class="reveal">
+      <div class="eyebrow">Custom Indicators</div>
+      <h2 class="section-h2">Precision instruments.<br><strong>Purpose-built.</strong></h2>
+      <p class="section-lead">Built to fill gaps that off-the-shelf tools couldn't. Each indicator was forged in live sessions, refined through real P&L, and published on TradingView.</p>
     </div>
 
     <div class="tools-grid">
 
-      <div class="tool-card reveal">
+      <a class="glass-card tool-card reveal d1" href="https://in.tradingview.com/script/PbA10iAJ-VolTick-Orderblock-by-aangbui/" target="_blank">
         <div class="tool-visual">
-          <svg class="tool-svg" viewBox="0 0 400 88" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="10"  y="58" width="14" height="24" fill="rgba(0,191,165,.15)" rx="2"/>
-            <rect x="30"  y="48" width="14" height="34" fill="rgba(0,191,165,.22)" rx="2"/>
-            <rect x="50"  y="53" width="14" height="29" fill="rgba(0,191,165,.15)" rx="2"/>
-            <rect x="70"  y="36" width="14" height="46" fill="rgba(0,191,165,.35)" rx="2"/>
-            <rect x="90"  y="50" width="14" height="32" fill="rgba(0,191,165,.2)"  rx="2"/>
-            <rect x="110" y="42" width="14" height="40" fill="rgba(0,191,165,.28)" rx="2"/>
-            <rect x="130" y="55" width="14" height="27" fill="rgba(0,191,165,.15)" rx="2"/>
-            <rect x="150" y="30" width="14" height="52" fill="rgba(0,191,165,.45)" rx="2"/>
-            <rect x="170" y="46" width="14" height="36" fill="rgba(0,191,165,.22)" rx="2"/>
-            <rect x="190" y="40" width="14" height="42" fill="rgba(0,191,165,.3)"  rx="2"/>
-            <rect x="60" y="8" width="160" height="30" fill="rgba(0,191,165,.08)" rx="3"/>
-            <line x1="60" y1="8"  x2="220" y2="8"  stroke="rgba(0,191,165,.55)" stroke-width=".9" stroke-dasharray="4,3"/>
-            <line x1="60" y1="38" x2="220" y2="38" stroke="rgba(0,191,165,.3)"  stroke-width=".7" stroke-dasharray="4,3"/>
-            <text x="66" y="20" font-family="monospace" font-size="7" fill="rgba(0,191,165,.75)">OB Zone</text>
-            <line x1="220" y1="5"  x2="220" y2="66" stroke="rgba(232,237,245,.15)" stroke-width="1"/>
-            <rect x="216" y="14" width="8" height="30" fill="rgba(0,191,165,.6)"  rx="1"/>
-            <line x1="236" y1="8"  x2="236" y2="68" stroke="rgba(232,237,245,.15)" stroke-width="1"/>
-            <rect x="232" y="18" width="8" height="28" fill="rgba(232,237,245,.3)" rx="1"/>
-            <line x1="252" y1="6"  x2="252" y2="60" stroke="rgba(232,237,245,.15)" stroke-width="1"/>
-            <rect x="248" y="8"  width="8" height="24" fill="rgba(0,191,165,.7)"  rx="1"/>
-            <polyline points="268,50 284,40 300,44 316,30 332,35 348,20 364,25 380,14 396,16" stroke="rgba(0,191,165,.75)" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <svg class="tool-svg" viewBox="0 0 400 90" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="10"  y="58" width="14" height="24" fill="rgba(0,194,168,.12)" rx="2"/>
+            <rect x="30"  y="48" width="14" height="34" fill="rgba(0,194,168,.18)" rx="2"/>
+            <rect x="50"  y="53" width="14" height="29" fill="rgba(0,194,168,.12)" rx="2"/>
+            <rect x="70"  y="36" width="14" height="46" fill="rgba(0,194,168,.3)"  rx="2"/>
+            <rect x="90"  y="50" width="14" height="32" fill="rgba(0,194,168,.16)" rx="2"/>
+            <rect x="110" y="42" width="14" height="40" fill="rgba(0,194,168,.24)" rx="2"/>
+            <rect x="130" y="55" width="14" height="27" fill="rgba(0,194,168,.12)" rx="2"/>
+            <rect x="150" y="30" width="14" height="52" fill="rgba(0,194,168,.38)" rx="2"/>
+            <rect x="60" y="8" width="120" height="28" fill="rgba(0,194,168,.06)" rx="3"/>
+            <line x1="60" y1="8"  x2="180" y2="8"  stroke="rgba(0,194,168,.45)" stroke-width=".8" stroke-dasharray="4,3"/>
+            <line x1="60" y1="36" x2="180" y2="36" stroke="rgba(0,194,168,.25)" stroke-width=".6" stroke-dasharray="4,3"/>
+            <text x="66" y="19" font-family="monospace" font-size="7" fill="rgba(0,194,168,.7)">OB Zone</text>
+            <line x1="200" y1="5"  x2="200" y2="66" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+            <rect x="196" y="14" width="8" height="30" fill="rgba(0,194,168,.55)" rx="1"/>
+            <line x1="218" y1="8"  x2="218" y2="68" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+            <rect x="214" y="20" width="8" height="28" fill="rgba(255,255,255,.2)" rx="1"/>
+            <polyline points="250,50 270,38 290,44 310,28 330,34 350,18 370,24 392,14" stroke="rgba(0,194,168,.65)" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </div>
         <span class="tool-label">Volume + Order Blocks</span>
         <h3>VolTick Orderblock</h3>
-        <p>Detects the confluence of volume spikes and institutional order block zones — the precise areas where smart money has already positioned. Once those zones are visible, entries are planned before the move, not chased after it. Built from the frustration of watching price react at levels that weren't on the screen.</p>
-        <a href="https://in.tradingview.com/script/PbA10iAJ-VolTick-Orderblock-by-aangbui/" class="tool-btn" target="_blank" onclick="event.stopPropagation()">
-          View on TradingView →
-        </a>
-      </div>
+        <p>Detects the confluence of volume spikes and institutional order block zones — marking the precise areas where smart money has already positioned. Plan entries before the move, not after it.</p>
+        <span class="tool-link" onclick="event.stopPropagation()">View on TradingView →</span>
+      </a>
 
-      <div class="tool-card reveal reveal-delay-2">
+      <a class="glass-card tool-card reveal d2" href="https://in.tradingview.com/script/siPMJq8U-RSI-divergence-on-Price-Chart/" target="_blank">
         <div class="tool-visual">
-          <svg class="tool-svg" viewBox="0 0 400 88" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-            <line x1="20"  y1="26" x2="20"  y2="70" stroke="rgba(232,237,245,.18)" stroke-width="1"/>
-            <rect x="16"  y="34" width="8" height="24" fill="rgba(232,237,245,.35)" rx="1"/>
-            <line x1="38"  y1="20" x2="38"  y2="64" stroke="rgba(232,237,245,.18)" stroke-width="1"/>
-            <rect x="34"  y="25" width="8" height="28" fill="rgba(0,191,165,.6)"   rx="1"/>
-            <line x1="56"  y1="29" x2="56"  y2="72" stroke="rgba(232,237,245,.18)" stroke-width="1"/>
-            <rect x="52"  y="37" width="8" height="24" fill="rgba(232,237,245,.35)" rx="1"/>
-            <line x1="74"  y1="18" x2="74"  y2="62" stroke="rgba(232,237,245,.18)" stroke-width="1"/>
-            <rect x="70"  y="22" width="8" height="30" fill="rgba(0,191,165,.6)"   rx="1"/>
-            <line x1="92"  y1="31" x2="92"  y2="74" stroke="rgba(232,237,245,.18)" stroke-width="1"/>
-            <rect x="88"  y="40" width="8" height="26" fill="rgba(232,237,245,.35)" rx="1"/>
-            <line x1="110" y1="22" x2="110" y2="66" stroke="rgba(232,237,245,.18)" stroke-width="1"/>
-            <rect x="106" y="28" width="8" height="28" fill="rgba(0,191,165,.6)"   rx="1"/>
-            <line x1="128" y1="36" x2="128" y2="76" stroke="rgba(232,237,245,.18)" stroke-width="1"/>
-            <rect x="124" y="44" width="8" height="26" fill="rgba(232,237,245,.35)" rx="1"/>
-            <line x1="146" y1="18" x2="146" y2="62" stroke="rgba(232,237,245,.18)" stroke-width="1"/>
-            <rect x="142" y="22" width="8" height="30" fill="rgba(0,191,165,.6)"   rx="1"/>
-            <line x1="38" y1="23" x2="146" y2="19" stroke="rgba(0,191,165,.85)" stroke-width="1.3" stroke-dasharray="3,2"/>
-            <circle cx="38"  cy="23" r="3.5" fill="none" stroke="rgba(0,191,165,.9)" stroke-width="1.3"/>
-            <circle cx="146" cy="19" r="3.5" fill="none" stroke="rgba(0,191,165,.9)" stroke-width="1.3"/>
-            <text x="65" y="13" font-family="monospace" font-size="6.5" fill="rgba(0,191,165,.8)">Bearish Div</text>
-            <polyline points="182,64 202,48 222,56 242,38 262,46 282,28 302,36 322,18 342,24 362,12 382,16" stroke="rgba(0,191,165,.65)" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+          <svg class="tool-svg" viewBox="0 0 400 90" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <line x1="20"  y1="26" x2="20"  y2="70" stroke="rgba(255,255,255,.12)" stroke-width="1"/>
+            <rect x="16"  y="34" width="8" height="24" fill="rgba(255,255,255,.28)" rx="1"/>
+            <line x1="40"  y1="20" x2="40"  y2="64" stroke="rgba(255,255,255,.12)" stroke-width="1"/>
+            <rect x="36"  y="25" width="8" height="28" fill="rgba(0,194,168,.55)" rx="1"/>
+            <line x1="60"  y1="29" x2="60"  y2="72" stroke="rgba(255,255,255,.12)" stroke-width="1"/>
+            <rect x="56"  y="37" width="8" height="24" fill="rgba(255,255,255,.28)" rx="1"/>
+            <line x1="80"  y1="18" x2="80"  y2="62" stroke="rgba(255,255,255,.12)" stroke-width="1"/>
+            <rect x="76"  y="22" width="8" height="30" fill="rgba(0,194,168,.55)" rx="1"/>
+            <line x1="100" y1="31" x2="100" y2="74" stroke="rgba(255,255,255,.12)" stroke-width="1"/>
+            <rect x="96"  y="40" width="8" height="26" fill="rgba(255,255,255,.28)" rx="1"/>
+            <line x1="120" y1="22" x2="120" y2="66" stroke="rgba(255,255,255,.12)" stroke-width="1"/>
+            <rect x="116" y="28" width="8" height="28" fill="rgba(0,194,168,.55)" rx="1"/>
+            <line x1="40" y1="23" x2="120" y2="19" stroke="rgba(0,194,168,.9)" stroke-width="1.2" stroke-dasharray="3,2"/>
+            <circle cx="40"  cy="23" r="3" fill="none" stroke="rgba(0,194,168,.9)" stroke-width="1.2"/>
+            <circle cx="120" cy="19" r="3" fill="none" stroke="rgba(0,194,168,.9)" stroke-width="1.2"/>
+            <text x="55" y="14" font-family="monospace" font-size="6.5" fill="rgba(0,194,168,.8)">Bearish Div</text>
+            <polyline points="180,64 202,46 224,56 246,36 268,46 290,26 312,36 334,16 356,24 378,12 398,16" stroke="rgba(0,194,168,.55)" stroke-width="1.6" fill="none" stroke-linecap="round"/>
           </svg>
         </div>
         <span class="tool-label">Momentum · Price Chart</span>
         <h3>RSI Divergence on Price Chart</h3>
-        <p>Regular and hidden divergence plotted directly on the price chart — where context is immediate and execution is fast. No secondary pane, no repainting, no chasing signals that already moved. The momentum warning system that belongs on the candles, not below them.</p>
-        <a href="https://in.tradingview.com/script/siPMJq8U-RSI-divergence-on-Price-Chart/" class="tool-btn" target="_blank" onclick="event.stopPropagation()">
-          View on TradingView →
-        </a>
-      </div>
+        <p>Regular and hidden divergence plotted directly on the price chart — where context is immediate and execution is fast. No secondary pane, no repainting. The momentum warning system that belongs on the candles.</p>
+        <span class="tool-link" onclick="event.stopPropagation()">View on TradingView →</span>
+      </a>
 
     </div>
   </div>
 </section>
 
+<hr class="section-rule" />
+
 <!-- ─── TESTIMONIALS ──────────────────────────────────────────── -->
-<section id="testimonials">
+<section class="section" id="testimonials">
   <div class="container">
     <div class="reveal">
-      <div class="section-eyebrow">Testimonials</div>
-      <h2 style="font-family:var(--ff-display);font-size:clamp(2rem,4vw,3.2rem);font-weight:700;letter-spacing:-.025em;line-height:1.12;max-width:560px;">
-        Results speak louder.<br><em style="font-style:italic;color:var(--teal);">Here's what traders say.</em>
-      </h2>
+      <div class="eyebrow">Testimonials</div>
+      <h2 class="section-h2">Results speak louder.<br><em>Here's what traders say.</em></h2>
     </div>
 
-    <div class="testimonial-carousel reveal reveal-delay-1">
-      <div class="testimonial-track-wrap">
-        <div class="testimonial-track" id="testimonialTrack">
+    <div class="testimonial-wrap reveal d1">
+      <div class="testimonial-fade-wrap">
+        <div class="testimonial-track" id="tTrack">
 
-          <div class="testimonial-card">
-            <div class="testimonial-inner">
-              <p class="testimonial-text">"AangBui's Wyckoff read on XAUUSD was a level above anything I had seen from a retail analyst. He called the accumulation phase before the breakout, gave me a clear invalidation, and the trade ran exactly as mapped. This is what institutional thinking actually looks like."</p>
-              <div class="testimonial-author">
-                <div class="testimonial-avatar">NN</div>
+          <div class="testimonial-slide">
+            <div class="glass-card t-inner">
+              <p class="t-quote">"AangBui's Wyckoff read on XAUUSD was a level above anything I had seen from a retail analyst. He called the accumulation phase before the breakout, gave me a clear invalidation, and the trade ran exactly as mapped. This is what institutional thinking actually looks like."</p>
+              <div class="t-author">
+                <div class="t-avatar">NN</div>
                 <div>
-                  <span class="testimonial-name">Nam Nguyen</span>
-                  <span class="testimonial-role">Prop Trader · Ho Chi Minh City</span>
+                  <span class="t-name">Nam Nguyen</span>
+                  <span class="t-role">Prop Trader · Ho Chi Minh City</span>
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="testimonial-card">
-            <div class="testimonial-inner">
-              <p class="testimonial-text">"I had been struggling to make sense of the VN30 structure for months. One session with Aang using Elliott Wave mapping and suddenly the noise became a roadmap. The VolTick indicator alone changed how I time entries — it removed the guesswork from order blocks entirely."</p>
-              <div class="testimonial-author">
-                <div class="testimonial-avatar">DN</div>
+          <div class="testimonial-slide">
+            <div class="glass-card t-inner">
+              <p class="t-quote">"I had been struggling to make sense of the VN30 structure for months. One session with Aang using Elliott Wave mapping and suddenly the noise became a roadmap. The VolTick indicator alone changed how I time entries — it removed the guesswork from order blocks entirely."</p>
+              <div class="t-author">
+                <div class="t-avatar">DN</div>
                 <div>
-                  <span class="testimonial-name">Dat Nguyen</span>
-                  <span class="testimonial-role">Futures Trader · Hanoi</span>
+                  <span class="t-name">Dat Nguyen</span>
+                  <span class="t-role">Futures Trader · Hanoi</span>
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="testimonial-card">
-            <div class="testimonial-inner">
-              <p class="testimonial-text">"The RSI Divergence indicator is the most honest momentum tool I have used on BTC. No repainting, no lag — just clean signals on the price chart where they belong. Aang's analysis backs it up with context that most traders never bother to build. Highly recommended."</p>
-              <div class="testimonial-author">
-                <div class="testimonial-avatar">DUY</div>
+          <div class="testimonial-slide">
+            <div class="glass-card t-inner">
+              <p class="t-quote">"The RSI Divergence indicator is the most honest momentum tool I have used on BTC. No repainting, no lag — just clean signals on the price chart where they belong. Aang's analysis backs it up with context that most traders never bother to build."</p>
+              <div class="t-author">
+                <div class="t-avatar">DUY</div>
                 <div>
-                  <span class="testimonial-name">Duy Nguyen</span>
-                  <span class="testimonial-role">Crypto Swing Trader · Da Nang</span>
+                  <span class="t-name">Duy Nguyen</span>
+                  <span class="t-role">Crypto Swing Trader · Da Nang</span>
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="testimonial-card">
-            <div class="testimonial-inner">
-              <p class="testimonial-text">"I'm based in Singapore and found Aang through a referral. What surprised me most was that the pricing was genuinely accessible — this isn't a service priced for hedge funds. Yet the depth of analysis, the clarity of the setups, the honesty when a trade doesn't work out — it all reflects the integrity of someone who actually trades his own calls. International quality, local heart. That's rare."</p>
-              <div class="testimonial-author">
-                <div class="testimonial-avatar">LN</div>
+          <div class="testimonial-slide">
+            <div class="glass-card t-inner">
+              <p class="t-quote">"I'm based in Singapore and found Aang through a referral. What surprised me most was that the pricing was genuinely accessible — yet the depth of analysis, the clarity of setups, the honesty when a trade doesn't work out — it all reflects the integrity of someone who actually trades his own calls. International quality, local heart. That's rare."</p>
+              <div class="t-author">
+                <div class="t-avatar">LN</div>
                 <div>
-                  <span class="testimonial-name">Linh Nguyen</span>
-                  <span class="testimonial-role">Independent Trader · Singapore</span>
+                  <span class="t-name">Linh Nguyen</span>
+                  <span class="t-role">Independent Trader · Singapore</span>
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="testimonial-card">
-            <div class="testimonial-inner">
-              <p class="testimonial-text">"I used to trade crypto only on the higher timeframes — slow entries, waiting days for a setup. Lower timeframes always felt like too much noise. An Bui's tools changed that completely. VolTick and the RSI Divergence indicator gave me a real framework to read intraday price action without second-guessing every candle. Now I trade LTF with actual confidence. It covers my daily expenses — and that genuinely matters."</p>
-              <div class="testimonial-author">
-                <div class="testimonial-avatar">KV</div>
+          <div class="testimonial-slide">
+            <div class="glass-card t-inner">
+              <p class="t-quote">"I used to trade crypto only on higher timeframes — slow entries, waiting days for a setup. Lower timeframes always felt like too much noise. An Bui's tools changed that completely. VolTick and the RSI Divergence indicator gave me a real framework to read intraday price action. Now I trade LTF with actual confidence — it covers my daily living expenses, and that genuinely matters."</p>
+              <div class="t-author">
+                <div class="t-avatar">KV</div>
                 <div>
-                  <span class="testimonial-name">Khue Vo</span>
-                  <span class="testimonial-role">Crypto Trader · Ho Chi Minh City</span>
+                  <span class="t-name">Khue Vo</span>
+                  <span class="t-role">Crypto Trader · Ho Chi Minh City</span>
                 </div>
               </div>
             </div>
@@ -1172,13 +945,13 @@ footer { border-top: 1px solid var(--border); background: var(--bg2); padding: 3
         </div>
       </div>
 
-      <div class="testimonial-controls">
-        <button class="testimonial-btn" id="tPrev" aria-label="Previous">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div class="t-controls">
+        <button class="t-btn" id="tPrev" aria-label="Previous">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M9 2L4 7l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
-        <div class="testimonial-dots" id="tDots"></div>
-        <button class="testimonial-btn" id="tNext" aria-label="Next">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div class="t-dots" id="tDots"></div>
+        <button class="t-btn" id="tNext" aria-label="Next">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
       </div>
     </div>
@@ -1186,29 +959,24 @@ footer { border-top: 1px solid var(--border); background: var(--bg2); padding: 3
 </section>
 
 <!-- ─── CONTACT ───────────────────────────────────────────────── -->
-<section id="contact">
+<section class="contact-section" id="contact">
+  <div class="contact-glow" aria-hidden="true"></div>
   <div class="container">
     <div class="reveal">
-      <div class="section-eyebrow" style="justify-content:center;color:rgba(7,9,15,.55);">Get In Touch</div>
-      <h2>The market doesn't wait.<br><em>Neither should you.</em></h2>
-      <p class="sub">Analysis, custom indicators, or an IB partnership — every conversation is handled personally. Whether you're just getting started or looking to sharpen an existing edge, the door is open.</p>
-      <div class="contact-btns">
-        <a href="https://t.me/aangbui" class="btn btn-dark" target="_blank">
-          ✈&ensp;Telegram: @aangbui
-        </a>
-        <a href="mailto:aangbui@gmail.com" class="btn btn-dark-outline">
-          ✉&ensp;aangbui@gmail.com
-        </a>
-      </div>
-
-      <div class="divider"></div>
-
-      <div class="contact-account">
-        <div class="contact-account-title">Trade under my IB partnership</div>
-        <div class="contact-account-sub">Competitive spreads with Vantage, negotiated for this community. Open a live account through this link — better conditions, shared incentives, and a partnership built on aligned outcomes.</div>
-        <a href="https://vigco.co/la-com-inv/vi/aangbui" class="btn btn-dark" target="_blank" style="margin:0 auto;">
-          Open Account &amp; Join AangBui →
-        </a>
+      <div class="glass-card contact-card">
+        <div class="eyebrow" style="justify-content:center;display:flex;">Get In Touch</div>
+        <h2>The market doesn't wait.<br><em>Neither should you.</em></h2>
+        <p class="sub">Analysis, custom indicators, or an IB partnership — every conversation is handled personally. Whether you're just getting started or looking to sharpen an existing edge, the door is open.</p>
+        <div class="contact-btns">
+          <a href="https://t.me/aangbui" class="btn btn-white" target="_blank">✈&ensp;Telegram: @aangbui</a>
+          <a href="mailto:aangbui@gmail.com" class="btn btn-glass">✉&ensp;aangbui@gmail.com</a>
+        </div>
+        <span class="contact-divider"></span>
+        <div class="account-block">
+          <h3>Trade under the IB partnership</h3>
+          <p>Competitive spreads with Vantage, negotiated for this community. Open a live account through this link — better conditions, shared incentives, outcomes aligned with yours.</p>
+          <a href="https://vigco.co/la-com-inv/vi/aangbui" class="btn btn-teal" target="_blank" style="margin:0 auto;">Open Account &amp; Join AangBui →</a>
+        </div>
       </div>
     </div>
   </div>
@@ -1220,7 +988,7 @@ footer { border-top: 1px solid var(--border); background: var(--bg2); padding: 3
     <div class="footer-inner">
       <div>
         <div class="footer-brand">Trading with <span>AangBui</span></div>
-        <div class="footer-tagline">Precision Market Intelligence. Edge-Driven Analysis.</div>
+        <div class="footer-tag">Precision Market Intelligence. Edge-Driven Analysis.</div>
       </div>
       <div class="footer-links">
         <a href="https://t.me/aangbui" target="_blank">✈ Telegram @aangbui</a>
@@ -1238,106 +1006,83 @@ footer { border-top: 1px solid var(--border); background: var(--bg2); padding: 3
 <!-- ─── JS ────────────────────────────────────────────────────── -->
 <script>
 /* ── Nav toggle ── */
-const toggle = document.getElementById('navToggle');
-const links  = document.getElementById('navLinks');
-toggle.addEventListener('click', () => links.classList.toggle('open'));
-links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+const navToggle = document.getElementById('navToggle');
+const navLinks  = document.getElementById('navLinks');
+navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
 
 /* ── Scroll reveal ── */
-const io = new IntersectionObserver((entries) => {
+const io = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
-}, { threshold: .1 });
+}, { threshold: .08 });
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 document.querySelectorAll('.hero .reveal').forEach(el => setTimeout(() => el.classList.add('visible'), 80));
 
 /* ── Hero canvas ── */
 (function () {
   const canvas = document.getElementById('hero-canvas');
-  const ctx = canvas.getContext('2d');
-  let W, H, points = [], frame = 0;
-  const TEAL  = 'rgba(0,191,165,';
-  const CREAM = 'rgba(232,237,245,';
+  const ctx    = canvas.getContext('2d');
+  let W, H, pts = [], frame = 0;
+  const TEAL  = 'rgba(0,194,168,';
+  const WHITE = 'rgba(255,255,255,';
   const N = 80;
 
   function resize() {
     W = canvas.width  = canvas.offsetWidth;
     H = canvas.height = canvas.offsetHeight;
-    buildPoints();
+    buildPts();
   }
-
-  function buildPoints() {
-    points = [];
-    let y = H * .5;
+  function buildPts() {
+    pts = []; let y = H * .5;
     for (let i = 0; i < N; i++) {
-      y += (Math.random() - .49) * H * .045;
+      y += (Math.random() - .49) * H * .04;
       y = Math.max(H * .2, Math.min(H * .8, y));
-      points.push({ x: (i / (N - 1)) * W, y });
+      pts.push({ x: (i / (N-1)) * W, y });
     }
   }
-
-  function drawCandle(x, open, close, high, low) {
-    const bull = close < open;
-    ctx.beginPath(); ctx.moveTo(x, high); ctx.lineTo(x, low);
-    ctx.strokeStyle = bull ? TEAL + '.45)' : CREAM + '.2)';
+  function drawCandle(x, o, c, h, l) {
+    const bull = c < o;
+    ctx.beginPath(); ctx.moveTo(x, h); ctx.lineTo(x, l);
+    ctx.strokeStyle = bull ? TEAL+'.35)' : WHITE+'.15)';
     ctx.lineWidth = 1; ctx.stroke();
-    ctx.fillStyle = bull ? TEAL + '.3)' : CREAM + '.12)';
-    ctx.fillRect(x - 4, Math.min(open, close), 8, Math.max(Math.abs(close - open), 2));
+    ctx.fillStyle  = bull ? TEAL+'.22)' : WHITE+'.08)';
+    ctx.fillRect(x-4, Math.min(o,c), 8, Math.max(Math.abs(c-o), 2));
   }
-
   function draw() {
     ctx.clearRect(0, 0, W, H);
-    ctx.strokeStyle = CREAM + '.02)'; ctx.lineWidth = 1;
-    for (let gx = 0; gx < W; gx += 80) { ctx.beginPath(); ctx.moveTo(gx,0); ctx.lineTo(gx,H); ctx.stroke(); }
-    for (let gy = 0; gy < H; gy += 80) { ctx.beginPath(); ctx.moveTo(0,gy); ctx.lineTo(W,gy); ctx.stroke(); }
-
-    const step = W / 28;
-    for (let i = 0; i < 28; i++) {
-      const pI = Math.floor(i / 28 * (N - 1));
-      const pN = Math.min(pI + 1, N - 1);
-      const y1 = points[pI].y, y2 = points[pN].y;
-      const cx = i * step + step / 2;
-      const osc = Math.sin(frame * .018 + i * .4) * H * .025;
-      drawCandle(cx, y1 + osc, y2 + osc, Math.min(y1,y2) - H*.035 + osc, Math.max(y1,y2) + H*.03 + osc);
+    const step = W / 26;
+    for (let i = 0; i < 26; i++) {
+      const pI = Math.floor(i/26*(N-1));
+      const pN = Math.min(pI+1, N-1);
+      const y1 = pts[pI].y, y2 = pts[pN].y;
+      const cx = i*step + step/2;
+      const osc = Math.sin(frame*.016 + i*.4) * H*.022;
+      drawCandle(cx, y1+osc, y2+osc, Math.min(y1,y2)-H*.032+osc, Math.max(y1,y2)+H*.028+osc);
     }
-
     const grad = ctx.createLinearGradient(0, 0, W, 0);
-    grad.addColorStop(0,  TEAL + '.04)');
-    grad.addColorStop(.5, TEAL + '.85)');
-    grad.addColorStop(1,  TEAL + '.35)');
+    grad.addColorStop(0,   TEAL+'.03)');
+    grad.addColorStop(.5,  TEAL+'.75)');
+    grad.addColorStop(1,   TEAL+'.28)');
     ctx.beginPath();
-    const shift = Math.sin(frame * .008) * H * .02;
-    ctx.moveTo(points[0].x, points[0].y + shift);
-    for (let i = 1; i < N - 1; i++) {
-      const mx = (points[i].x + points[i+1].x) / 2;
-      const my = (points[i].y + points[i+1].y) / 2 + shift;
-      ctx.quadraticCurveTo(points[i].x, points[i].y + shift, mx, my);
+    const shift = Math.sin(frame*.007) * H*.018;
+    ctx.moveTo(pts[0].x, pts[0].y + shift);
+    for (let i = 1; i < N-1; i++) {
+      const mx = (pts[i].x + pts[i+1].x)/2;
+      const my = (pts[i].y + pts[i+1].y)/2 + shift;
+      ctx.quadraticCurveTo(pts[i].x, pts[i].y+shift, mx, my);
     }
-    ctx.strokeStyle = grad; ctx.lineWidth = 1.8;
-    ctx.shadowColor = TEAL + '.5)'; ctx.shadowBlur = 10;
+    ctx.strokeStyle = grad; ctx.lineWidth = 1.6;
+    ctx.shadowColor = TEAL+'.4)'; ctx.shadowBlur = 12;
     ctx.stroke(); ctx.shadowBlur = 0;
-
-    ctx.beginPath();
-    ctx.moveTo(points[0].x, points[0].y + shift);
-    for (let i = 1; i < N - 1; i++) {
-      const mx = (points[i].x + points[i+1].x) / 2;
-      const my = (points[i].y + points[i+1].y) / 2 + shift;
-      ctx.quadraticCurveTo(points[i].x, points[i].y + shift, mx, my);
-    }
-    ctx.lineTo(W, H); ctx.lineTo(0, H); ctx.closePath();
-    const fill = ctx.createLinearGradient(0, 0, 0, H);
-    fill.addColorStop(0, TEAL + '.06)'); fill.addColorStop(1, TEAL + '0)');
-    ctx.fillStyle = fill; ctx.fill();
-
     frame++;
-    if (frame % 300 === 0) {
-      points.forEach(p => {
-        p.y += (Math.random() - .5) * H * .06;
-        p.y = Math.max(H * .2, Math.min(H * .8, p.y));
+    if (frame % 280 === 0) {
+      pts.forEach(p => {
+        p.y += (Math.random()-.5)*H*.055;
+        p.y = Math.max(H*.2, Math.min(H*.8, p.y));
       });
     }
     requestAnimationFrame(draw);
   }
-
   window.addEventListener('resize', resize);
   resize(); draw();
 })();
@@ -1365,56 +1110,60 @@ document.querySelectorAll('.hero .reveal').forEach(el => setTimeout(() => el.cla
   track.innerHTML = html + html;
 })();
 
-/* ── Testimonial Carousel ── */
+/* ── Method tabs ── */
 (function () {
-  const track  = document.getElementById('testimonialTrack');
+  const tabs   = document.querySelectorAll('.method-tab');
+  const panels = document.querySelectorAll('.method-panel');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const idx = +tab.dataset.panel;
+      tabs.forEach((t, i)   => t.classList.toggle('active', i === idx));
+      panels.forEach((p, i) => p.classList.toggle('active', i === idx));
+    });
+  });
+})();
+
+/* ── Testimonial carousel ── */
+(function () {
+  const track  = document.getElementById('tTrack');
   const dotsEl = document.getElementById('tDots');
-  const cards  = Array.from(track.querySelectorAll('.testimonial-card'));
-  const total  = cards.length;
+  const slides = Array.from(track.querySelectorAll('.testimonial-slide'));
+  const total  = slides.length;
   let current  = 0, timer;
 
-  function cardPct() { return window.innerWidth <= 700 ? 92 : 78; }
+  function pct() { return window.innerWidth <= 700 ? 92 : 76; }
 
-  cards.forEach((_, i) => {
+  slides.forEach((_, i) => {
     const d = document.createElement('button');
-    d.className = 'testimonial-dot' + (i === 0 ? ' active' : '');
-    d.setAttribute('aria-label', 'Slide ' + (i + 1));
+    d.className = 't-dot' + (i === 0 ? ' active' : '');
+    d.setAttribute('aria-label', 'Slide ' + (i+1));
     d.addEventListener('click', () => goTo(i));
     dotsEl.appendChild(d);
   });
 
   function goTo(idx) {
     current = (idx + total) % total;
-    const pct = cardPct();
-    const offset = (100 - pct) / 2;
-    track.style.transform = `translateX(calc(-${current * pct}% + ${offset}%))`;
-    cards.forEach((c, i) => c.classList.toggle('active', i === current));
-    dotsEl.querySelectorAll('.testimonial-dot').forEach((d, i) => d.classList.toggle('active', i === current));
-    resetTimer();
+    const p = pct();
+    const offset = (100 - p) / 2;
+    track.style.transform = `translateX(calc(-${current * p}% + ${offset}%))`;
+    slides.forEach((s, i) => s.classList.toggle('active', i === current));
+    dotsEl.querySelectorAll('.t-dot').forEach((d, i) => d.classList.toggle('active', i === current));
+    clearInterval(timer); timer = setInterval(() => goTo(current+1), 6500);
   }
 
-  function resetTimer() {
-    clearInterval(timer);
-    timer = setInterval(() => goTo(current + 1), 6500);
-  }
+  document.getElementById('tPrev').addEventListener('click', () => goTo(current-1));
+  document.getElementById('tNext').addEventListener('click', () => goTo(current+1));
 
-  document.getElementById('tPrev').addEventListener('click', () => goTo(current - 1));
-  document.getElementById('tNext').addEventListener('click', () => goTo(current + 1));
+  let sx = 0;
+  track.addEventListener('touchstart', e => { sx = e.touches[0].clientX; }, { passive: true });
+  track.addEventListener('touchend',   e => { const dx = e.changedTouches[0].clientX - sx; if (Math.abs(dx)>44) goTo(dx<0?current+1:current-1); });
 
-  let startX = 0;
-  track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
-  track.addEventListener('touchend',   e => {
-    const dx = e.changedTouches[0].clientX - startX;
-    if (Math.abs(dx) > 45) goTo(dx < 0 ? current + 1 : current - 1);
-  });
-
-  const wrap = track.closest('.testimonial-carousel');
+  const wrap = track.closest('.testimonial-wrap');
   wrap.addEventListener('mouseenter', () => clearInterval(timer));
-  wrap.addEventListener('mouseleave', resetTimer);
+  wrap.addEventListener('mouseleave', () => { clearInterval(timer); timer = setInterval(()=>goTo(current+1),6500); });
   window.addEventListener('resize', () => goTo(current));
 
   goTo(0);
-  resetTimer();
 })();
 </script>
 </body>
