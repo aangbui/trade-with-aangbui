@@ -359,7 +359,14 @@ nav.scrolled {
 /* ─── SECTION BASE ───────────────────────────────────────────── */
 .section {
   position: relative; z-index: 1;
-  padding: 8rem 0;
+  padding: 8rem 0; overflow: hidden;
+}
+.section::before {
+  content: '';
+  position: absolute; inset: -30%; z-index: 0;
+  background: radial-gradient(ellipse 55% 45% at 50% 50%, rgba(0,194,168,.06), transparent 70%);
+  transform: translateY(var(--py, 0px));
+  pointer-events: none; will-change: transform;
 }
 .section-rule {
   border: none; border-top: 1px solid var(--border);
@@ -1333,6 +1340,48 @@ document.querySelectorAll('.hero .reveal').forEach(el => setTimeout(() => el.cla
     requestAnimationFrame(animateGlow);
   }
   animateGlow();
+})();
+
+/* ── Parallax ── */
+(function () {
+  const ambient  = document.querySelector('.ambient');
+  const canvas   = document.getElementById('hero-canvas');
+  const cGlow    = document.querySelector('.contact-glow');
+  const sections = Array.from(document.querySelectorAll('section.section'));
+  const vh       = () => window.innerHeight;
+  let ticking    = false;
+
+  function tick() {
+    const sy = window.scrollY;
+    const h  = vh();
+
+    // Blob layer drifts upward as you scroll — floats against the page
+    if (ambient) ambient.style.transform = `translate3d(0,${sy * -0.08}px,0)`;
+
+    // Hero canvas scrolls slower than page — feels deep in background
+    if (canvas) canvas.style.transform = `translate3d(0,${sy * 0.22}px,0)`;
+
+    // Contact glow — moves relative to its section centre
+    if (cGlow) {
+      const r = cGlow.closest('section').getBoundingClientRect();
+      cGlow.style.transform = `translate3d(0,${(r.top + r.height / 2 - h / 2) * -0.18}px,0)`;
+    }
+
+    // Each section::before bg layer parallaxes at 20% relative to section centre
+    sections.forEach(sec => {
+      const r      = sec.getBoundingClientRect();
+      const centre = r.top + r.height / 2 - h / 2;
+      sec.style.setProperty('--py', `${centre * 0.2}px`);
+    });
+
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) { requestAnimationFrame(tick); ticking = true; }
+  }, { passive: true });
+
+  tick();
 })();
 
 /* ── Card inner spotlight (tracks cursor per card) ── */
