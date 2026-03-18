@@ -139,6 +139,15 @@ nav {
   position: fixed; top: 0; left: 0; right: 0;
   z-index: 999; height: 64px;
   display: flex; align-items: center;
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  transition: background .3s ease, border-color .3s ease;
+}
+nav.scrolled {
+  background: rgba(0, 0, 0, .92);
+  border-bottom-color: var(--border);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
 }
 .nav-inner {
   width: 100%; max-width: 1120px; margin: 0 auto; padding: 0 2rem;
@@ -1100,6 +1109,12 @@ const navToggle = document.getElementById('navToggle');
 const navLinks  = document.getElementById('navLinks');
 navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
 navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+/* ── Nav scroll background ── */
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 20);
+}, { passive: true });
 
 /* ── Scroll reveal ── */
 const io = new IntersectionObserver(entries => {
