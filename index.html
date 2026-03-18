@@ -157,9 +157,17 @@ nav {
   font-family: var(--ff-body); font-size: .82rem; font-weight: 400;
   letter-spacing: .05em; text-transform: uppercase;
   color: var(--dim); text-decoration: none;
-  transition: color .2s;
+  transition: color .2s, text-shadow .2s;
+  position: relative;
 }
-.nav-links a:hover { color: var(--white); }
+.nav-links a::after {
+  content: ''; position: absolute; bottom: -3px; left: 0; right: 0;
+  height: 1px; background: var(--teal);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform .25s cubic-bezier(.22,1,.36,1);
+}
+.nav-links a:not(.nav-cta):hover { color: var(--white); }
+.nav-links a:not(.nav-cta):hover::after { transform: scaleX(1); }
 .nav-cta {
   font-size: .78rem !important;
   background: var(--glass-2) !important;
@@ -191,21 +199,35 @@ nav {
 .btn-white {
   background: var(--white); color: #000; font-weight: 600;
 }
-.btn-white:hover { background: rgba(255,255,255,.88); transform: translateY(-1px); }
+.btn-white:hover {
+  background: rgba(255,255,255,.92);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(255,255,255,.18);
+}
 
 .btn-glass {
   background: var(--glass-2);
   border: 1px solid var(--border-2);
   color: var(--white);
 }
-.btn-glass:hover { background: rgba(255,255,255,.1); transform: translateY(-1px); }
+.btn-glass:hover {
+  background: rgba(255,255,255,.12);
+  border-color: rgba(255,255,255,.22);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,.3);
+}
 
 .btn-teal {
   background: var(--teal-glass);
   border: 1px solid var(--teal-border);
   color: var(--teal);
 }
-.btn-teal:hover { background: rgba(0,194,168,.2); transform: translateY(-1px); }
+.btn-teal:hover {
+  background: rgba(0,194,168,.22);
+  border-color: rgba(0,194,168,.5);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(0,194,168,.22);
+}
 
 .btn-outline-dark {
   background: transparent;
@@ -214,11 +236,33 @@ nav {
 }
 .btn-outline-dark:hover { background: rgba(0,0,0,.08); transform: translateY(-1px); }
 
+/* ─── CURSOR SPOTLIGHT ───────────────────────────────────────── */
+.cursor-glow {
+  position: fixed;
+  width: 700px; height: 700px;
+  border-radius: 50%;
+  pointer-events: none; z-index: 0;
+  background: radial-gradient(circle, rgba(0,194,168,.055) 0%, transparent 65%);
+  transform: translate(-50%, -50%);
+  will-change: left, top;
+  transition: left .12s ease, top .12s ease;
+}
+
 /* ─── HERO ───────────────────────────────────────────────────── */
 .hero {
   position: relative; min-height: 100vh;
   display: flex; align-items: center;
   padding-top: 64px; overflow: hidden;
+}
+/* Dot-grid pattern */
+.hero::before {
+  content: '';
+  position: absolute; inset: 0; z-index: 1;
+  background-image: radial-gradient(circle, rgba(255,255,255,.09) 1px, transparent 1px);
+  background-size: 36px 36px;
+  -webkit-mask-image: radial-gradient(ellipse 75% 65% at 50% 45%, black 20%, transparent 78%);
+  mask-image: radial-gradient(ellipse 75% 65% at 50% 45%, black 20%, transparent 78%);
+  pointer-events: none;
 }
 #hero-canvas {
   position: absolute; inset: 0;
@@ -294,8 +338,12 @@ nav {
   padding: 0 2.5rem;
   font-family: var(--ff-mono); font-size: .78rem;
   letter-spacing: .04em; color: var(--dim); white-space: nowrap;
+  transition: color .2s;
+  cursor: default;
 }
-.ticker-item .sym { color: var(--teal); font-weight: 500; }
+.ticker-item:hover { color: rgba(255,255,255,.75); }
+.ticker-item:hover .sym { text-shadow: 0 0 10px rgba(0,194,168,.55); }
+.ticker-item .sym { color: var(--teal); font-weight: 500; transition: text-shadow .2s; }
 .ticker-dot { width: 3px; height: 3px; border-radius: 50%; background: rgba(0,194,168,.3); flex-shrink: 0; }
 
 /* ─── SECTION BASE ───────────────────────────────────────────── */
@@ -333,20 +381,32 @@ nav {
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
   position: relative; overflow: hidden;
-  transition: border-color .3s, transform .3s, box-shadow .3s;
+  transition: border-color .35s, transform .35s cubic-bezier(.22,1,.36,1), box-shadow .35s;
 }
+/* Top edge glow line */
 .glass-card::before {
   content: '';
   position: absolute; top: 0; left: 0; right: 0; height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,.12), transparent);
-  opacity: 0; transition: opacity .3s;
+  background: linear-gradient(90deg, transparent, var(--teal), transparent);
+  opacity: 0; transition: opacity .35s;
+  z-index: 2;
+}
+/* Inner cursor-tracking spotlight */
+.glass-card::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(circle 220px at var(--mx, 50%) var(--my, 50%), rgba(0,194,168,.08), transparent 70%);
+  opacity: var(--card-hover, 0);
+  transition: opacity .35s;
+  border-radius: inherit;
+  pointer-events: none; z-index: 1;
 }
 .glass-card:hover {
-  border-color: rgba(255,255,255,.13);
-  transform: translateY(-4px);
-  box-shadow: 0 24px 64px rgba(0,0,0,.5);
+  border-color: rgba(0,194,168,.22);
+  transform: translateY(-5px);
+  box-shadow: 0 28px 72px rgba(0,0,0,.55), 0 0 0 1px rgba(0,194,168,.08);
 }
-.glass-card:hover::before { opacity: 1; }
+.glass-card:hover::before { opacity: .7; }
 
 /* ─── SERVICES ───────────────────────────────────────────────── */
 .services-layout {
@@ -375,10 +435,15 @@ nav {
   color: var(--teal); border: 1px solid rgba(0,194,168,.25);
   border-radius: var(--pill); padding: .4rem .9rem;
   background: var(--teal-glass); text-decoration: none;
-  transition: background .2s, border-color .2s;
+  transition: background .2s, border-color .2s, box-shadow .2s, transform .2s;
   white-space: nowrap;
 }
-.chip:hover { background: rgba(0,194,168,.2); border-color: rgba(0,194,168,.45); }
+.chip:hover {
+  background: rgba(0,194,168,.2);
+  border-color: rgba(0,194,168,.5);
+  box-shadow: 0 0 14px rgba(0,194,168,.2);
+  transform: translateY(-1px);
+}
 
 /* ─── METHODOLOGY TABS ───────────────────────────────────────── */
 .method-tabs {
@@ -392,10 +457,17 @@ nav {
   color: var(--dim); cursor: pointer;
   transition: all .3s; white-space: nowrap;
 }
-.method-tab:hover { border-color: var(--border-2); color: rgba(255,255,255,.7); }
-.method-tab.active {
-  background: var(--glass-2); border-color: var(--border-2);
+.method-tab:hover {
+  border-color: rgba(0,194,168,.35);
   color: var(--white);
+  background: rgba(0,194,168,.06);
+  box-shadow: 0 0 14px rgba(0,194,168,.1);
+}
+.method-tab.active {
+  background: rgba(0,194,168,.1);
+  border-color: rgba(0,194,168,.4);
+  color: var(--white);
+  box-shadow: 0 0 20px rgba(0,194,168,.12);
 }
 .method-panel { display: none; }
 .method-panel.active { display: block; }
@@ -462,9 +534,14 @@ nav {
   border: 1px solid rgba(0,194,168,.25);
   border-radius: var(--pill); padding: .55rem 1.2rem;
   background: var(--teal-glass); align-self: flex-start;
-  transition: background .2s, border-color .2s;
+  transition: background .25s, border-color .25s, box-shadow .25s, transform .25s;
 }
-.tool-link:hover { background: rgba(0,194,168,.2); border-color: rgba(0,194,168,.45); }
+.tool-link:hover {
+  background: rgba(0,194,168,.22);
+  border-color: rgba(0,194,168,.5);
+  box-shadow: 0 0 16px rgba(0,194,168,.22);
+  transform: translateY(-1px);
+}
 
 /* ─── TESTIMONIALS ───────────────────────────────────────────── */
 .testimonial-wrap { position: relative; margin-top: 3.5rem; }
@@ -524,9 +601,15 @@ nav {
   background: var(--glass); border: 1px solid var(--border);
   color: var(--dim); cursor: pointer;
   display: flex; align-items: center; justify-content: center;
-  transition: border-color .2s, color .2s, background .2s;
+  transition: border-color .25s, color .25s, background .25s, box-shadow .25s, transform .25s;
 }
-.t-btn:hover { border-color: var(--border-2); color: var(--white); background: var(--glass-2); }
+.t-btn:hover {
+  border-color: rgba(0,194,168,.4);
+  color: var(--teal);
+  background: rgba(0,194,168,.08);
+  box-shadow: 0 0 16px rgba(0,194,168,.18);
+  transform: scale(1.08);
+}
 .t-dots { display: flex; gap: .5rem; align-items: center; }
 .t-dot {
   width: 5px; height: 5px; border-radius: 50%;
@@ -601,10 +684,14 @@ footer {
 .footer-links { display: flex; flex-direction: column; gap: .55rem; align-items: flex-end; }
 .footer-links a {
   font-family: var(--ff-mono); font-size: .75rem; letter-spacing: .04em;
-  color: var(--muted); text-decoration: none; transition: color .2s;
+  color: var(--muted); text-decoration: none;
   display: flex; align-items: center; gap: .45rem;
+  transition: color .2s, text-shadow .2s;
 }
-.footer-links a:hover { color: var(--teal); }
+.footer-links a:hover {
+  color: var(--teal);
+  text-shadow: 0 0 12px rgba(0,194,168,.4);
+}
 .footer-bottom {
   margin-top: 2.5rem; padding-top: 1.5rem;
   border-top: 1px solid rgba(255,255,255,.04);
@@ -636,6 +723,9 @@ footer {
 </style>
 </head>
 <body>
+
+<!-- ─── CURSOR SPOTLIGHT ──────────────────────────────────────── -->
+<div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
 
 <!-- ─── AMBIENT BLOBS ─────────────────────────────────────────── -->
 <div class="ambient" aria-hidden="true">
@@ -1164,6 +1254,41 @@ document.querySelectorAll('.hero .reveal').forEach(el => setTimeout(() => el.cla
   window.addEventListener('resize', () => goTo(current));
 
   goTo(0);
+})();
+
+/* ── Cursor spotlight ── */
+(function () {
+  const glow = document.getElementById('cursorGlow');
+  let mx = window.innerWidth / 2, my = window.innerHeight / 2;
+  let cx = mx, cy = my;
+
+  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+
+  function animateGlow() {
+    cx += (mx - cx) * 0.1;
+    cy += (my - cy) * 0.1;
+    glow.style.left = cx + 'px';
+    glow.style.top  = cy + 'px';
+    requestAnimationFrame(animateGlow);
+  }
+  animateGlow();
+})();
+
+/* ── Card inner spotlight (tracks cursor per card) ── */
+(function () {
+  document.querySelectorAll('.glass-card').forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const r = card.getBoundingClientRect();
+      const x = ((e.clientX - r.left) / r.width)  * 100;
+      const y = ((e.clientY - r.top)  / r.height) * 100;
+      card.style.setProperty('--mx', x + '%');
+      card.style.setProperty('--my', y + '%');
+      card.style.setProperty('--card-hover', '1');
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.setProperty('--card-hover', '0');
+    });
+  });
 })();
 </script>
 </body>
