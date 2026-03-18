@@ -1362,10 +1362,10 @@ document.querySelectorAll('.hero .reveal').forEach(el => setTimeout(() => el.cla
     // Blobs float against scroll direction
     if (ambient) ambient.style.transform = `translate3d(0,${sy * -0.18}px,0)`;
 
-    // Hero canvas: slower scroll (depth) + zoom out as you leave
+    // Hero canvas: zoom in from 80% → 100% as page loads / scrolls in
     if (canvas) {
       const prog  = heroSec ? Math.min(sy / heroSec.offsetHeight, 1) : 0;
-      const scale = 1 - prog * 0.12;
+      const scale = 0.8 + prog * 0.2;
       canvas.style.transform = `translate3d(0,${sy * 0.28}px,0) scale(${scale})`;
     }
 
