@@ -123,16 +123,19 @@ body {
 /* ─── REVEAL ANIMATIONS ─────────────────────────────────────── */
 .reveal {
   opacity: 0;
-  transform: translateY(28px);
+  transform: translateY(40px);
   filter: blur(6px);
-  transition: opacity .8s cubic-bezier(.22,1,.36,1),
-              transform .8s cubic-bezier(.22,1,.36,1),
-              filter .8s cubic-bezier(.22,1,.36,1);
+  transition: opacity .95s cubic-bezier(.22,1,.36,1),
+              transform .95s cubic-bezier(.22,1,.36,1),
+              filter .95s cubic-bezier(.22,1,.36,1);
 }
+.reveal.from-left  { transform: translateX(-110px); filter: blur(4px); }
+.reveal.from-right { transform: translateX(110px);  filter: blur(4px); }
+.reveal.from-top   { transform: translateY(-70px);  filter: blur(4px); }
 .reveal.visible { opacity: 1; transform: none; filter: blur(0); }
-.d1 { transition-delay: .1s; }
-.d2 { transition-delay: .2s; }
-.d3 { transition-delay: .3s; }
+.d1 { transition-delay: .12s; }
+.d2 { transition-delay: .24s; }
+.d3 { transition-delay: .36s; }
 .d4 { transition-delay: .4s; }
 .d5 { transition-delay: .5s; }
 
@@ -832,11 +835,11 @@ footer {
 <section class="section" id="services">
   <div class="container">
     <div class="services-layout">
-      <div class="reveal">
+      <div class="reveal from-left">
         <div class="eyebrow">Coverage</div>
         <h2 class="section-h2">The markets tracked.<br><strong>Every session.</strong></h2>
       </div>
-      <div class="reveal d1">
+      <div class="reveal d1 from-right">
         <p class="section-lead">Gold, Silver, Bitcoin, Vietnamese indices, and crude oil — broad coverage, surgical analysis. Signals delivered via Telegram and TradingView the moment a setup is confirmed. No recycled calls, no delayed entries. Just the markets where the edge is real.</p>
       </div>
     </div>
@@ -862,13 +865,13 @@ footer {
 <!-- ─── METHODOLOGY ───────────────────────────────────────────── -->
 <section class="section" id="methodology">
   <div class="container">
-    <div class="reveal" style="margin-bottom:3.5rem;">
+    <div class="reveal from-right" style="margin-bottom:3.5rem;">
       <div class="eyebrow">The Framework</div>
       <h2 class="section-h2">Four disciplines.<br><em>One conviction.</em></h2>
       <p class="section-lead">Each framework is independently powerful. Together, they're decisive. Every trade is filtered through structure, cycle, execution, and momentum confirmation.</p>
     </div>
 
-    <div class="method-tabs reveal d1" role="tablist">
+    <div class="method-tabs reveal d1 from-left" role="tablist">
       <button class="method-tab active" data-panel="0" role="tab">Wyckoff</button>
       <button class="method-tab" data-panel="1" role="tab">Elliott Wave</button>
       <button class="method-tab" data-panel="2" role="tab">Price Action</button>
@@ -930,7 +933,7 @@ footer {
 <!-- ─── TOOLS ─────────────────────────────────────────────────── -->
 <section class="section" id="tools">
   <div class="container">
-    <div class="reveal">
+    <div class="reveal from-left">
       <div class="eyebrow">Custom Indicators</div>
       <h2 class="section-h2">Precision instruments.<br><strong>Purpose-built.</strong></h2>
       <p class="section-lead">Built to fill gaps that off-the-shelf tools couldn't. Each indicator was forged in live sessions, refined through real P&L, and published on TradingView.</p>
@@ -938,7 +941,7 @@ footer {
 
     <div class="tools-grid">
 
-      <a class="glass-card tool-card reveal d1" href="https://in.tradingview.com/script/PbA10iAJ-VolTick-Orderblock-by-aangbui/" target="_blank">
+      <a class="glass-card tool-card reveal d1 from-left" href="https://in.tradingview.com/script/PbA10iAJ-VolTick-Orderblock-by-aangbui/" target="_blank">
         <div class="tool-visual">
           <svg class="tool-svg" viewBox="0 0 400 90" preserveAspectRatio="none" xmlns="http://www.w3.org/3000/svg">
             <rect x="10"  y="58" width="14" height="24" fill="rgba(43,255,214,.12)" rx="2"/>
@@ -966,7 +969,7 @@ footer {
         <span class="tool-link" onclick="event.stopPropagation()">View on TradingView →</span>
       </a>
 
-      <a class="glass-card tool-card reveal d2" href="https://in.tradingview.com/script/siPMJq8U-RSI-divergence-on-Price-Chart/" target="_blank">
+      <a class="glass-card tool-card reveal d2 from-right" href="https://in.tradingview.com/script/siPMJq8U-RSI-divergence-on-Price-Chart/" target="_blank">
         <div class="tool-visual">
           <svg class="tool-svg" viewBox="0 0 400 90" preserveAspectRatio="none" xmlns="http://www.w3.org/3000/svg">
             <line x1="20"  y1="26" x2="20"  y2="70" stroke="rgba(255,255,255,.12)" stroke-width="1"/>
@@ -1003,7 +1006,7 @@ footer {
 <!-- ─── TESTIMONIALS ──────────────────────────────────────────── -->
 <section class="section" id="testimonials">
   <div class="container">
-    <div class="reveal">
+    <div class="reveal from-right">
       <div class="eyebrow">Testimonials</div>
       <h2 class="section-h2">Results speak louder.<br><em>Here's what traders say.</em></h2>
     </div>
@@ -1097,7 +1100,7 @@ footer {
 <section class="contact-section" id="contact">
   <div class="contact-glow" aria-hidden="true"></div>
   <div class="container">
-    <div class="reveal">
+    <div class="reveal from-top">
       <div class="glass-card contact-card">
         <div class="eyebrow" style="justify-content:center;display:flex;">Get In Touch</div>
         <h2>The market doesn't wait.<br><em>Join the Wave.</em></h2>
@@ -1356,22 +1359,22 @@ document.querySelectorAll('.hero .reveal').forEach(el => setTimeout(() => el.cla
     const h  = vh();
 
     // Blob layer drifts upward as you scroll — floats against the page
-    if (ambient) ambient.style.transform = `translate3d(0,${sy * -0.08}px,0)`;
+    if (ambient) ambient.style.transform = `translate3d(0,${sy * -0.18}px,0)`;
 
     // Hero canvas scrolls slower than page — feels deep in background
-    if (canvas) canvas.style.transform = `translate3d(0,${sy * 0.22}px,0)`;
+    if (canvas) canvas.style.transform = `translate3d(0,${sy * 0.28}px,0)`;
 
     // Contact glow — moves relative to its section centre
     if (cGlow) {
       const r = cGlow.closest('section').getBoundingClientRect();
-      cGlow.style.transform = `translate3d(0,${(r.top + r.height / 2 - h / 2) * -0.18}px,0)`;
+      cGlow.style.transform = `translate3d(0,${(r.top + r.height / 2 - h / 2) * -0.3}px,0)`;
     }
 
-    // Each section::before bg layer parallaxes at 20% relative to section centre
+    // Each section::before bg layer parallaxes at 40% relative to section centre
     sections.forEach(sec => {
       const r      = sec.getBoundingClientRect();
       const centre = r.top + r.height / 2 - h / 2;
-      sec.style.setProperty('--py', `${centre * 0.2}px`);
+      sec.style.setProperty('--py', `${centre * 0.4}px`);
     });
 
     ticking = false;
