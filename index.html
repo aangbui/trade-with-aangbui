@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 <title>Trading with AangBui — Precision Market Intelligence</title>
 <meta name="description" content="Institutional-grade multi-asset market analysis by AangBui — covering XAUUSD, Bitcoin, VN30, SP500, crude oil and more. Wyckoff, Elliott Wave, and custom TradingView indicators for traders who demand an edge." />
 <meta name="keywords" content="AangBui, trading analysis, market intelligence, Wyckoff method, Elliott Wave, RSI divergence, XAUUSD analysis, Bitcoin analysis, VN30, TradingView indicators, VolTick, order block, IB partnership, Vantage" />
@@ -142,8 +142,10 @@ body {
 /* ─── NAV ────────────────────────────────────────────────────── */
 nav {
   position: fixed; top: 0; left: 0; right: 0;
-  z-index: 999; height: 64px;
-  display: flex; align-items: center;
+  z-index: 999;
+  padding-top: env(safe-area-inset-top);
+  height: calc(64px + env(safe-area-inset-top));
+  display: flex; align-items: flex-end;
   background: transparent;
   border-bottom: 1px solid transparent;
   transition: background .3s ease, border-color .3s ease;
@@ -269,7 +271,7 @@ nav.scrolled {
 .hero {
   position: relative; min-height: 100vh;
   display: flex; align-items: center;
-  padding-top: 64px; overflow: hidden;
+  padding-top: calc(64px + env(safe-area-inset-top)); overflow: hidden;
 }
 .hero::before {
   content: '';
