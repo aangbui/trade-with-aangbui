@@ -144,8 +144,6 @@ nav {
   position: fixed; top: 0; left: 0; right: 0;
   z-index: 999;
   padding-top: env(safe-area-inset-top);
-  height: calc(64px + env(safe-area-inset-top));
-  display: flex; align-items: flex-end;
   background: transparent;
   border-bottom: 1px solid transparent;
   transition: background .3s ease, border-color .3s ease;
@@ -158,6 +156,7 @@ nav.scrolled {
 }
 .nav-inner {
   width: 100%; max-width: 1120px; margin: 0 auto; padding: 0 2rem;
+  height: 64px;
   display: flex; align-items: center; justify-content: space-between;
 }
 .nav-logo {
@@ -271,7 +270,7 @@ nav.scrolled {
 .hero {
   position: relative; min-height: 100vh;
   display: flex; align-items: center;
-  padding-top: calc(64px + env(safe-area-inset-top)); overflow: hidden;
+  padding-top: calc(64px + env(safe-area-inset-top, 0px)); overflow: hidden;
 }
 .hero::before {
   content: '';
