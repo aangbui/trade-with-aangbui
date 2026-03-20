@@ -29,6 +29,17 @@
   ]
 }
 </script>
+<!-- Google Analytics GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-100J0TCNLD"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-100J0TCNLD', {
+    page_title: document.title,
+    send_page_view: true
+  });
+</script>
 <link rel="icon" type="image/svg+xml" href="favicon.svg?v=2" />
 <link rel="shortcut icon" href="favicon.svg?v=2" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -1671,6 +1682,82 @@ function applyLang(lang) {
     applyLang(next);
   });
   applyLang(localStorage.getItem('lang') || 'en');
+})();
+
+/* ── Analytics event tracking ── */
+(function () {
+  function gev(name, params) {
+    if (typeof gtag === 'function') gtag('event', name, params);
+  }
+
+  // CTA clicks — all outbound / contact links
+  const ctaMap = [
+    { sel: 'a[href*="t.me"]',       label: 'telegram',      cat: 'cta' },
+    { sel: 'a[href*="mailto"]',     label: 'email',         cat: 'cta' },
+    { sel: 'a[href*="vigco.co"]',   label: 'open_account',  cat: 'cta' },
+    { sel: 'a[href*="tradingview"]',label: 'tradingview',   cat: 'outbound' },
+  ];
+  ctaMap.forEach(({ sel, label, cat }) => {
+    document.querySelectorAll(sel).forEach(el => {
+      el.addEventListener('click', () => {
+        const section = el.closest('section, footer, nav')?.id || 'unknown';
+        gev('click', { event_category: cat, event_label: label, section });
+      });
+    });
+  });
+
+  // Language switch
+  const lt = document.getElementById('langToggle');
+  if (lt) lt.addEventListener('click', () => {
+    const next = lt.textContent.trim().toLowerCase();
+    gev('language_switch', { event_category: 'engagement', event_label: next });
+  });
+
+  // Testimonial carousel navigation
+  ['tPrev','tNext'].forEach(id => {
+    const btn = document.getElementById(id);
+    if (btn) btn.addEventListener('click', () => {
+      gev('carousel_nav', { event_category: 'engagement', event_label: id === 'tPrev' ? 'prev' : 'next' });
+    });
+  });
+
+  // Method tab clicks
+  document.querySelectorAll('.method-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      gev('methodology_tab', { event_category: 'engagement', event_label: tab.textContent.trim() });
+    });
+  });
+
+  // Scroll depth — fire once at 25 / 50 / 75 / 90%
+  const depths = [25, 50, 75, 90];
+  const fired  = new Set();
+  window.addEventListener('scroll', () => {
+    const pct = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+    depths.forEach(d => {
+      if (pct >= d && !fired.has(d)) {
+        fired.add(d);
+        gev('scroll_depth', { event_category: 'engagement', event_label: d + '%', value: d });
+      }
+    });
+  }, { passive: true });
+
+  // Section visibility — fire once when each section enters viewport
+  const sections = document.querySelectorAll('section[id]');
+  const sObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        gev('section_view', { event_category: 'engagement', event_label: e.target.id });
+        sObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  sections.forEach(s => sObs.observe(s));
+
+  // Nav CTA
+  const navCta = document.querySelector('.nav-cta');
+  if (navCta) navCta.addEventListener('click', () => {
+    gev('nav_cta_click', { event_category: 'cta', event_label: 'join_community' });
+  });
 })();
 
 /* ── Card: 3D tilt + inner spotlight ── */
